@@ -1,0 +1,675 @@
+[
+  {
+    "sample_id": "java_main_java",
+    "language": "java",
+    "class_name": "main",
+    "file_path": "Java/SmellyAnnotated/main.java",
+    "loc": 43,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class main {\n\n    public static void main(String[] args) {\n        double avgTime = measureExecutionTime();\n        System.out.println(\"Average execution time over multiple runs: \" + avgTime + \" seconds\");\n    }\n\n    public static double measureExecutionTime() {\n        int runs = 10;\n        List<Long> executionTimes = new ArrayList<>();\n\n        for (int i = 0; i < runs; i++) {\n            long startTime = System.nanoTime();\n\n            Shop shop = new Shop();\n            Customer customer = new Customer(shop);\n            customer.orderPizza(\"Cheese\");\n            customer.complain(\"The pizza is too cold.\");\n\n            long endTime = System.nanoTime();\n            long executionTime = endTime - startTime;\n            executionTimes.add(executionTime);\n        }\n\n        double totalExecutionTime = 0;\n        for (Long time : executionTimes) {\n            totalExecutionTime += time;\n        }\n\n        return totalExecutionTime / runs / 1_000_000_000.0; // Convert nanoseconds to seconds\n    }\n}\n",
+    "annotations": [],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 0,
+      "num_lines": 43
+    }
+  },
+  {
+    "sample_id": "python_Cashier_py",
+    "language": "python",
+    "class_name": "Cashier",
+    "file_path": "Python/SmellyAnnotated/Cashier.py",
+    "loc": 153,
+    "source_code": "\"\"\"\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n\"\"\"\n\n\nfrom Pizza import Pizza\n\nclass Cashier:\n    def __init__(self, chef):\n        self.chef = chef  # Control Coupling\n        self.frequent_customer_discount = False  # Primitive Obsession\n\n        # Data Clumps\n        self.first_name = None\n        self.last_name = None\n        self.address = None\n        self.phone_number = None\n        self.email = None\n\n        # Temporary Fields\n        self.temp_discount_code = None\n        self.temp_order_note = None\n\n    def take_order(self, pizza_type: str):\n        print(f\"Cashier is taking order for {pizza_type} pizza.\")\n        self.chef.bake_pizza(pizza_type)  # Feature Envy\n\n    def hurry_up_chef(self):\n        print(\"Cashier is hurrying up the chef.\")\n        self.chef.hurry_up()\n\n    def calm_customer_down(self):\n        print(\"Cashier is calming the customer down.\")\n        self.chef.clean_kitchen()  # Inappropriate Intimacy\n\n    def deliver_pizza_to_customer(self):\n        print(\"Cashier is delivering pizza to the customer.\")\n\n    def ask_for_receipt(self):\n        print(\"Customer is asking for a receipt.\")  # Speculative Generality (unused method)\n\n    def another_unused_method(self):\n        pass  # Dead Code (method is never called)\n\n    def yet_another_unused_method(self):\n        pass  # More Dead Code\n\n    def long_method(self):\n        # Long Method (too many tasks in a single method)\n        print(\"Cashier is handling many tasks in a single method\")\n        self.take_order(\"Cheese\")\n        self.hurry_up_chef()\n        self.calm_customer_down()\n        self.deliver_pizza_to_customer()\n        self.ask_for_receipt()\n\n    def order_with_unnecessary_details(self, pizza_type, size, crust_type, toppings, extra_cheese, discount_code):\n        # Long Parameter List (too many parameters in the method)\n        print(f\"Placing a detailed order for {pizza_type} pizza with {size}, {crust_type}, {toppings}, extra cheese: {extra_cheese}, discount code: {discount_code}\")\n        self.take_order(pizza_type)\n        self.apply_discount(discount_code)\n        self.deliver_pizza_to_customer()\n\n    def duplicate_method(self):\n        # Duplicate Code (repeating functionality)\n        print(\"Customer is making a duplicate order\")\n        self.take_order(\"Cheese\")\n        self.take_order(\"Cheese\")\n\n    def chain_of_methods(self):\n        # Message Chain (calling methods on objects returned by another method)\n        print(\"Cashier is initiating a message chain\")\n        self.chef.clean_kitchen()\n\n    def middleman_method(self):\n        # Middle Man (methods that delegate to other methods)\n        print(\"Cashier is calling a middleman method\")\n        self.middle_method()\n\n    def middle_method(self):\n        print(\"Middleman method delegating to another method\")\n        self.real_method()\n\n    def real_method(self):\n        print(\"Real method doing the actual work\")\n\n    def access_internal_details(self):\n        # Inappropriate Intimacy (accessing internal details of another class)\n        print(f\"Accessing internal details: {self.chef.busy}\")\n\n    def update_contact_info(self, first_name, last_name, address, phone_number, email):\n        # Shotgun Surgery (changing multiple methods to update contact info)\n        self.first_name = first_name\n        self.last_name = last_name\n        self.address = address\n        self.phone_number = phone_number\n        self.email = email\n\n    def update_name(self, first_name, last_name):\n        # Shotgun Surgery (separate method to update name)\n        self.first_name = first_name\n        self.last_name = last_name\n\n    def update_address(self, address):\n        # Shotgun Surgery (separate method to update address)\n        self.address = address\n\n    def update_phone_number(self, phone_number):\n        # Shotgun Surgery (separate method to update phone number)\n        self.phone_number = phone_number\n\n    def update_email(self, email):\n        # Shotgun Surgery (separate method to update email)\n        self.email = email\n\n    def notify_for_promotion(self):\n        # Divergent Change (method to notify for promotion)\n        print(\"Notifying customer for promotion\")\n\n    def notify_for_discount(self):\n        # Divergent Change (method to notify for discount)\n        print(\"Notifying customer for discount\")\n\n    def notify_for_new_arrivals(self):\n        # Divergent Change (method to notify for new arrivals)\n        print(\"Notifying customer for new arrivals\")\n\n    def apply_discount(self, discount_code):\n        # Parallel Inheritance Hierarchies (method to apply discount)\n        print(f\"Applying discount for customer with code {discount_code}\")\n\n    def apply_loyalty_points(self):\n        # Parallel Inheritance Hierarchies (method to apply loyalty points)\n        print(\"Applying loyalty points for customer\")\n\n    def handle_complaint(self, complaint):\n        # Switch Statements (using if-else to simulate switch)\n        if complaint == \"cold pizza\":\n            self.calm_customer_down()\n        elif complaint == \"late delivery\":\n            self.calm_customer_down()\n        elif complaint == \"wrong order\":\n            self.calm_customer_down()\n        else:\n            self.calm_customer_down()\n\n    def refused_bequest(self):\n        # Refused Bequest (method that should be inherited but is empty)\n        pass  # This method is intended to be overridden but isn't used in the base class\n\n",
+    "annotations": [
+      {
+        "smell_type": "Control Coupling",
+        "category": "Couplers",
+        "method": "__init__",
+        "line_start": 13,
+        "line_end": 13,
+        "evidence": "        self.chef = chef  # Control Coupling",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "__init__",
+        "line_start": 14,
+        "line_end": 14,
+        "evidence": "        self.frequent_customer_discount = False  # Primitive Obsession",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "__init__",
+        "line_start": 16,
+        "line_end": 21,
+        "evidence": "        # Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "__init__",
+        "line_start": 23,
+        "line_end": 25,
+        "evidence": "        # Temporary Fields",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Feature Envy",
+        "category": "Couplers",
+        "method": "take_order",
+        "line_start": 29,
+        "line_end": 29,
+        "evidence": "        self.chef.bake_pizza(pizza_type)  # Feature Envy",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "calm_customer_down",
+        "line_start": 37,
+        "line_end": 37,
+        "evidence": "        self.chef.clean_kitchen()  # Inappropriate Intimacy",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "ask_for_receipt",
+        "line_start": 43,
+        "line_end": 43,
+        "evidence": "        print(\"Customer is asking for a receipt.\")  # Speculative Generality (unused method)",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "another_unused_method",
+        "line_start": 46,
+        "line_end": 46,
+        "evidence": "        pass  # Dead Code (method is never called)",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "yet_another_unused_method",
+        "line_start": 49,
+        "line_end": 49,
+        "evidence": "        pass  # More Dead Code",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "long_method",
+        "line_start": 52,
+        "line_end": 58,
+        "evidence": "        # Long Method (too many tasks in a single method)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "order_with_unnecessary_details",
+        "line_start": 61,
+        "line_end": 65,
+        "evidence": "        # Long Parameter List (too many parameters in the method)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicate_method",
+        "line_start": 68,
+        "line_end": 71,
+        "evidence": "        # Duplicate Code (repeating functionality)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chain_of_methods",
+        "line_start": 74,
+        "line_end": 76,
+        "evidence": "        # Message Chain (calling methods on objects returned by another method)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middleman_method",
+        "line_start": 79,
+        "line_end": 81,
+        "evidence": "        # Middle Man (methods that delegate to other methods)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "access_internal_details",
+        "line_start": 91,
+        "line_end": 92,
+        "evidence": "        # Inappropriate Intimacy (accessing internal details of another class)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "update_contact_info",
+        "line_start": 95,
+        "line_end": 100,
+        "evidence": "        # Shotgun Surgery (changing multiple methods to update contact info)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "update_name",
+        "line_start": 103,
+        "line_end": 105,
+        "evidence": "        # Shotgun Surgery (separate method to update name)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "update_address",
+        "line_start": 108,
+        "line_end": 109,
+        "evidence": "        # Shotgun Surgery (separate method to update address)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "update_phone_number",
+        "line_start": 112,
+        "line_end": 113,
+        "evidence": "        # Shotgun Surgery (separate method to update phone number)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "update_email",
+        "line_start": 116,
+        "line_end": 117,
+        "evidence": "        # Shotgun Surgery (separate method to update email)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notify_for_promotion",
+        "line_start": 120,
+        "line_end": 121,
+        "evidence": "        # Divergent Change (method to notify for promotion)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notify_for_discount",
+        "line_start": 124,
+        "line_end": 125,
+        "evidence": "        # Divergent Change (method to notify for discount)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notify_for_new_arrivals",
+        "line_start": 128,
+        "line_end": 129,
+        "evidence": "        # Divergent Change (method to notify for new arrivals)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "apply_discount",
+        "line_start": 132,
+        "line_end": 133,
+        "evidence": "        # Parallel Inheritance Hierarchies (method to apply discount)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "apply_loyalty_points",
+        "line_start": 136,
+        "line_end": 137,
+        "evidence": "        # Parallel Inheritance Hierarchies (method to apply loyalty points)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handle_complaint",
+        "line_start": 140,
+        "line_end": 148,
+        "evidence": "        # Switch Statements (using if-else to simulate switch)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Refused Bequest",
+        "category": "Object-Orientation Abusers",
+        "method": "refused_bequest",
+        "line_start": 151,
+        "line_end": 152,
+        "evidence": "        # Refused Bequest (method that should be inherited but is empty)",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 27,
+      "num_lines": 153
+    }
+  },
+  {
+    "sample_id": "javascript_Shop_js",
+    "language": "javascript",
+    "class_name": "Shop",
+    "file_path": "JavaScript/SmellyAnnotated/Shop.js",
+    "loc": 190,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Cashier } = require('./Cashier');\nconst { Chef } = require('./Chef');\nconst { Pizza, CheesePizza, VeggiePizza, TunaPizza, PepperoniPizza } = require('./Pizza');\n\nclass Shop {\n    constructor() {\n        this.chef = new Chef();\n        this.casher = new Cashier(this.chef);\n        this.pizza = null;\n\n        // Primitive Obsession\n        this.frequentCustomerDiscount = false;\n\n        // Data Clumps\n        this.firstName = null;\n        this.lastName = null;\n        this.address = null;\n        this.phoneNumber = null;\n        this.email = null;\n\n        // Temporary Fields\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n    }\n\n    createPizza(pizzaType) {\n        if (pizzaType === \"Cheese\") {\n            return new CheesePizza();\n        } else if (pizzaType === \"Veggie\") {\n            return new VeggiePizza();\n        } else if (pizzaType === \"Tuna\") {\n            return new TunaPizza();\n        } else if (pizzaType === \"Pepperoni\") {\n            return new PepperoniPizza();\n        } else {\n            throw new Error(\"Unknown pizza type\");\n        }\n    }\n\n    receiveOrder(pizzaType) {\n        console.log(`Pizza Shop received order for ${pizzaType} pizza.`);\n        this.pizza = this.createPizza(pizzaType);\n        this.casher.takeOrder(pizzaType);\n    }\n\n    updateContactInfo(firstName, lastName, address, phoneNumber, email) {\n        // Shotgun Surgery (changing multiple methods to update contact info)\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.address = address;\n        this.phoneNumber = phoneNumber;\n        this.email = email;\n    }\n\n    updateName(firstName, lastName) {\n        // Shotgun Surgery (separate method to update name)\n        this.firstName = firstName;\n        this.lastName = lastName;\n    }\n\n    updateAddress(address) {\n        // Shotgun Surgery (separate method to update address)\n        this.address = address;\n    }\n\n    updatePhoneNumber(phoneNumber) {\n        // Shotgun Surgery (separate method to update phone number)\n        this.phoneNumber = phoneNumber;\n    }\n\n    updateEmail(email) {\n        // Shotgun Surgery (separate method to update email)\n        this.email = email;\n    }\n\n    notifyForPromotion() {\n        // Divergent Change (method to notify for promotion)\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        // Divergent Change (method to notify for discount)\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        // Divergent Change (method to notify for new arrivals)\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount() {\n        // Parallel Inheritance Hierarchies (method to apply discount)\n        console.log(\"Applying discount for customer\");\n    }\n\n    applyLoyaltyPoints() {\n        // Parallel Inheritance Hierarchies (method to apply loyalty points)\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        // Switch Statements (using if-else to simulate switch)\n        if (complaint === \"cold pizza\") {\n            this.casher.calmCustomerDown();\n        } else if (complaint === \"late delivery\") {\n            this.casher.calmCustomerDown();\n        } else if (complaint === \"wrong order\") {\n            this.casher.calmCustomerDown();\n        } else {\n            this.casher.calmCustomerDown();\n        }\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\"); // Speculative Generality (unused method)\n    }\n\n    anotherUnusedMethod() {\n        // Dead Code (method is never called)\n    }\n\n    yetAnotherUnusedMethod() {\n        // More Dead Code\n    }\n\n    chainOfMethods() {\n        // Message Chain (calling methods on objects returned by another method)\n        console.log(\"Shop is initiating a message chain\");\n        this.casher.chef.cleanKitchen();\n    }\n\n    middlemanMethod() {\n        // Middle Man (methods that delegate to other methods)\n        console.log(\"Shop is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        // Inappropriate Intimacy (accessing internal details of another class)\n        console.log(`Accessing internal details: ${this.casher.chef.busy}`);\n    }\n\n    longMethod() {\n        // Long Method (too many tasks in a single method)\n        console.log(\"Shop is handling many tasks in a single method\");\n        this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.updateName(\"John\", \"Doe\");\n        this.updateAddress(\"123 Street\");\n        this.updatePhoneNumber(\"555-5555\");\n        this.updateEmail(\"john.doe@example.com\");\n        this.notifyForPromotion();\n        this.notifyForDiscount();\n        this.notifyForNewArrivals();\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n        this.handleComplaint(\"cold pizza\");\n        this.askForReceipt();\n        this.chainOfMethods();\n        this.middlemanMethod();\n        this.accessInternalDetails();\n    }\n\n    orderWithUnnecessaryDetails() {\n        // Long Parameter List (too many parameters in the method)\n        console.log(\"Shop is placing a detailed order\");\n        this.receiveOrder(\"Veggie\");\n        this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n    }\n}\n\nmodule.exports = { Shop };\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "line_start": 19,
+        "line_end": 20,
+        "evidence": "        // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "line_start": 22,
+        "line_end": 27,
+        "evidence": "        // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "constructor",
+        "line_start": 29,
+        "line_end": 32,
+        "evidence": "        // Temporary Fields",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "line_start": 55,
+        "line_end": 61,
+        "evidence": "        // Shotgun Surgery (changing multiple methods to update contact info)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateName",
+        "line_start": 64,
+        "line_end": 67,
+        "evidence": "        // Shotgun Surgery (separate method to update name)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateAddress",
+        "line_start": 70,
+        "line_end": 72,
+        "evidence": "        // Shotgun Surgery (separate method to update address)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updatePhoneNumber",
+        "line_start": 75,
+        "line_end": 77,
+        "evidence": "        // Shotgun Surgery (separate method to update phone number)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateEmail",
+        "line_start": 80,
+        "line_end": 82,
+        "evidence": "        // Shotgun Surgery (separate method to update email)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "line_start": 85,
+        "line_end": 87,
+        "evidence": "        // Divergent Change (method to notify for promotion)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "line_start": 90,
+        "line_end": 92,
+        "evidence": "        // Divergent Change (method to notify for discount)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "line_start": 95,
+        "line_end": 97,
+        "evidence": "        // Divergent Change (method to notify for new arrivals)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyDiscount",
+        "line_start": 100,
+        "line_end": 102,
+        "evidence": "        // Parallel Inheritance Hierarchies (method to apply discount)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyLoyaltyPoints",
+        "line_start": 105,
+        "line_end": 107,
+        "evidence": "        // Parallel Inheritance Hierarchies (method to apply loyalty points)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "line_start": 110,
+        "line_end": 113,
+        "evidence": "        // Switch Statements (using if-else to simulate switch)",
+        "annotation_kind": "method-scope"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "line_start": 123,
+        "line_end": 123,
+        "evidence": "        console.log(\"Customer is asking for a receipt.\"); // Speculative Generality (unused method)",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "line_start": 127,
+        "line_end": 128,
+        "evidence": "        // Dead Code (method is never called)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "yetAnotherUnusedMethod",
+        "line_start": 131,
+        "line_end": 132,
+        "evidence": "        // More Dead Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "line_start": 135,
+        "line_end": 138,
+        "evidence": "        // Message Chain (calling methods on objects returned by another method)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "line_start": 141,
+        "line_end": 144,
+        "evidence": "        // Middle Man (methods that delegate to other methods)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 156,
+        "line_end": 158,
+        "evidence": "        // Inappropriate Intimacy (accessing internal details of another class)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "line_start": 161,
+        "line_end": 178,
+        "evidence": "        // Long Method (too many tasks in a single method)",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "line_start": 181,
+        "line_end": 188,
+        "evidence": "        // Long Parameter List (too many parameters in the method)",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 22,
+      "num_lines": 190
+    }
+  },
+  {
+    "sample_id": "cpp_Drink_cpp",
+    "language": "cpp",
+    "class_name": "Drink",
+    "file_path": "C++/SmellyAnnotated/Drink.cpp",
+    "loc": 140,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Drink.h\"\n\nDrink::Drink() {\n    drinkType = \"Water\";\n    size = \"Medium\";\n    ice = false;\n    lemon = false;\n}\n\nvoid Drink::orderDrink(const std::string& drinkType) {\n    std::cout << \"Ordering a \" << drinkType << std::endl;\n    this->drinkType = drinkType;\n    prepareDrink();\n}\n\nvoid Drink::prepareDrink() {\n    std::cout << \"Preparing \" << drinkType << std::endl;\n}\n\nvoid Drink::serveDrink() {\n    std::cout << \"Serving \" << drinkType << std::endl;\n}\n\nvoid Drink::cleanup() {\n    std::cout << \"Cleaning up after preparing \" << drinkType << std::endl;\n}\n\n// Code smells methods\nvoid Drink::notifyForPromotion() {\n    // Divergent Change\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Drink::notifyForDiscount() {\n    // Divergent Change\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Drink::notifyForNewArrivals() {\n    // Divergent Change\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Drink::applyDiscount() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Drink::applyLoyaltyPoints() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Drink::handleComplaint(const std::string& complaint) {\n    // Switch Statements\n    if (complaint == \"no ice\") {\n        std::cout << \"Handling complaint: No ice\" << std::endl;\n    } else if (complaint == \"too much ice\") {\n        std::cout << \"Handling complaint: Too much ice\" << std::endl;\n    } else if (complaint == \"wrong drink\") {\n        std::cout << \"Handling complaint: Wrong drink delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Drink::askForReceipt() {\n    // Speculative Generality\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Drink::anotherUnusedMethod() {\n    // Dead Code\n}\n\nvoid Drink::longMethod() {\n    // Long Method\n    std::cout << \"Drink is handling many tasks in a single method\" << std::endl;\n    this->orderDrink(\"Lemonade\");\n    this->prepareDrink();\n    this->serveDrink();\n    this->cleanup();\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"no ice\");\n}\n\nvoid Drink::orderWithUnnecessaryDetails(const std::string& drinkType, const std::string& size, bool ice, bool lemon, const std::string& discountCode) {\n    // Long Parameter List\n    std::cout << \"Placing a detailed order for \" << drinkType << \" with \" << size << \", ice: \" << ice << \", lemon: \" << lemon << \", discount code: \" << discountCode << std::endl;\n    this->orderDrink(drinkType);\n}\n\nvoid Drink::duplicateMethod() {\n    // Duplicate Code\n    std::cout << \"Customer is making a duplicate order\" << std::endl;\n    this->orderDrink(\"Water\");\n    this->orderDrink(\"Water\");\n}\n\nvoid Drink::chainOfMethods() {\n    // Message Chain\n    std::cout << \"Drink is initiating a message chain\" << std::endl;\n    this->cleanup();\n}\n\nvoid Drink::middlemanMethod() {\n    // Middle Man\n    std::cout << \"Drink is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Drink::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Drink::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Drink::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Drink: \" << this->size << \", \" << this->drinkType << std::endl;\n}\n\nvoid Drink::refusedBequest() {\n    // Refused Bequest\n}\n",
+    "annotations": [
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "line_start": 38,
+        "line_end": 40,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "line_start": 43,
+        "line_end": 45,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "line_start": 48,
+        "line_end": 50,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyDiscount",
+        "line_start": 53,
+        "line_end": 55,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyLoyaltyPoints",
+        "line_start": 58,
+        "line_end": 60,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "line_start": 63,
+        "line_end": 66,
+        "evidence": "    // Switch Statements",
+        "annotation_kind": "method-scope"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "line_start": 76,
+        "line_end": 78,
+        "evidence": "    // Speculative Generality",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "line_start": 81,
+        "line_end": 82,
+        "evidence": "    // Dead Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "line_start": 85,
+        "line_end": 97,
+        "evidence": "    // Long Method",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "line_start": 100,
+        "line_end": 103,
+        "evidence": "    // Long Parameter List",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "line_start": 106,
+        "line_end": 110,
+        "evidence": "    // Duplicate Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "line_start": 113,
+        "line_end": 116,
+        "evidence": "    // Message Chain",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "line_start": 119,
+        "line_end": 122,
+        "evidence": "    // Middle Man",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 134,
+        "line_end": 136,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Refused Bequest",
+        "category": "Object-Orientation Abusers",
+        "method": "refusedBequest",
+        "line_start": 139,
+        "line_end": 140,
+        "evidence": "    // Refused Bequest",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 15,
+      "num_lines": 140
+    }
+  },
+  {
+    "sample_id": "cpp_main_cpp",
+    "language": "cpp",
+    "class_name": "main",
+    "file_path": "C++/SmellyAnnotated/main.cpp",
+    "loc": 36,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Shop.h\"\n#include \"Customer.h\"\n#include <iostream>\n#include <chrono>\n\nvoid measureExecutionTime(int runs = 10) {\n    double totalTime = 0;\n    for (int i = 0; i < runs; ++i) {\n        auto start = std::chrono::high_resolution_clock::now();\n\n        Shop shop;\n        Customer customer(&shop);\n        customer.orderPizza(\"Cheese\");\n        customer.complain(\"The pizza is too cold.\");\n\n        auto end = std::chrono::high_resolution_clock::now();\n        std::chrono::duration<double> duration = end - start;\n        totalTime += duration.count();\n    }\n\n    double averageTime = totalTime / runs;\n    std::cout << \"Average execution time over multiple runs: \" << averageTime << \" seconds\" << std::endl;\n}\n\nint main() {\n    measureExecutionTime();\n    return 0;\n}\n",
+    "annotations": [],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 0,
+      "num_lines": 36
+    }
+  },
+  {
+    "sample_id": "cpp_Shop_cpp",
+    "language": "cpp",
+    "class_name": "Shop",
+    "file_path": "C++/SmellyAnnotated/Shop.cpp",
+    "loc": 49,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Shop.h\"\n\nShop::Shop() {\n    cashier = new Cashier(new Chef());\n    chef = cashier->getChef();\n}\n\nvoid Shop::receiveOrder(const std::string& pizzaType) {\n    std::cout << \"Shop received order for \" << pizzaType << \" pizza.\" << std::endl;\n    pizza = createPizza(pizzaType);\n    cashier->takeOrder(pizzaType);\n}\n\nPizza* Shop::createPizza(const std::string& pizzaType) {\n    if (pizzaType == \"Cheese\") {\n        return new Pizza(\"Medium\", \"Regular\", \"Cheese\");\n    } else if (pizzaType == \"Veggie\") {\n        return new Pizza(\"Medium\", \"Whole Wheat\", \"Veggies\");\n    } else if (pizzaType == \"Tuna\") {\n        return new Pizza(\"Large\", \"Thin Crust\", \"Tuna\");\n    } else if (pizzaType == \"Pepperoni\") {\n        return new Pizza(\"Large\", \"Regular\", \"Pepperoni\");\n    } else {\n        throw std::invalid_argument(\"Unknown pizza type\");\n    }\n}\n\nCashier* Shop::getCashier() {\n    return cashier;\n}\n\nChef* Shop::getChef() {\n    return chef;\n}\n\nvoid Shop::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Shop: \" << cashier->getChef()->isBusy() << std::endl;\n}\n\n// Implementations of other methods with code smells here...\n",
+    "annotations": [
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 45,
+        "line_end": 47,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 1,
+      "num_lines": 49
+    }
+  }
+]

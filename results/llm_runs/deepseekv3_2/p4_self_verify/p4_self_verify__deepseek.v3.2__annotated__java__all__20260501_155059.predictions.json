@@ -1,0 +1,1499 @@
+[
+  {
+    "sample_id": "java_Cashier_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Cashier.java",
+    "parsed": null,
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "Cashier",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Cashier.java",
+        "Cashier",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": true,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 4243,
+    "output_tokens": 4096,
+    "total_tokens": 8339,
+    "raw": "<analysis>\nDraft candidates based on code and comments:\n\n1. Primitive Obsession - field frequentCustomerDiscount (boolean) at line 13. Also line 28.\n2. Data Clumps - fields firstName, lastName, address, phoneNumber, email (lines 16-20) appear together in updateContactInfo (lines 99-106) and separately in other update methods.\n3. Temporary Field - fields tempDiscountCode and tempOrderNote (lines 23-24) only set? Not used anywhere in class, but declared.\n4. Long Method - method longMethod (lines 62-70) has 8 lines body, but comment says too many tasks. Actually calls multiple other methods, but body is 9 lines? Let's count: lines 63-70 inclusive = 8 lines. Not >25 LOC. However, it's doing multiple tasks (taking order, hurrying, calming, delivering, asking receipt). Might still be Long Method if it's doing >1 conceptual task. But evidence: 8-LOC body with five different task calls at lines 65-69.\n5. Duplicate Code - duplicateMethod (lines 72-76) calls takeOrder(\"Cheese\") twice. That's duplicate code within same method? Actually same line repeated. Could be duplicate code (same statement).\n6. Message Chains - chainOfMethods (lines 78-82) calls this.chef.cleanKitchen() directly, not a chain. Comment says message chain but not present. No chain.\n7. Middle Man - middlemanMethod (lines 84-88) delegates to middleMethod, which delegates to realMethod. So middlemanMethod is a middle man? It only calls middleMethod, which itself is a middle man. Actually middlemanMethod delegates to middleMethod, which delegates to realMethod. So both middlemanMethod and middleMethod are Middle Man? middleMethod delegates to realMethod, so middleMethod is a middle man. middlemanMethod delegates to middleMethod, which is also a middle man, so middlemanMethod is also a middle man? But the chain is two levels. Could be two findings.\n8. Shotgun Surgery - multiple update methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all update contact info fields. Changing contact info requires updating multiple methods? Actually each method updates a subset, so if you need to change how contact info is stored, you'd need to change all these methods. That's shotgun surgery.\n9. Divergent Change - methods notifyForPromotion, notifyForDiscount, notifyForNewArrivals (lines 129-142) are all notification methods. Class changes for many unrelated reasons? Actually they are all about notifying customer, but for different reasons. Might be Divergent Change if class changes for many unrelated reasons. But they are all notifications, maybe same reason. However, comment says Divergent Change.\n10. Parallel Inheritance Hierarchies - methods applyDiscount and applyLoyaltyPoints (lines 144-152). Comment says Parallel Inheritance Hierarchies, but no inheritance in this class. Might be speculative.\n11. Switch Statements - handleComplaint (lines 154-165) uses if-else chain on complaint string, all branches call same method calmCustomerDown. That's a switch statement smell (long if-else chain on type code).\n12. Refused Bequest - method refusedBequest (lines 167-169) is empty, but not overriding anything. Could be lazy method? Actually it's a method that does nothing, but not inherited. Might be Lazy Class? No, it's a method. Could be Dead Code if not called. It's called? Not seen. Might be Dead Code.\n13. Inappropriate Intimacy - accessInternalDetails (lines 171-174) calls chef.isBusy() which might be internal detail. Assuming Chef has a method isBusy() that is public? If public, not intimacy. But comment says accessing internal details.\n14. Dead Code - anotherUnusedMethod (lines 58-60) never called. Also refusedBequest maybe.\n15. Speculative Generality - askForReceipt (lines 54-56) comment says unused method. Actually it's called in longMethod line 69. So used. But comment says speculative generality. Might be not.\n16. Large Class - class has many fields and methods. Count fields: chef, frequentCustomerDiscount, firstName, lastName, address, phoneNumber, email, tempDiscountCode, tempOrderNote = 9 fields. Methods: constructor, getChef, takeOrder, hurryUpChef, calmCustomerDown, deliverPizzaToCustomer, askForReceipt, anotherUnusedMethod, longMethod, duplicateMethod, chainOfMethods, middlemanMethod, middleMethod, realMethod, updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints, handleComplaint, refusedBequest, accessInternalDetails. That's 28 methods. >15 methods. Also lines: 1-175, but actual class body lines 9-175 = 167 lines. <200 LOC. But many methods. Could be Large Class.\n17. Data Class - class has fields and getters/setters? Only getChef getter. Not many getters/setters. Not a data class.\n18. Lazy Class - class does a lot, not lazy.\n19. Comments - comments that explain what code does? There are many comments like \"// Long Method (too many tasks in a single method)\" which are explanatory comments. But they are added for demonstration. Might be Comments smell.\n20. Feature Envy - methods that use chef more than own data? takeOrder uses chef.bakePizza, hurryUpChef uses chef.hurryUp, calmCustomerDown uses chef.cleanKitchen, accessInternalDetails uses chef.isBusy. They might be Feature Envy if they use chef's methods extensively and little own data.\n21. Control Coupling - not obvious.\n22. Alternative Classes with Different Interfaces - not present.\n23. Long Parameter List - updateContactInfo has 5 parameters (lines 99-106). That's >=4 parameters.\n\nNow apply T1-T4 critique.\n\nT1 Evidence: need specific lines.\n\n- Primitive Obsession: line 13 boolean field, line 28 initialization. Evidence: \"boolean field frequentCustomerDiscount at lines 13,28 representing discount status.\"\n- Data Clumps: fields lines 16-20, used together in updateContactInfo lines 99-106. Evidence: \"fields firstName, lastName, address, phoneNumber, email declared together at lines 16-20 and passed together to updateContactInfo at lines 99-106.\"\n- Temporary Field: fields tempDiscountCode and tempOrderNote lines 23-24 never used. Evidence: \"fields tempDiscountCode and tempOrderNote declared at lines 23-24 but never referenced.\"\n- Long Method: method longMethod lines 62-70, body 8 lines but calls five different tasks. Evidence: \"8-LOC body calls five distinct task methods at lines 65-69.\"\n- Duplicate Code: duplicateMethod lines 72-76 has duplicate call to takeOrder(\"Cheese\") at lines 74 and 75. Evidence: \"duplicate call to takeOrder('Cheese') at lines 74 and 75.\"\n- Middle Man: middlemanMethod lines 84-88 only calls middleMethod. middleMethod lines 90-93 only calls realMethod. Evidence: \"middlemanMethod only delegates to middleMethod at line 87; middleMethod only delegates to realMethod at line 92.\"\n- Shotgun Surgery: multiple update methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all update contact fields. Evidence: \"five update methods (lines 99-127) each update subsets of contact fields.\"\n- Divergent Change: three notify methods lines 129-142. Evidence: \"three notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) at lines 129-142 for different reasons.\"\n- Parallel Inheritance Hierarchies: methods applyDiscount and applyLoyaltyPoints lines 144-152. But no inheritance. Might be speculative. However, comment says parallel inheritance hierarchies, but no evidence of hierarchies. Drop.\n- Switch Statements: handleComplaint lines 154-165 has if-else chain on complaint string. Evidence: \"if-else chain on complaint string at lines 156-164 with four branches.\"\n- Refused Bequest: method refusedBequest lines 167-169 empty. But not overriding. Could be Dead Code. Actually it's a method that does nothing and not used. Might be Dead Code.\n- Inappropriate Intimacy: accessInternalDetails lines 171-174 calls chef.isBusy(). Assuming isBusy() is public, not intimacy. But comment says accessing internal details. Without seeing Chef, cannot assume. Might drop.\n- Dead Code: anotherUnusedMethod lines 58-60 never called. Evidence: \"method anotherUnusedMethod defined at lines 58-60 never called.\"\n- Large Class: class has 9 fields and 28 methods. Evidence: \"class with 9 fields and 28 methods exceeding typical thresholds.\"\n- Comments: many explanatory comments like line 12, 15, 22, etc. Evidence: \"comments like '// Primitive Obsession' at line 12 explain what code does rather than why.\"\n- Feature Envy: takeOrder uses chef.bakePizza, hurryUpChef uses chef.hurryUp, calmCustomerDown uses chef.cleanKitchen. They use chef's methods and little own data. Evidence: \"takeOrder at lines 35-38 calls chef.bakePizza and uses only parameter pizzaType.\"\n- Long Parameter List: updateContactInfo has 5 parameters lines 99-106. Evidence: \"method updateContactInfo has five parameters at lines 99-106.\"\n\nNow T2 Granularity: method names correct.\n\n- For class-level smells: Large Class -> method \"Entire Class\".\n- For Primitive Obsession: field level, but smell is about class using primitives. Could be class-level? Actually Primitive Obsession is a class-level smell? In taxonomy, it's a bloater, can be at class level. But method field? Usually we assign to a method that uses the primitive. The field is declared in class. Could assign to constructor or entire class. Better to assign to \"Entire Class\" for field declarations? But the smell is about using primitives where objects would be better. The field is a primitive. So method \"Entire Class\". However, the taxonomy example says \"status codes as ints, currency as float\". It's about usage across class. So set method = \"Entire Class\". Similarly Data Clumps is class-level? Data Clumps is about fields/parameters appearing together. Could be class-level. But we can assign to method where they appear. For fields, entire class. For parameters, the method with long parameter list. Here fields are declared together, used together in updateContactInfo. So maybe two findings: Data Clumps (fields) and Long Parameter List (updateContactInfo). Actually Data Clumps can be for fields. Set method = \"Entire Class\". Temporary Field: fields declared, never used. That's class-level? Set method = \"Entire Class\". But also could be Dead Code for fields? Not exactly.\n\nCheck taxonomy: Temporary Field is \"field that is only meaningful in some object states (set, used briefly, then unused).\" Here fields are never set or used. So maybe not Temporary Field. They are just unused fields. That's Dead Code? Dead Code includes unused fields. So tempDiscountCode and tempOrderNote are Dead Code (fields). So change to Dead Code.\n\nSimilarly, frequentCustomerDiscount is Primitive Obsession (boolean for discount). That's a field.\n\nSo for class-level smells: Primitive Obsession (field), Data Clumps (fields), Dead Code (fields), Large Class.\n\nFor method-level: Long Method, Duplicate Code, Middle Man (two methods), Shotgun Surgery (multiple methods), Divergent Change (multiple methods), Switch Statements, Dead Code (anotherUnusedMethod), Feature Envy (takeOrder, hurryUpChef, calmCustomerDown), Long Parameter List (updateContactInfo), Comments (class-level? comments are in multiple places). Comments smell is about code that needs comments to explain what it does. The comments here are added to indicate smells, but they are explanatory. Might be Comments smell. Could be class-level.\n\nNow T3 Taxonomy: ensure canonical names.\n\n- Primitive Obsession -> category Bloaters.\n- Data Clumps -> Bloaters.\n- Dead Code (fields) -> Dispensables.\n- Large Class -> Bloaters.\n- Long Method -> Bloaters.\n- Duplicate Code -> Dispensables.\n- Middle Man -> Couplers.\n- Shotgun Surgery -> Change Preventers.\n- Divergent Change -> Change Preventers.\n- Switch Statements -> Object-Orientation Abusers.\n- Dead Code (method) -> Dispensables.\n- Feature Envy -> Couplers.\n- Long Parameter List -> Bloaters.\n- Comments -> Dispensables.\n\nT4 Non-redundancy: ensure no duplicate (method, smell_type).\n\nNow coverage probe: for each method without finding, check Long Method, Feature Envy, Message Chains, Switch Statements, Control Coupling.\n\nMethods list: \n- constructor (lines 26-29) - already has Primitive Obsession? Not assigned. Could have Long Parameter List? 1 parameter. No.\n- getChef (31-33) - simple getter.\n- takeOrder (35-38) - already Feature Envy candidate.\n- hurryUpChef (40-43) - Feature Envy candidate.\n- calmCustomerDown (45-48) - Feature Envy candidate.\n- deliverPizzaToCustomer (50-52) - no.\n- askForReceipt (54-56) - used, not dead.\n- anotherUnusedMethod (58-60) - dead code.\n- longMethod (62-70) - long method.\n- duplicateMethod (72-76) - duplicate code.\n- chainOfMethods (78-82) - no message chain.\n- middlemanMethod (84-88) - middle man.\n- middleMethod (90-93) - middle man.\n- realMethod (95-97) - no.\n- updateContactInfo (99-106) - long parameter list, shotgun surgery? Actually shotgun surgery is about multiple methods needing change. This method is part of shotgun surgery. We'll assign Shotgun Surgery to entire class? Or to each method? Shotgun Surgery is a class-level smell: one logical change requires edits across many classes/methods. Here changing contact info storage requires editing multiple update methods. So Shotgun Surgery applies to class. Set method = \"Entire Class\". But we also have Long Parameter List for updateContactInfo.\n- updateName (108-112) - part of shotgun.\n- updateAddress (114-117) - part of shotgun.\n- updatePhoneNumber (119-122) - part of shotgun.\n- updateEmail (124-127) - part of shotgun.\n- notifyForPromotion (129-132) - part of divergent change.\n- notifyForDiscount (134-137) - part of divergent change.\n- notifyForNewArrivals (139-142) - part of divergent change.\n- applyDiscount (144-147) - no parallel inheritance evidence.\n- applyLoyaltyPoints (149-152) - no.\n- handleComplaint (154-165) - switch statements.\n- refusedBequest (167-169) - dead code? empty method not used.\n- accessInternalDetails (171-174) - inappropriate intimacy? maybe.\n\nNow assign findings with unique (method, smell_type).\n\nLet's list findings:\n\n1. Primitive Obsession - Entire Class (field frequentCustomerDiscount)\n2. Data Clumps - Entire Class (fields firstName, lastName, address, phoneNumber, email)\n3. Dead Code - Entire Class (fields tempDiscountCode, tempOrderNote) but Dead Code is for fields, method \"Entire Class\"? For fields, method \"Entire Class\". But we also have Dead Code for method anotherUnusedMethod. That's separate (method anotherUnusedMethod). So two Dead Code findings with different method.\n4. Large Class - Entire Class\n5. Long Method - method longMethod\n6. Duplicate Code - method duplicateMethod\n7. Middle Man - method middlemanMethod\n8. Middle Man - method middleMethod (different method, same smell_type allowed? Yes, different method.)\n9. Shotgun Surgery - Entire Class (multiple update methods)\n10. Divergent Change - Entire Class (multiple notify methods)\n11. Switch Statements - method handleComplaint\n12. Dead Code - method anotherUnusedMethod\n13. Feature Envy - method takeOrder\n14. Feature Envy - method hurryUpChef\n15. Feature Envy - method calmCustomerDown\n16. Long Parameter List - method updateContactInfo\n17. Comments - Entire Class (explanatory comments throughout)\n\nCheck for duplicates: (Entire Class, Primitive Obsession) unique, (Entire Class, Data Clumps) unique, (Entire Class, Dead Code) unique, (Entire Class, Large Class) unique, (longMethod, Long Method) unique, (duplicateMethod, Duplicate Code) unique, (middlemanMethod, Middle Man) unique, (middleMethod, Middle Man) unique, (Entire Class, Shotgun Surgery) unique, (Entire Class, Divergent Change) unique, (handleComplaint, Switch Statements) unique, (anotherUnusedMethod, Dead Code) unique, (takeOrder, Feature Envy) unique, (hurryUpChef, Feature Envy) unique, (calmCustomerDown, Feature Envy) unique, (updateContactInfo, Long Parameter List) unique, (Entire Class, Comments) unique.\n\nNow verify evidence for each:\n\n1. Primitive Obsession: field frequentCustomerDiscount boolean at lines 13,28. Evidence: \"boolean field frequentCustomerDiscount at lines 13,28 representing discount status.\"\n2. Data Clumps: fields lines 16-20, used together in updateContactInfo lines 99-106. Evidence: \"fields firstName, lastName, address, phoneNumber, email declared together at lines 16-20 and passed together at lines 99-106.\"\n3. Dead Code (fields): tempDiscountCode and tempOrderNote lines 23-24 never referenced. Evidence: \"fields tempDiscountCode and tempOrderNote declared at lines 23-24 never referenced.\"\n4. Large Class: 9 fields and 28 methods. Evidence: \"class with 9 fields and 28 methods exceeding typical thresholds.\"\n5. Long Method: longMethod lines 62-70, 8 lines but calls five tasks. Evidence: \"8-LOC body calls five distinct task methods at lines 65-69.\"\n6. Duplicate Code: duplicateMethod lines 72-76 duplicate call lines 74,75. Evidence: \"duplicate call to takeOrder('Cheese') at lines 74 and 75.\"\n7. Middle Man (middlemanMethod): lines 84-88 only calls middleMethod. Evidence: \"middlemanMethod only delegates to middleMethod at line 87.\"\n8."
+  },
+  {
+    "sample_id": "java_Chef_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Chef.java",
+    "parsed": {
+      "language": "java",
+      "file_path": "Java/SmellyAnnotated/Chef.java",
+      "class_name": "Chef",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 17,
+          "line_end": 24,
+          "evidence": "Fields extraCheese (boolean) and contact info as strings at lines 17-24."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 20,
+          "line_end": 24,
+          "evidence": "Fields firstName, lastName, address, phoneNumber, email appear together at lines 20-24."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "Entire Class",
+          "line_start": 27,
+          "line_end": 28,
+          "evidence": "Fields tempDiscountCode and tempOrderNote declared but never used at lines 27-28."
+        },
+        {
+          "smell_type": "Large Class",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 10,
+          "line_end": 212,
+          "evidence": "Class has 9 fields and over 15 methods spanning 212 LOC."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 147,
+          "line_end": 166,
+          "evidence": "20-LOC body with 12 distinct task calls at lines 147-166."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "updateContactInfo",
+          "line_start": 67,
+          "line_end": 74,
+          "evidence": "Method has 5 parameters (firstName, lastName, address, phoneNumber, email) at lines 67-74."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 67,
+          "line_end": 95,
+          "evidence": "Five methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all change contact fields."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 97,
+          "line_end": 110,
+          "evidence": "Three notification methods (promotion, discount, new arrivals) at lines 97-110 indicate multiple change reasons."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 124,
+          "line_end": 133,
+          "evidence": "If-else chain on string complaint with four branches at lines 124-133."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 139,
+          "line_end": 141,
+          "evidence": "Method anotherUnusedMethod is never called (lines 139-141)."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 143,
+          "line_end": 145,
+          "evidence": "Method yetAnotherUnusedMethod is never called (lines 143-145)."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 176,
+          "line_end": 181,
+          "evidence": "Duplicate bakePizza calls at lines 179-180."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 189,
+          "line_end": 193,
+          "evidence": "Method middlemanMethod only delegates to middleMethod at line 192."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 195,
+          "line_end": 198,
+          "evidence": "Method middleMethod only delegates to realMethod at line 197."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 204,
+          "line_end": 207,
+          "evidence": "Method accesses pizza.getTopping() internal detail at line 206."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Chef",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Large Class"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "updateContactInfo",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Chef.java",
+        "Chef",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 15,
+    "input_tokens": 4684,
+    "output_tokens": 4038,
+    "total_tokens": 8722,
+    "raw": "<analysis>\nDraft candidates based on code inspection:\n\n1. **Primitive Obsession** (Entire Class) - field `extraCheese` (boolean) at line 17, used in constructor line 36. Also, contact info fields (firstName, lastName, address, phoneNumber, email) are primitives.\n2. **Data Clumps** (Entire Class) - fields firstName, lastName, address, phoneNumber, email (lines 20-24) appear together as parameters in updateContactInfo (lines 67-74).\n3. **Temporary Field** (Entire Class) - fields tempDiscountCode and tempOrderNote (lines 27-28) declared but never used.\n4. **Large Class** (Entire Class) - class has 9 fields and many methods (over 15), total LOC ~212.\n5. **Long Method** (method: longMethod) - lines 147-166, 20 LOC body, does many tasks.\n6. **Long Parameter List** (method: updateContactInfo) - 5 parameters (lines 67-74).\n7. **Shotgun Surgery** (method: updateContactInfo) - multiple methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all change contact info fields.\n8. **Divergent Change** (method: notifyForPromotion) - class changes for many reasons (promotion, discount, new arrivals) - but these are separate methods, not a single class changing? Actually, the class has multiple notification methods (lines 97-110) that might indicate class changes for different reasons.\n9. **Parallel Inheritance Hierarchies** (method: applyDiscount) - method applyDiscount and applyLoyaltyPoints (lines 112-120) might indicate parallel hierarchies? Not clear from this class alone.\n10. **Switch Statements** (method: handleComplaint) - if-else chain (lines 124-133) on string complaint.\n11. **Speculative Generality** (method: askForReceipt) - line 135-137, method appears unused? Actually called in longMethod line 162.\n12. **Dead Code** (method: anotherUnusedMethod) - lines 139-141, never called.\n13. **Dead Code** (method: yetAnotherUnusedMethod) - lines 143-145, never called.\n14. **Duplicate Code** (method: duplicateMethod) - lines 176-181, duplicate bakePizza calls.\n15. **Message Chains** (method: chainOfMethods) - line 183-187, but only calls cleanKitchen directly, not a chain.\n16. **Middle Man** (method: middlemanMethod) - lines 189-193, delegates to middleMethod.\n17. **Middle Man** (method: middleMethod) - lines 195-198, delegates to realMethod.\n18. **Inappropriate Intimacy** (method: accessInternalDetails) - lines 204-207, accesses pizza.getTopping().\n19. **Refused Bequest** (method: refusedBequest) - lines 209-211, empty method in a class with no inheritance shown.\n20. **Data Class** (Entire Class) - class has many fields with getters/setters? Actually only isBusy getter, but many fields and methods with behavior.\n21. **Lazy Class** (Entire Class) - class does many things, not lazy.\n22. **Comments** (method: various) - many comments explaining smells (e.g., lines 16, 19, 26, 68, etc.) but they are explanatory, not compensating for unclear code.\n23. **Feature Envy** (method: accessInternalDetails) - uses pizza.getTopping() more than its own data.\n24. **Control Coupling** - not evident.\n25. **Alternative Classes with Different Interfaces** - not evident.\n\nNow critique each candidate with T1-T4:\n\n1. **Primitive Obsession** (Entire Class): T1 Evidence - field `extraCheese` boolean (line 17) and contact info fields (strings lines 20-24). T2 Granularity - Entire Class. T3 Taxonomy - correct. T4 Non-redundancy - only one Primitive Obsession per class. Keep.\n2. **Data Clumps** (Entire Class): T1 Evidence - fields firstName, lastName, address, phoneNumber, email (lines 20-24) and appear together in updateContactInfo parameters (lines 67-74). T2 - Entire Class. T3 - correct. T4 - only one Data Clumps per class. Keep.\n3. **Temporary Field** (Entire Class): T1 Evidence - fields tempDiscountCode and tempOrderNote (lines 27-28) declared but never used (no reads/writes except maybe not shown). They are set? Not in this file. T2 - Entire Class. T3 - correct. T4 - only one Temporary Field per class. Keep.\n4. **Large Class** (Entire Class): T1 Evidence - 9 fields (lines 10-28), many methods (over 15), total LOC ~212. T2 - Entire Class. T3 - correct. T4 - only one Large Class per class. Keep.\n5. **Long Method** (method: longMethod): T1 Evidence - lines 147-166, 20 LOC body, does many tasks (baking, cutting, delivering, etc.). T2 - method name correct, lines 147-166. T3 - correct. T4 - only one Long Method for this method. Keep.\n6. **Long Parameter List** (method: updateContactInfo): T1 Evidence - 5 parameters (String firstName, String lastName, String address, String phoneNumber, String email) lines 67-74. T2 - method name correct, lines 67-74. T3 - correct. T4 - only one Long Parameter List for this method. Keep.\n7. **Shotgun Surgery** (method: updateContactInfo): T1 Evidence - multiple methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all change contact info fields (lines 67-95). T2 - method name? Should be Entire Class? Actually Shotgun Surgery is a class-level smell: one logical change (updating contact info) requires edits across many methods. So method should be \"Entire Class\". T3 - correct. T4 - only one Shotgun Surgery per class. Keep as class-level.\n8. **Divergent Change** (method: notifyForPromotion): T1 Evidence - class has multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals lines 97-110) that might indicate class changes for different reasons. But Divergent Change is class-level: one class changes for many unrelated reasons. So method should be Entire Class. T3 - correct. T4 - only one Divergent Change per class. Keep as class-level.\n9. **Parallel Inheritance Hierarchies** (method: applyDiscount): T1 Evidence - methods applyDiscount and applyLoyaltyPoints (lines 112-120) but no inheritance shown. This smell requires two hierarchies; not evidenced. Drop.\n10. **Switch Statements** (method: handleComplaint): T1 Evidence - if-else chain on string complaint (lines 124-133). T2 - method name correct, lines 124-133. T3 - correct. T4 - only one Switch Statements for this method. Keep.\n11. **Speculative Generality** (method: askForReceipt): T1 Evidence - method askForReceipt (lines 135-137) is called in longMethod line 162, so used. Not speculative. Drop.\n12. **Dead Code** (method: anotherUnusedMethod): T1 Evidence - method anotherUnusedMethod (lines 139-141) never called. T2 - method name correct, lines 139-141. T3 - correct. T4 - only one Dead Code for this method. Keep.\n13. **Dead Code** (method: yetAnotherUnusedMethod): T1 Evidence - method yetAnotherUnusedMethod (lines 143-145) never called. T2 - method name correct, lines 143-145. T3 - correct. T4 - only one Dead Code for this method. Keep.\n14. **Duplicate Code** (method: duplicateMethod): T1 Evidence - duplicate bakePizza calls (lines 179-180). T2 - method name correct, lines 176-181. T3 - correct. T4 - only one Duplicate Code for this method. Keep.\n15. **Message Chains** (method: chainOfMethods): T1 Evidence - method chainOfMethods (lines 183-187) only calls cleanKitchen directly, not a chain. No chain of method calls. Drop.\n16. **Middle Man** (method: middlemanMethod): T1 Evidence - middlemanMethod delegates to middleMethod (line 192), which then delegates to realMethod. But middlemanMethod itself delegates, so it's a middle man. T2 - method name correct, lines 189-193. T3 - correct. T4 - only one Middle Man for this method. Keep.\n17. **Middle Man** (method: middleMethod): T1 Evidence - middleMethod delegates to realMethod (line 197). T2 - method name correct, lines 195-198. T3 - correct. T4 - only one Middle Man for this method. Keep.\n18. **Inappropriate Intimacy** (method: accessInternalDetails): T1 Evidence - accesses pizza.getTopping() (line 206). T2 - method name correct, lines 204-207. T3 - correct. T4 - only one Inappropriate Intimacy for this method. Keep.\n19. **Refused Bequest** (method: refusedBequest): T1 Evidence - empty method refusedBequest (lines 209-211) but no inheritance shown. This smell requires inheritance hierarchy. Drop.\n20. **Data Class** (Entire Class): T1 Evidence - class has fields and many methods with behavior, not just getters/setters. Not a data class. Drop.\n21. **Lazy Class** (Entire Class): T1 Evidence - class has many methods and fields, not lazy. Drop.\n22. **Comments** (method: various): T1 Evidence - comments like \"Primitive Obsession\" (line 16), \"Data Clumps\" (line 19), etc. but they are explanatory annotations, not compensating for unclear code. The code itself is clear. Not a smell. Drop.\n23. **Feature Envy** (method: accessInternalDetails): T1 Evidence - uses pizza.getTopping() more than its own data. But it's the same as Inappropriate Intimacy? Actually Feature Envy is method uses another class's data more than its own. This method only accesses pizza.getTopping() and prints, no use of own data. Could be both. But we already have Inappropriate Intimacy for same method. Keep? Check T4: different smell_type, same method allowed. But evidence similar. However, Feature Envy might not be strong because method only has one call. Might be borderline. Prefer omission when uncertain. Drop.\n24. **Control Coupling**: none.\n25. **Alternative Classes with Different Interfaces**: none.\n\nCoverage probe for methods without findings:\n- bakePizza: short, no smell.\n- cutPizzaAndPutInBox: short, no smell.\n- deliverPizza: short, no smell.\n- hurryUp: short, no smell.\n- cleanKitchen: short, no smell.\n- isBusy: short, no smell.\n- updateName: short, but part of Shotgun Surgery (class-level).\n- updateAddress: short.\n- updatePhoneNumber: short.\n- updateEmail: short.\n- applyDiscount: short.\n- applyLoyaltyPoints: short.\n- orderWithUnnecessaryDetails: short, no Long Parameter List despite comment (no parameters).\n- realMethod: short.\n\nNow final list of findings with categories:\n\n1. Primitive Obsession (Bloaters) - Entire Class, lines 17,20-24,36.\n2. Data Clumps (Bloaters) - Entire Class, lines 20-24,67-74.\n3. Temporary Field (Object-Orientation Abusers) - Entire Class, lines 27-28.\n4. Large Class (Bloaters) - Entire Class, lines 10-212.\n5. Long Method (Bloaters) - longMethod, lines 147-166.\n6. Long Parameter List (Bloaters) - updateContactInfo, lines 67-74.\n7. Shotgun Surgery (Change Preventers) - Entire Class, lines 67-95.\n8. Divergent Change (Change Preventers) - Entire Class, lines 97-110.\n9. Switch Statements (Object-Orientation Abusers) - handleComplaint, lines 124-133.\n10. Dead Code (Dispensables) - anotherUnusedMethod, lines 139-141.\n11. Dead Code (Dispensables) - yetAnotherUnusedMethod, lines 143-145.\n12. Duplicate Code (Dispensables) - duplicateMethod, lines 176-181.\n13. Middle Man (Couplers) - middlemanMethod, lines 189-193.\n14. Middle Man (Couplers) - middleMethod, lines 195-198.\n15. Inappropriate Intimacy (Couplers) - accessInternalDetails, lines 204-207.\n\nCheck duplicates: no (method, smell_type) duplicates.\nCap at 50: we have 15, okay.\nEvidence sentences need to be short.\n\n</analysis>\n<answer>\n{\n  \"language\": \"java\",\n  \"file_path\": \"Java/SmellyAnnotated/Chef.java\",\n  \"class_name\": \"Chef\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 17,\n      \"line_end\": 24,\n      \"evidence\": \"Fields extraCheese (boolean) and contact info as strings at lines 17-24.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 20,\n      \"line_end\": 24,\n      \"evidence\": \"Fields firstName, lastName, address, phoneNumber, email appear together at lines 20-24.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 27,\n      \"line_end\": 28,\n      \"evidence\": \"Fields tempDiscountCode and tempOrderNote declared but never used at lines 27-28.\"\n    },\n    {\n      \"smell_type\": \"Large Class\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 10,\n      \"line_end\": 212,\n      \"evidence\": \"Class has 9 fields and over 15 methods spanning 212 LOC.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 147,\n      \"line_end\": 166,\n      \"evidence\": \"20-LOC body with 12 distinct task calls at lines 147-166.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 67,\n      \"line_end\": 74,\n      \"evidence\": \"Method has 5 parameters (firstName, lastName, address, phoneNumber, email) at lines 67-74.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 67,\n      \"line_end\": 95,\n      \"evidence\": \"Five methods (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail) all change contact fields.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 97,\n      \"line_end\": 110,\n      \"evidence\": \"Three notification methods (promotion, discount, new arrivals) at lines 97-110 indicate multiple change reasons.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 124,\n      \"line_end\": 133,\n      \"evidence\": \"If-else chain on string complaint with four branches at lines 124-133.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 139,\n      \"line_end\": 141,\n      \"evidence\": \"Method anotherUnusedMethod is never called (lines 139-141).\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 143,\n      \"line_end\": 145,\n      \"evidence\": \"Method yetAnotherUnusedMethod is never called (lines 143-145).\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 176,\n      \"line_end\": 181,\n      \"evidence\": \"Duplicate bakePizza calls at lines 179-180.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 189,\n      \"line_end\": 193,\n      \"evidence\": \"Method middlemanMethod only delegates to middleMethod at line 192.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 195,\n      \"line_end\": 198,\n      \"evidence\": \"Method middleMethod only delegates to realMethod at line 197.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 204,\n      \"line_end\": 207,\n      \"evidence\": \"Method accesses pizza.getTopping() internal detail at line 206.\"\n    }\n  ]\n}\n</answer>"
+  },
+  {
+    "sample_id": "java_Customer_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Customer.java",
+    "parsed": null,
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "Customer",
+        "Control Coupling"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "Customer",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "duplicateComplaint",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "longComplaintMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "orderPizza",
+        "Feature Envy"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Customer.java",
+        "Customer",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "raw": ""
+  },
+  {
+    "sample_id": "java_Drink_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Drink.java",
+    "parsed": null,
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "Drink",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Drink.java",
+        "Drink",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "raw": ""
+  },
+  {
+    "sample_id": "java_Pizza_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Pizza.java",
+    "parsed": {
+      "language": "java",
+      "file_path": "Java/SmellyAnnotated/Pizza.java",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Large Class",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 199,
+          "evidence": "Class has 11 fields and many methods spanning lines 9-199."
+        },
+        {
+          "smell_type": "Data Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 199,
+          "evidence": "Class has fields with getters/setters and minimal behavior."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 10,
+          "line_end": 16,
+          "evidence": "Fields extraCheese (boolean), size, doughType, topping (strings) at lines 10-16."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 18,
+          "line_end": 22,
+          "evidence": "Five customer fields appear together: firstName, lastName, address, phone, email."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "Entire Class",
+          "line_start": 25,
+          "line_end": 26,
+          "evidence": "Fields tempDiscountCode and tempOrderNote declared but never used."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "updateCustomerInfo",
+          "line_start": 59,
+          "line_end": 66,
+          "evidence": "Method has 5 parameters: firstName, lastName, address, phoneNumber, email."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 154,
+          "line_end": 161,
+          "evidence": "Method has 6 parameters at line 154."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 59,
+          "line_end": 87,
+          "evidence": "Five methods update customer fields: updateCustomerInfo, Name, Address, PhoneNumber, Email."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 89,
+          "line_end": 102,
+          "evidence": "Three notification methods: notifyForPromotion, Discount, NewArrivals."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 114,
+          "line_end": 125,
+          "evidence": "if-else chain with 3 conditions + default handling complaints."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 131,
+          "line_end": 133,
+          "evidence": "Method never called, empty body."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 135,
+          "line_end": 137,
+          "evidence": "Method never called, empty body."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 127,
+          "line_end": 129,
+          "evidence": "Method appears unused, prints receipt message."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 139,
+          "line_end": 152,
+          "evidence": "13-LOC method doing multiple tasks: setting pizza, customer, notifications."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 163,
+          "line_end": 168,
+          "evidence": "Duplicate setTopping(\"Cheese\") calls at lines 166-167."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 176,
+          "line_end": 180,
+          "evidence": "Method only delegates to middleMethod at line 179."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 196,
+          "line_end": 198,
+          "evidence": "Empty method that should be inherited but does nothing."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 14,
+          "line_end": 137,
+          "evidence": "Many explanatory comments like '// Primitive Obsession' throughout."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 206,
+          "line_end": 214,
+          "evidence": "if-else chain in CheesePizza.handleComplaint with condition at line 209."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Pizza",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Comments"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Data Class"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Large Class"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "updateCustomerInfo",
+        "Long Parameter List"
+      ],
+      [
+        "Java/SmellyAnnotated/Pizza.java",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 19,
+    "input_tokens": 4878,
+    "output_tokens": 3504,
+    "total_tokens": 8382,
+    "raw": "<analysis>\n## Pass A - Draft Candidates\n\n**Class-level smells:**\n1. **Large Class** - Entire class has many fields and methods (fields: size, doughType, topping, extraCheese, customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail, tempDiscountCode, tempOrderNote = 11 fields; methods: many). Lines 9-199.\n2. **Data Class** - Class has only fields + getters/setters + simple behaviors. Lines 9-199.\n3. **Primitive Obsession** - Fields: extraCheese (boolean), size (String), doughType (String), topping (String). Lines 10-16.\n4. **Data Clumps** - Customer fields: customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail appear together. Lines 18-22.\n5. **Temporary Field** - Fields tempDiscountCode and tempOrderNote only used temporarily. Lines 25-26.\n\n**Method-level smells:**\n6. **Long Parameter List** - updateCustomerInfo has 5 parameters. Lines 59-66.\n7. **Long Parameter List** - orderWithUnnecessaryDetails has 6 parameters. Lines 154-161.\n8. **Shotgun Surgery** - Multiple methods update customer fields: updateCustomerInfo, updateCustomerName, updateCustomerAddress, updateCustomerPhoneNumber, updateCustomerEmail. Lines 59-87.\n9. **Divergent Change** - Multiple notification methods: notifyForPromotion, notifyForDiscount, notifyForNewArrivals. Lines 89-102.\n10. **Parallel Inheritance Hierarchies** - applyDiscount and applyLoyaltyPoints might indicate parallel hierarchies. Lines 104-112.\n11. **Switch Statements** - handleComplaint has if-else chain. Lines 114-125.\n12. **Dead Code** - anotherUnusedMethod and yetAnotherUnusedMethod never called. Lines 131-137.\n13. **Speculative Generality** - askForReceipt appears unused. Lines 127-129.\n14. **Long Method** - longMethod has many tasks. Lines 139-152.\n15. **Duplicate Code** - duplicateMethod has duplicate setTopping calls. Lines 163-168.\n16. **Message Chains** - chainOfMethods calls updateCustomerAddress (not a chain though). Lines 170-174.\n17. **Middle Man** - middlemanMethod delegates to middleMethod. Lines 176-180.\n18. **Inappropriate Intimacy** - accessInternalDetails accesses internal fields. Lines 191-194.\n19. **Refused Bequest** - refusedBequest method empty. Lines 196-198.\n20. **Comments** - Many explanatory comments. Throughout.\n\n**CheesePizza class:**\n21. **Switch Statements** - handleComplaint has if-else chain. Lines 206-214.\n\n## Pass B - Critique\n\n**T1 Evidence test:**\n1. Large Class: 11 fields, many methods. Evidence: lines 10-26 show 11 fields, many method definitions.\n2. Data Class: Fields with getters/setters, minimal behavior. Evidence: lines 10-57 show fields + getters/setters.\n3. Primitive Obsession: extraCheese boolean, size/doughType/topping strings. Evidence: lines 10-16.\n4. Data Clumps: 5 customer fields together. Evidence: lines 18-22.\n5. Temporary Field: tempDiscountCode, tempOrderNote declared but never used. Evidence: lines 25-26.\n6. Long Parameter List (updateCustomerInfo): 5 parameters. Evidence: line 59.\n7. Long Parameter List (orderWithUnnecessaryDetails): 6 parameters. Evidence: line 154.\n8. Shotgun Surgery: 5 methods updating customer fields. Evidence: lines 59-87.\n9. Divergent Change: 3 notification methods. Evidence: lines 89-102.\n10. Parallel Inheritance Hierarchies: applyDiscount and applyLoyaltyPoints - but no evidence of parallel hierarchies. **DROP** - no actual parallel inheritance shown.\n11. Switch Statements (handleComplaint): if-else chain with 3 conditions + default. Evidence: lines 114-125.\n12. Dead Code: anotherUnusedMethod and yetAnotherUnusedMethod never called. Evidence: lines 131-137.\n13. Speculative Generality: askForReceipt appears unused. Evidence: line 127-129.\n14. Long Method: longMethod has 13 lines doing multiple tasks. Evidence: lines 139-152.\n15. Duplicate Code: duplicateMethod has duplicate setTopping(\"Cheese\"). Evidence: lines 166-167.\n16. Message Chains: chainOfMethods calls updateCustomerAddress - not a chain. **DROP** - no actual chain.\n17. Middle Man: middlemanMethod only calls middleMethod. Evidence: lines 176-180.\n18. Inappropriate Intimacy: accessInternalDetails accesses this.size, this.doughType, this.topping - but these are its own fields. **DROP** - accessing own fields is not inappropriate intimacy.\n19. Refused Bequest: refusedBequest empty method. Evidence: lines 196-198.\n20. Comments: Many explanatory comments like \"// Primitive Obsession\". Evidence: lines 14, 17, 24, 32, etc.\n21. Switch Statements (CheesePizza.handleComplaint): if-else chain. Evidence: lines 206-214.\n\n**T2 Granularity test:**\n1. Large Class: method=\"Entire Class\", lines 9-199 \u2713\n2. Data Class: method=\"Entire Class\", lines 9-199 \u2713\n3. Primitive Obsession: method=\"Entire Class\" (class-level smell). Lines 10-16 \u2713\n4. Data Clumps: method=\"Entire Class\", lines 18-22 \u2713\n5. Temporary Field: method=\"Entire Class\", lines 25-26 \u2713\n6. Long Parameter List: method=\"updateCustomerInfo\", lines 59-66 \u2713\n7. Long Parameter List: method=\"orderWithUnnecessaryDetails\", lines 154-161 \u2713\n8. Shotgun Surgery: method=\"Entire Class\" (affects multiple methods). Lines 59-87 \u2713\n9. Divergent Change: method=\"Entire Class\" (class changes for multiple reasons). Lines 89-102 \u2713\n10. DROPPED\n11. Switch Statements: method=\"handleComplaint\", lines 114-125 \u2713\n12. Dead Code: method=\"anotherUnusedMethod\", lines 131-133; also \"yetAnotherUnusedMethod\", lines 135-137 \u2713\n13. Speculative Generality: method=\"askForReceipt\", lines 127-129 \u2713\n14. Long Method: method=\"longMethod\", lines 139-152 \u2713\n15. Duplicate Code: method=\"duplicateMethod\", lines 163-168 \u2713\n16. DROPPED\n17. Middle Man: method=\"middlemanMethod\", lines 176-180 \u2713\n18. DROPPED\n19. Refused Bequest: method=\"refusedBequest\", lines 196-198 \u2713\n20. Comments: method=\"Entire Class\" (comments throughout). Lines with comments \u2713\n21. Switch Statements: method=\"handleComplaint\" (in CheesePizza), lines 206-214 \u2713\n\n**T3 Taxonomy test:**\nAll use canonical names. Categories:\n- Large Class: Bloaters \u2713\n- Data Class: Dispensables \u2713\n- Primitive Obsession: Bloaters \u2713\n- Data Clumps: Bloaters \u2713\n- Temporary Field: Object-Orientation Abusers \u2713\n- Long Parameter List: Bloaters \u2713\n- Long Parameter List: Bloaters \u2713\n- Shotgun Surgery: Change Preventers \u2713\n- Divergent Change: Change Preventers \u2713\n- Switch Statements: Object-Orientation Abusers \u2713\n- Dead Code: Dispensables \u2713\n- Speculative Generality: Dispensables \u2713\n- Long Method: Bloaters \u2713\n- Duplicate Code: Dispensables \u2713\n- Middle Man: Couplers \u2713\n- Refused Bequest: Object-Orientation Abusers \u2713\n- Comments: Dispensables \u2713\n- Switch Statements (CheesePizza): Object-Orientation Abusers \u2713\n\n**T4 Non-redundancy test:**\n- Two Long Parameter List findings for different methods \u2713\n- Two Switch Statements for different classes \u2713\n- Two Dead Code for different methods \u2713\n- All others unique (method, smell_type) pairs \u2713\n\n**Coverage probe for methods without findings:**\n- Constructor (lines 28-33): 6 lines, not Long Method. No other smells.\n- setSize/getSize etc.: simple getters/setters, no smells.\n- updateCustomerName/Address/PhoneNumber/Email: simple setters, no smells.\n- applyDiscount/applyLoyaltyPoints: simple prints, no smells.\n- chainOfMethods: simple, no Message Chains.\n- accessInternalDetails: simple, no Inappropriate Intimacy.\n- CheesePizza constructor: simple.\n- VeggiePizza/TunaPizza/PepperoniPizza constructors: simple.\n\n**Final list after critique:**\n1. Large Class - Entire Class\n2. Data Class - Entire Class  \n3. Primitive Obsession - Entire Class\n4. Data Clumps - Entire Class\n5. Temporary Field - Entire Class\n6. Long Parameter List - updateCustomerInfo\n7. Long Parameter List - orderWithUnnecessaryDetails\n8. Shotgun Surgery - Entire Class\n9. Divergent Change - Entire Class\n10. Switch Statements - handleComplaint (Pizza)\n11. Dead Code - anotherUnusedMethod\n12. Dead Code - yetAnotherUnusedMethod\n13. Speculative Generality - askForReceipt\n14. Long Method - longMethod\n15. Duplicate Code - duplicateMethod\n16. Middle Man - middlemanMethod\n17. Refused Bequest - refusedBequest\n18. Comments - Entire Class\n19. Switch Statements - handleComplaint (CheesePizza)\n</analysis>\n<answer>\n{\n  \"language\": \"java\",\n  \"file_path\": \"Java/SmellyAnnotated/Pizza.java\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Large Class\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 9,\n      \"line_end\": 199,\n      \"evidence\": \"Class has 11 fields and many methods spanning lines 9-199.\"\n    },\n    {\n      \"smell_type\": \"Data Class\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 9,\n      \"line_end\": 199,\n      \"evidence\": \"Class has fields with getters/setters and minimal behavior.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 10,\n      \"line_end\": 16,\n      \"evidence\": \"Fields extraCheese (boolean), size, doughType, topping (strings) at lines 10-16.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 18,\n      \"line_end\": 22,\n      \"evidence\": \"Five customer fields appear together: firstName, lastName, address, phone, email.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 25,\n      \"line_end\": 26,\n      \"evidence\": \"Fields tempDiscountCode and tempOrderNote declared but never used.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"updateCustomerInfo\",\n      \"line_start\": 59,\n      \"line_end\": 66,\n      \"evidence\": \"Method has 5 parameters: firstName, lastName, address, phoneNumber, email.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 154,\n      \"line_end\": 161,\n      \"evidence\": \"Method has 6 parameters at line 154.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 59,\n      \"line_end\": 87,\n      \"evidence\": \"Five methods update customer fields: updateCustomerInfo, Name, Address, PhoneNumber, Email.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 89,\n      \"line_end\": 102,\n      \"evidence\": \"Three notification methods: notifyForPromotion, Discount, NewArrivals.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 114,\n      \"line_end\": 125,\n      \"evidence\": \"if-else chain with 3 conditions + default handling complaints.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 131,\n      \"line_end\": 133,\n      \"evidence\": \"Method never called, empty body.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 135,\n      \"line_end\": 137,\n      \"evidence\": \"Method never called, empty body.\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 127,\n      \"line_end\": 129,\n      \"evidence\": \"Method appears unused, prints receipt message.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 139,\n      \"line_end\": 152,\n      \"evidence\": \"13-LOC method doing multiple tasks: setting pizza, customer, notifications.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 163,\n      \"line_end\": 168,\n      \"evidence\": \"Duplicate setTopping(\\\"Cheese\\\") calls at lines 166-167.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 176,\n      \"line_end\": 180,\n      \"evidence\": \"Method only delegates to middleMethod at line 179.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 196,\n      \"line_end\": 198,\n      \"evidence\": \"Empty method that should be inherited but does nothing.\"\n    },\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 14,\n      \"line_end\": 137,\n      \"evidence\": \"Many explanatory comments like '// Primitive Obsession' throughout.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 206,\n      \"line_end\": 214,\n      \"evidence\": \"if-else chain in CheesePizza.handleComplaint with condition at line 209.\"\n    }\n  ]\n}\n</answer>"
+  },
+  {
+    "sample_id": "java_Shop_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/Shop.java",
+    "parsed": null,
+    "gold_keys": [
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "Shop",
+        "Primitive Obsession"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "Java/SmellyAnnotated/Shop.java",
+        "Shop",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "raw": ""
+  },
+  {
+    "sample_id": "java_main_java",
+    "language": "java",
+    "file_path": "Java/SmellyAnnotated/main.java",
+    "parsed": {
+      "language": "java",
+      "file_path": "Java/SmellyAnnotated/main.java",
+      "class_name": "main",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "measureExecutionTime",
+          "line_start": 19,
+          "line_end": 42,
+          "evidence": "24-LOC body with timing loop, object creation, and unit conversion."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "measureExecutionTime",
+          "line_start": 20,
+          "line_end": 20,
+          "evidence": "Uses primitive int 'runs' for configuration at line 20."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "measureExecutionTime",
+          "line_start": 41,
+          "line_end": 41,
+          "evidence": "Comment explains obvious conversion at line 41."
+        }
+      ]
+    },
+    "gold_keys": [],
+    "pred_keys": [
+      [
+        "Java/SmellyAnnotated/main.java",
+        "main",
+        "measureExecutionTime",
+        "Comments"
+      ],
+      [
+        "Java/SmellyAnnotated/main.java",
+        "main",
+        "measureExecutionTime",
+        "Long Method"
+      ],
+      [
+        "Java/SmellyAnnotated/main.java",
+        "main",
+        "measureExecutionTime",
+        "Primitive Obsession"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 3,
+    "input_tokens": 2923,
+    "output_tokens": 1305,
+    "total_tokens": 4228,
+    "raw": "<analysis>\n## Pass A - Draft Candidates\n\n1. **Long Method** - `measureExecutionTime` method spans lines 19-42, 24 lines of code. It performs multiple tasks: loop for timing, creating objects, calling methods, summing times, converting units.\n2. **Primitive Obsession** - `runs` is a primitive int (line 20) used for configuration; could be a constant or configuration object.\n3. **Data Clumps** - `Shop shop = new Shop(); Customer customer = new Customer(shop);` appear together (lines 26-27). Could be a single object representing a scenario.\n4. **Comments** - Comment on line 41 explains conversion, but the formula `totalExecutionTime / runs / 1_000_000_000.0` is clear.\n5. **Duplicate Code** - None.\n6. **Large Class** - Class `main` is small (43 lines total, 2 methods). Not large.\n7. **Long Parameter List** - No methods with many parameters.\n8. **Switch Statements** - None.\n9. **Temporary Field** - None.\n10. **Refused Bequest** - No inheritance.\n11. **Alternative Classes with Different Interfaces** - Not applicable.\n12. **Parallel Inheritance Hierarchies** - Not applicable.\n13. **Divergent Change** - Class changes for one reason (timing measurement).\n14. **Shotgun Surgery** - Not applicable.\n15. **Lazy Class** - Class has two methods, not lazy.\n16. **Data Class** - Class has behavior, not just data.\n17. **Dead Code** - All code used.\n18. **Speculative Generality** - No unnecessary abstractions.\n19. **Feature Envy** - `measureExecutionTime` uses `Shop` and `Customer` objects more than its own data? It creates them but doesn't access their internals directly.\n20. **Inappropriate Intimacy** - No private access.\n21. **Message Chains** - `customer.orderPizza(\"Cheese\")` and `customer.complain(\"...\")` are single calls, not chains.\n22. **Middle Man** - No delegation.\n23. **Control Coupling** - No flags/enums controlling branches.\n\n## Pass B - Critique\n\n**Candidate 1: Long Method (measureExecutionTime)**\n- T1 Evidence: Lines 19-42, 24 LOC, does timing loop, object creation, method calls, sum calculation, unit conversion.\n- T2 Granularity: Method name `measureExecutionTime`, lines 19-42.\n- T3 Taxonomy: `Long Method` under `Bloaters`.\n- T4 Non-redundancy: Only one finding for this method.\n- **Keep**.\n\n**Candidate 2: Primitive Obsession (measureExecutionTime)**\n- T1 Evidence: `runs` is primitive int at line 20, used for loop count and division.\n- T2 Granularity: Method `measureExecutionTime`, lines 20, 23, 41.\n- T3 Taxonomy: `Primitive Obsession` under `Bloaters`.\n- T4 Non-redundancy: Only one for this method.\n- **Keep**? The primitive is used in a simple context; maybe not a strong smell. But it's a configuration value that could be a constant or parameter. I'll keep for now.\n\n**Candidate 3: Data Clumps (measureExecutionTime)**\n- T1 Evidence: `Shop shop = new Shop(); Customer customer = new Customer(shop);` at lines 26-27 appear together.\n- T2 Granularity: Method `measureExecutionTime`, lines 26-27.\n- T3 Taxonomy: `Data Clumps` under `Bloaters`.\n- T4 Non-redundancy: Only one for this method.\n- **Keep**? They appear only once in this file, not \"repeatedly\". Data Clumps require the same group appearing together repeatedly. Drop.\n\n**Candidate 4: Comments (measureExecutionTime)**\n- T1 Evidence: Comment on line 41 \"// Convert nanoseconds to seconds\" explains what the division does.\n- T2 Granularity: Method `measureExecutionTime`, line 41.\n- T3 Taxonomy: `Comments` under `Dispensables`.\n- T4 Non-redundancy: Only one for this method.\n- **Keep**? The comment explains the obvious conversion; the code `totalExecutionTime / runs / 1_000_000_000.0` is clear. This is a candidate for Comments smell.\n\n**Coverage Probe for methods without findings:**\n- `main` method (lines 14-17): 4 LOC, not Long Method. No other smells evident.\n\n**Final candidates after critique:**\n1. Long Method - measureExecutionTime (lines 19-42)\n2. Primitive Obsession - measureExecutionTime (line 20)\n3. Comments - measureExecutionTime (line 41)\n\nCheck for duplicates: all different smell_types for same method, okay.\n</analysis>\n<answer>\n{\n  \"language\": \"java\",\n  \"file_path\": \"Java/SmellyAnnotated/main.java\",\n  \"class_name\": \"main\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"measureExecutionTime\",\n      \"line_start\": 19,\n      \"line_end\": 42,\n      \"evidence\": \"24-LOC body with timing loop, object creation, and unit conversion.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"measureExecutionTime\",\n      \"line_start\": 20,\n      \"line_end\": 20,\n      \"evidence\": \"Uses primitive int 'runs' for configuration at line 20.\"\n    },\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"measureExecutionTime\",\n      \"line_start\": 41,\n      \"line_end\": 41,\n      \"evidence\": \"Comment explains obvious conversion at line 41.\"\n    }\n  ]\n}\n</answer>"
+  }
+]

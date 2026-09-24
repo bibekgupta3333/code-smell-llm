@@ -1,0 +1,2440 @@
+[
+  {
+    "sample_id": "javascript_Cashier_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Cashier.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Cashier.js",
+      "class_name": "Cashier",
+      "findings": [
+        {
+          "smell_type": "Control Coupling",
+          "category": "Couplers",
+          "method": "constructor",
+          "line_start": 12,
+          "line_end": 26,
+          "evidence": "Constructor accepts chef parameter that controls which branch of chef's methods run."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 12,
+          "line_end": 26,
+          "evidence": "Uses boolean primitive for frequentCustomerDiscount instead of a Discount object."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 12,
+          "line_end": 26,
+          "evidence": "firstName, lastName, address, phoneNumber, email fields appear together in constructor and updateContactInfo."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 12,
+          "line_end": 26,
+          "evidence": "tempDiscountCode and tempOrderNote fields are only meaningful during specific order processing."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "takeOrder",
+          "line_start": 28,
+          "line_end": 31,
+          "evidence": "Method calls chef.bakePizza() and references chef more than its own properties."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "calmCustomerDown",
+          "line_start": 38,
+          "line_end": 41,
+          "evidence": "Method calls chef.cleanKitchen() which is likely an internal kitchen operation."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 47,
+          "line_end": 49,
+          "evidence": "Method has no current caller and exists for imagined future use."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 51,
+          "line_end": 53,
+          "evidence": "Method is never called anywhere in the file."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 55,
+          "line_end": 57,
+          "evidence": "Method is never called anywhere in the file."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 59,
+          "line_end": 67,
+          "evidence": "Method body performs 5 different tasks across 8 lines."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 69,
+          "line_end": 75,
+          "evidence": "Method declares 6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 77,
+          "line_end": 82,
+          "evidence": "Method calls this.takeOrder('Cheese') twice with identical parameters."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 90,
+          "line_end": 94,
+          "evidence": "Method only delegates to middleMethod() with no added behaviour."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 96,
+          "line_end": 99,
+          "evidence": "Method only delegates to realMethod() with no added behaviour."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 105,
+          "line_end": 108,
+          "evidence": "Method accesses this.chef.busy which is likely a private/internal property."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 110,
+          "line_end": 117,
+          "evidence": "Updating contact info requires changes to 5 separate update methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateName",
+          "line_start": 119,
+          "line_end": 123,
+          "evidence": "Updating name requires changes to updateContactInfo and updateName methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateAddress",
+          "line_start": 125,
+          "line_end": 128,
+          "evidence": "Updating address requires changes to updateContactInfo and updateAddress methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updatePhoneNumber",
+          "line_start": 130,
+          "line_end": 133,
+          "evidence": "Updating phone requires changes to updateContactInfo and updatePhoneNumber methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateEmail",
+          "line_start": 135,
+          "line_end": 138,
+          "evidence": "Updating email requires changes to updateContactInfo and updateEmail methods."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 11,
+          "line_end": 181,
+          "evidence": "Class changes for order handling, customer notification, and contact management reasons."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 165,
+          "line_end": 176,
+          "evidence": "Chained if-else statements with 4 branches on complaint string values."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 178,
+          "line_end": 180,
+          "evidence": "Method has empty body suggesting it should be inherited but provides no implementation."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "calmCustomerDown",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "takeOrder",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "calmCustomerDown",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "takeOrder",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 23,
+    "input_tokens": 5208,
+    "output_tokens": 1622,
+    "total_tokens": 6830,
+    "raw": "```json\n{\n    \"language\": \"javascript\",\n    \"file_path\": \"JavaScript/SmellyAnnotated/Cashier.js\",\n    \"class_name\": \"Cashier\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Control Coupling\",\n            \"category\": \"Couplers\",\n            \"method\": \"constructor\",\n            \"line_start\": 12,\n            \"line_end\": 26,\n            \"evidence\": \"Constructor accepts chef parameter that controls which branch of chef's methods run.\"\n        },\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 12,\n            \"line_end\": 26,\n            \"evidence\": \"Uses boolean primitive for frequentCustomerDiscount instead of a Discount object.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 12,\n            \"line_end\": 26,\n            \"evidence\": \"firstName, lastName, address, phoneNumber, email fields appear together in constructor and updateContactInfo.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"constructor\",\n            \"line_start\": 12,\n            \"line_end\": 26,\n            \"evidence\": \"tempDiscountCode and tempOrderNote fields are only meaningful during specific order processing.\"\n        },\n        {\n            \"smell_type\": \"Feature Envy\",\n            \"category\": \"Couplers\",\n            \"method\": \"takeOrder\",\n            \"line_start\": 28,\n            \"line_end\": 31,\n            \"evidence\": \"Method calls chef.bakePizza() and references chef more than its own properties.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"calmCustomerDown\",\n            \"line_start\": 38,\n            \"line_end\": 41,\n            \"evidence\": \"Method calls chef.cleanKitchen() which is likely an internal kitchen operation.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"askForReceipt\",\n            \"line_start\": 47,\n            \"line_end\": 49,\n            \"evidence\": \"Method has no current caller and exists for imagined future use.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"anotherUnusedMethod\",\n            \"line_start\": 51,\n            \"line_end\": 53,\n            \"evidence\": \"Method is never called anywhere in the file.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yetAnotherUnusedMethod\",\n            \"line_start\": 55,\n            \"line_end\": 57,\n            \"evidence\": \"Method is never called anywhere in the file.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"longMethod\",\n            \"line_start\": 59,\n            \"line_end\": 67,\n            \"evidence\": \"Method body performs 5 different tasks across 8 lines.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"orderWithUnnecessaryDetails\",\n            \"line_start\": 69,\n            \"line_end\": 75,\n            \"evidence\": \"Method declares 6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicateMethod\",\n            \"line_start\": 77,\n            \"line_end\": 82,\n            \"evidence\": \"Method calls this.takeOrder('Cheese') twice with identical parameters.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middlemanMethod\",\n            \"line_start\": 90,\n            \"line_end\": 94,\n            \"evidence\": \"Method only delegates to middleMethod() with no added behaviour.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleMethod\",\n            \"line_start\": 96,\n            \"line_end\": 99,\n            \"evidence\": \"Method only delegates to realMethod() with no added behaviour.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"accessInternalDetails\",\n            \"line_start\": 105,\n            \"line_end\": 108,\n            \"evidence\": \"Method accesses this.chef.busy which is likely a private/internal property.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateContactInfo\",\n            \"line_start\": 110,\n            \"line_end\": 117,\n            \"evidence\": \"Updating contact info requires changes to 5 separate update methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateName\",\n            \"line_start\": 119,\n            \"line_end\": 123,\n            \"evidence\": \"Updating name requires changes to updateContactInfo and updateName methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateAddress\",\n            \"line_start\": 125,\n            \"line_end\": 128,\n            \"evidence\": \"Updating address requires changes to updateContactInfo and updateAddress methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updatePhoneNumber\",\n            \"line_start\": 130,\n            \"line_end\": 133,\n            \"evidence\": \"Updating phone requires changes to updateContactInfo and updatePhoneNumber methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateEmail\",\n            \"line_start\": 135,\n            \"line_end\": 138,\n            \"evidence\": \"Updating email requires changes to updateContactInfo and updateEmail methods.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 11,\n            \"line_end\": 181,\n            \"evidence\": \"Class changes for order handling, customer notification, and contact management reasons.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handleComplaint\",\n            \"line_start\": 165,\n            \"line_end\": 176,\n            \"evidence\": \"Chained if-else statements with 4 branches on complaint string values.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refusedBequest\",\n            \"line_start\": 178,\n            \"line_end\": 180,\n            \"evidence\": \"Method has empty body suggesting it should be inherited but provides no implementation.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "javascript_Chef_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Chef.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Chef.js",
+      "class_name": "Chef",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 20,
+          "line_end": 20,
+          "evidence": "Field 'frequentCustomerDiscount' uses boolean primitive for discount status."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 23,
+          "line_end": 27,
+          "evidence": "Fields firstName, lastName, address, phoneNumber, email appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 30,
+          "line_end": 31,
+          "evidence": "Fields tempDiscountCode and tempOrderNote are only used temporarily."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 58,
+          "line_end": 65,
+          "evidence": "Method updates five contact fields; same fields updated by separate methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateName",
+          "line_start": 67,
+          "line_end": 71,
+          "evidence": "Method updates firstName and lastName, duplicating updateContactInfo logic."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateAddress",
+          "line_start": 73,
+          "line_end": 76,
+          "evidence": "Method updates address, duplicating updateContactInfo logic."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updatePhoneNumber",
+          "line_start": 78,
+          "line_end": 81,
+          "evidence": "Method updates phoneNumber, duplicating updateContactInfo logic."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateEmail",
+          "line_start": 83,
+          "line_end": 86,
+          "evidence": "Method updates email, duplicating updateContactInfo logic."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 11,
+          "line_end": 199,
+          "evidence": "Class handles pizza baking, contact updates, notifications, discounts, and complaints."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 113,
+          "line_end": 124,
+          "evidence": "Chained if-else statements with four branches on complaint string."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 126,
+          "line_end": 128,
+          "evidence": "Method has no callers and is not part of a required interface."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 130,
+          "line_end": 132,
+          "evidence": "Empty method with no callers in the file."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 134,
+          "line_end": 136,
+          "evidence": "Empty method with no callers in the file."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 138,
+          "line_end": 153,
+          "evidence": "16-LOC method performing 12 distinct tasks across baking, notification, and updates."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 155,
+          "line_end": 161,
+          "evidence": "Method declares six parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 163,
+          "line_end": 168,
+          "evidence": "Method calls this.bakePizza('Cheese') twice with identical arguments."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 176,
+          "line_end": 180,
+          "evidence": "Method only delegates to this.middleMethod() with no added behavior."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 182,
+          "line_end": 185,
+          "evidence": "Method only delegates to this.realMethod() with no added behavior."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 196,
+          "line_end": 198,
+          "evidence": "Empty method that appears to override or inherit but provides no implementation."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 19,
+    "input_tokens": 5388,
+    "output_tokens": 1337,
+    "total_tokens": 6725,
+    "raw": "```json\n{\n    \"language\": \"javascript\",\n    \"file_path\": \"JavaScript/SmellyAnnotated/Chef.js\",\n    \"class_name\": \"Chef\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 20,\n            \"line_end\": 20,\n            \"evidence\": \"Field 'frequentCustomerDiscount' uses boolean primitive for discount status.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 23,\n            \"line_end\": 27,\n            \"evidence\": \"Fields firstName, lastName, address, phoneNumber, email appear together repeatedly.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"constructor\",\n            \"line_start\": 30,\n            \"line_end\": 31,\n            \"evidence\": \"Fields tempDiscountCode and tempOrderNote are only used temporarily.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateContactInfo\",\n            \"line_start\": 58,\n            \"line_end\": 65,\n            \"evidence\": \"Method updates five contact fields; same fields updated by separate methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateName\",\n            \"line_start\": 67,\n            \"line_end\": 71,\n            \"evidence\": \"Method updates firstName and lastName, duplicating updateContactInfo logic.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateAddress\",\n            \"line_start\": 73,\n            \"line_end\": 76,\n            \"evidence\": \"Method updates address, duplicating updateContactInfo logic.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updatePhoneNumber\",\n            \"line_start\": 78,\n            \"line_end\": 81,\n            \"evidence\": \"Method updates phoneNumber, duplicating updateContactInfo logic.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateEmail\",\n            \"line_start\": 83,\n            \"line_end\": 86,\n            \"evidence\": \"Method updates email, duplicating updateContactInfo logic.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 11,\n            \"line_end\": 199,\n            \"evidence\": \"Class handles pizza baking, contact updates, notifications, discounts, and complaints.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handleComplaint\",\n            \"line_start\": 113,\n            \"line_end\": 124,\n            \"evidence\": \"Chained if-else statements with four branches on complaint string.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"askForReceipt\",\n            \"line_start\": 126,\n            \"line_end\": 128,\n            \"evidence\": \"Method has no callers and is not part of a required interface.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"anotherUnusedMethod\",\n            \"line_start\": 130,\n            \"line_end\": 132,\n            \"evidence\": \"Empty method with no callers in the file.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yetAnotherUnusedMethod\",\n            \"line_start\": 134,\n            \"line_end\": 136,\n            \"evidence\": \"Empty method with no callers in the file.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"longMethod\",\n            \"line_start\": 138,\n            \"line_end\": 153,\n            \"evidence\": \"16-LOC method performing 12 distinct tasks across baking, notification, and updates.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"orderWithUnnecessaryDetails\",\n            \"line_start\": 155,\n            \"line_end\": 161,\n            \"evidence\": \"Method declares six parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicateMethod\",\n            \"line_start\": 163,\n            \"line_end\": 168,\n            \"evidence\": \"Method calls this.bakePizza('Cheese') twice with identical arguments.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middlemanMethod\",\n            \"line_start\": 176,\n            \"line_end\": 180,\n            \"evidence\": \"Method only delegates to this.middleMethod() with no added behavior.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleMethod\",\n            \"line_start\": 182,\n            \"line_end\": 185,\n            \"evidence\": \"Method only delegates to this.realMethod() with no added behavior.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refusedBequest\",\n            \"line_start\": 196,\n            \"line_end\": 198,\n            \"evidence\": \"Empty method that appears to override or inherit but provides no implementation.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "javascript_Customer_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Customer.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Customer.js",
+      "class_name": "Customer",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 14,
+          "line_end": 14,
+          "evidence": "Field 'frequentCustomerDiscount' uses boolean primitive for discount status."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 17,
+          "line_end": 21,
+          "evidence": "Fields firstName, lastName, address, phoneNumber, email appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 24,
+          "line_end": 25,
+          "evidence": "Fields tempDiscountCode and tempOrderNote are only used temporarily."
+        },
+        {
+          "smell_type": "Lazy Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 11,
+          "line_end": 190,
+          "evidence": "Class has many trivial methods and minimal cohesive behavior."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "orderPizza",
+          "line_start": 31,
+          "line_end": 34,
+          "evidence": "Method calls Shop.receiveOrder() instead of using its own data."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "complain",
+          "line_start": 36,
+          "line_end": 40,
+          "evidence": "Accesses Shop.casher.calmCustomerDown() and Shop.casher.chef.cleanKitchen()."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 42,
+          "line_end": 44,
+          "evidence": "Method has no callers and serves no current purpose."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 46,
+          "line_end": 48,
+          "evidence": "Method is never called in the codebase."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 50,
+          "line_end": 52,
+          "evidence": "Method is never called in the codebase."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longComplaintMethod",
+          "line_start": 54,
+          "line_end": 64,
+          "evidence": "Method body has 11 LOC with multiple complaint calls."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 66,
+          "line_end": 72,
+          "evidence": "Method declares 6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateComplaint",
+          "line_start": 74,
+          "line_end": 81,
+          "evidence": "Method repeats complaint calls similar to longComplaintMethod."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 83,
+          "line_end": 87,
+          "evidence": "Chain this.Shop.casher.chef.cleanKitchen() with 3 property accesses."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 89,
+          "line_end": 93,
+          "evidence": "Method only delegates to middleMethod() with no added behavior."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 104,
+          "line_end": 107,
+          "evidence": "Accesses internal property this.Shop.casher.chef.busy."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 109,
+          "line_end": 116,
+          "evidence": "Updates contact fields; similar changes require multiple methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateName",
+          "line_start": 118,
+          "line_end": 122,
+          "evidence": "Updates name fields separately from other contact methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateAddress",
+          "line_start": 124,
+          "line_end": 127,
+          "evidence": "Updates address field separately from other contact methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updatePhoneNumber",
+          "line_start": 129,
+          "line_end": 132,
+          "evidence": "Updates phoneNumber field separately from other contact methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateEmail",
+          "line_start": 134,
+          "line_end": 137,
+          "evidence": "Updates email field separately from other contact methods."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 11,
+          "line_end": 190,
+          "evidence": "Class changes for multiple reasons: ordering, complaints, notifications, contact updates."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 164,
+          "line_end": 175,
+          "evidence": "Chained if-else statements with 4 branches on complaint strings."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 177,
+          "line_end": 179,
+          "evidence": "Empty method that should provide inherited behavior."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "orderDrink",
+          "line_start": 181,
+          "line_end": 189,
+          "evidence": "Inline comments explain what each console.log does."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Lazy Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "duplicateComplaint",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "longComplaintMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderDrink",
+        "Comments"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderPizza",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "Entire Class",
+        "Lazy Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "duplicateComplaint",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "longComplaintMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderDrink",
+        "Comments"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderPizza",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 24,
+    "input_tokens": 5400,
+    "output_tokens": 1657,
+    "total_tokens": 7057,
+    "raw": "```json\n{\n    \"language\": \"javascript\",\n    \"file_path\": \"JavaScript/SmellyAnnotated/Customer.js\",\n    \"class_name\": \"Customer\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 14,\n            \"line_end\": 14,\n            \"evidence\": \"Field 'frequentCustomerDiscount' uses boolean primitive for discount status.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 17,\n            \"line_end\": 21,\n            \"evidence\": \"Fields firstName, lastName, address, phoneNumber, email appear together repeatedly.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"constructor\",\n            \"line_start\": 24,\n            \"line_end\": 25,\n            \"evidence\": \"Fields tempDiscountCode and tempOrderNote are only used temporarily.\"\n        },\n        {\n            \"smell_type\": \"Lazy Class\",\n            \"category\": \"Dispensables\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 11,\n            \"line_end\": 190,\n            \"evidence\": \"Class has many trivial methods and minimal cohesive behavior.\"\n        },\n        {\n            \"smell_type\": \"Feature Envy\",\n            \"category\": \"Couplers\",\n            \"method\": \"orderPizza\",\n            \"line_start\": 31,\n            \"line_end\": 34,\n            \"evidence\": \"Method calls Shop.receiveOrder() instead of using its own data.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"complain\",\n            \"line_start\": 36,\n            \"line_end\": 40,\n            \"evidence\": \"Accesses Shop.casher.calmCustomerDown() and Shop.casher.chef.cleanKitchen().\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"askForReceipt\",\n            \"line_start\": 42,\n            \"line_end\": 44,\n            \"evidence\": \"Method has no callers and serves no current purpose.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"anotherUnusedMethod\",\n            \"line_start\": 46,\n            \"line_end\": 48,\n            \"evidence\": \"Method is never called in the codebase.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yetAnotherUnusedMethod\",\n            \"line_start\": 50,\n            \"line_end\": 52,\n            \"evidence\": \"Method is never called in the codebase.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"longComplaintMethod\",\n            \"line_start\": 54,\n            \"line_end\": 64,\n            \"evidence\": \"Method body has 11 LOC with multiple complaint calls.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"orderWithUnnecessaryDetails\",\n            \"line_start\": 66,\n            \"line_end\": 72,\n            \"evidence\": \"Method declares 6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicateComplaint\",\n            \"line_start\": 74,\n            \"line_end\": 81,\n            \"evidence\": \"Method repeats complaint calls similar to longComplaintMethod.\"\n        },\n        {\n            \"smell_type\": \"Message Chains\",\n            \"category\": \"Couplers\",\n            \"method\": \"chainOfMethods\",\n            \"line_start\": 83,\n            \"line_end\": 87,\n            \"evidence\": \"Chain this.Shop.casher.chef.cleanKitchen() with 3 property accesses.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middlemanMethod\",\n            \"line_start\": 89,\n            \"line_end\": 93,\n            \"evidence\": \"Method only delegates to middleMethod() with no added behavior.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"accessInternalDetails\",\n            \"line_start\": 104,\n            \"line_end\": 107,\n            \"evidence\": \"Accesses internal property this.Shop.casher.chef.busy.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateContactInfo\",\n            \"line_start\": 109,\n            \"line_end\": 116,\n            \"evidence\": \"Updates contact fields; similar changes require multiple methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateName\",\n            \"line_start\": 118,\n            \"line_end\": 122,\n            \"evidence\": \"Updates name fields separately from other contact methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateAddress\",\n            \"line_start\": 124,\n            \"line_end\": 127,\n            \"evidence\": \"Updates address field separately from other contact methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updatePhoneNumber\",\n            \"line_start\": 129,\n            \"line_end\": 132,\n            \"evidence\": \"Updates phoneNumber field separately from other contact methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateEmail\",\n            \"line_start\": 134,\n            \"line_end\": 137,\n            \"evidence\": \"Updates email field separately from other contact methods.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 11,\n            \"line_end\": 190,\n            \"evidence\": \"Class changes for multiple reasons: ordering, complaints, notifications, contact updates.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handleComplaint\",\n            \"line_start\": 164,\n            \"line_end\": 175,\n            \"evidence\": \"Chained if-else statements with 4 branches on complaint strings.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refusedBequest\",\n            \"line_start\": 177,\n            \"line_end\": 179,\n            \"evidence\": \"Empty method that should provide inherited behavior.\"\n        },\n        {\n            \"smell_type\": \"Comments\",\n            \"category\": \"Dispensables\",\n            \"method\": \"orderDrink\",\n            \"line_start\": 181,\n            \"line_end\": 189,\n            \"evidence\": \"Inline comments explain what each console.log does.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "javascript_Drink_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Drink.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Drink.js",
+      "class_name": "Drink",
+      "findings": [
+        {
+          "smell_type": "Data Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 26,
+          "evidence": "Class has only fields and trivial getter/setter-like methods with no business logic."
+        }
+      ]
+    },
+    "gold_keys": [],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Drink.js",
+        "Drink",
+        "Entire Class",
+        "Data Class"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 1,
+    "input_tokens": 3608,
+    "output_tokens": 115,
+    "total_tokens": 3723,
+    "raw": "{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Drink.js\",\n  \"class_name\": \"Drink\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Data Class\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 9,\n      \"line_end\": 26,\n      \"evidence\": \"Class has only fields and trivial getter/setter-like methods with no business logic.\"\n    }\n  ]\n}"
+  },
+  {
+    "sample_id": "javascript_Pizza_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Pizza.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Pizza.js",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Data Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 182,
+          "evidence": "Class has only fields and trivial getters/setters with no substantial behavior."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 10,
+          "line_end": 28,
+          "evidence": "Fields size, doughType, topping, extraCheese are primitives instead of dedicated objects."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 19,
+          "line_end": 23,
+          "evidence": "Five customer fields (firstName, lastName, address, phoneNumber, email) appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 26,
+          "line_end": 27,
+          "evidence": "Fields tempDiscountCode and tempOrderNote are only used temporarily."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateCustomerInfo",
+          "line_start": 42,
+          "line_end": 49,
+          "evidence": "Method updates five customer fields that also have individual setters."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateCustomerName",
+          "line_start": 51,
+          "line_end": 55,
+          "evidence": "Method updates two name fields that are also updated in updateCustomerInfo."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateCustomerAddress",
+          "line_start": 57,
+          "line_end": 60,
+          "evidence": "Method updates address field that is also updated in updateCustomerInfo."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateCustomerPhoneNumber",
+          "line_start": 62,
+          "line_end": 65,
+          "evidence": "Method updates phone field that is also updated in updateCustomerInfo."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateCustomerEmail",
+          "line_start": 67,
+          "line_end": 70,
+          "evidence": "Method updates email field that is also updated in updateCustomerInfo."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 182,
+          "evidence": "Class changes for multiple reasons: customer info, notifications, discounts, complaints."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 97,
+          "line_end": 108,
+          "evidence": "Chained if-else statements with four branches on complaint string values."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 110,
+          "line_end": 112,
+          "evidence": "Method has no callers and serves no current purpose."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 114,
+          "line_end": 116,
+          "evidence": "Empty method is never called in the codebase."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 118,
+          "line_end": 120,
+          "evidence": "Empty method is never called in the codebase."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 122,
+          "line_end": 135,
+          "evidence": "14-line method performs 10 different operations across multiple domains."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 137,
+          "line_end": 144,
+          "evidence": "Method has six parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 146,
+          "line_end": 151,
+          "evidence": "Method calls setTopping('Cheese') twice with identical arguments."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 159,
+          "line_end": 163,
+          "evidence": "Method only delegates to middleMethod without adding value."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 165,
+          "line_end": 168,
+          "evidence": "Method only delegates to realMethod without adding value."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 179,
+          "line_end": 181,
+          "evidence": "Empty method overrides or implements inherited behavior with no functionality."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 185,
+          "line_end": 188,
+          "evidence": "CheesePizza adds cheeseType field not used by parent Pizza class."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "Entire Class",
+        "Data Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 21,
+    "input_tokens": 5554,
+    "output_tokens": 1471,
+    "total_tokens": 7025,
+    "raw": "```json\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Pizza.js\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Data Class\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 9,\n      \"line_end\": 182,\n      \"evidence\": \"Class has only fields and trivial getters/setters with no substantial behavior.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 10,\n      \"line_end\": 28,\n      \"evidence\": \"Fields size, doughType, topping, extraCheese are primitives instead of dedicated objects.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 19,\n      \"line_end\": 23,\n      \"evidence\": \"Five customer fields (firstName, lastName, address, phoneNumber, email) appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"constructor\",\n      \"line_start\": 26,\n      \"line_end\": 27,\n      \"evidence\": \"Fields tempDiscountCode and tempOrderNote are only used temporarily.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateCustomerInfo\",\n      \"line_start\": 42,\n      \"line_end\": 49,\n      \"evidence\": \"Method updates five customer fields that also have individual setters.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateCustomerName\",\n      \"line_start\": 51,\n      \"line_end\": 55,\n      \"evidence\": \"Method updates two name fields that are also updated in updateCustomerInfo.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateCustomerAddress\",\n      \"line_start\": 57,\n      \"line_end\": 60,\n      \"evidence\": \"Method updates address field that is also updated in updateCustomerInfo.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateCustomerPhoneNumber\",\n      \"line_start\": 62,\n      \"line_end\": 65,\n      \"evidence\": \"Method updates phone field that is also updated in updateCustomerInfo.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateCustomerEmail\",\n      \"line_start\": 67,\n      \"line_end\": 70,\n      \"evidence\": \"Method updates email field that is also updated in updateCustomerInfo.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 9,\n      \"line_end\": 182,\n      \"evidence\": \"Class changes for multiple reasons: customer info, notifications, discounts, complaints.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 97,\n      \"line_end\": 108,\n      \"evidence\": \"Chained if-else statements with four branches on complaint string values.\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 110,\n      \"line_end\": 112,\n      \"evidence\": \"Method has no callers and serves no current purpose.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 114,\n      \"line_end\": 116,\n      \"evidence\": \"Empty method is never called in the codebase.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 118,\n      \"line_end\": 120,\n      \"evidence\": \"Empty method is never called in the codebase.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 122,\n      \"line_end\": 135,\n      \"evidence\": \"14-line method performs 10 different operations across multiple domains.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 137,\n      \"line_end\": 144,\n      \"evidence\": \"Method has six parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 146,\n      \"line_end\": 151,\n      \"evidence\": \"Method calls setTopping('Cheese') twice with identical arguments.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 159,\n      \"line_end\": 163,\n      \"evidence\": \"Method only delegates to middleMethod without adding value.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 165,\n      \"line_end\": 168,\n      \"evidence\": \"Method only delegates to realMethod without adding value.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 179,\n      \"line_end\": 181,\n      \"evidence\": \"Empty method overrides or implements inherited behavior with no functionality.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"constructor\",\n      \"line_start\": 185,\n      \"line_end\": 188,\n      \"evidence\": \"CheesePizza adds cheeseType field not used by parent Pizza class.\"\n    }\n  ]\n}\n```"
+  },
+  {
+    "sample_id": "javascript_Shop_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Shop.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Shop.js",
+      "class_name": "Shop",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 20,
+          "line_end": 20,
+          "evidence": "Boolean field 'frequentCustomerDiscount' used for discount status instead of a dedicated class."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 23,
+          "line_end": 27,
+          "evidence": "Five related fields (firstName, lastName, address, phoneNumber, email) declared together at lines 23-27."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "constructor",
+          "line_start": 30,
+          "line_end": 31,
+          "evidence": "Fields 'tempDiscountCode' and 'tempOrderNote' are only used temporarily and set to null initially."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "createPizza",
+          "line_start": 35,
+          "line_end": 45,
+          "evidence": "Chained if-else statements on string 'pizzaType' with four branches at lines 35-45."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 54,
+          "line_end": 61,
+          "evidence": "Method updates five contact fields that also have individual setters (lines 63-82)."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateName",
+          "line_start": 63,
+          "line_end": 67,
+          "evidence": "Method updates firstName and lastName, duplicating updateContactInfo functionality."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateAddress",
+          "line_start": 69,
+          "line_end": 72,
+          "evidence": "Method updates address field, duplicating updateContactInfo functionality."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updatePhoneNumber",
+          "line_start": 74,
+          "line_end": 77,
+          "evidence": "Method updates phoneNumber field, duplicating updateContactInfo functionality."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateEmail",
+          "line_start": 79,
+          "line_end": 82,
+          "evidence": "Method updates email field, duplicating updateContactInfo functionality."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 13,
+          "line_end": 188,
+          "evidence": "Class handles pizza creation, customer contact, notifications, discounts, complaints, and internal delegation."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 111,
+          "line_end": 119,
+          "evidence": "Chained if-else statements on string 'complaint' with four branches at lines 111-119."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 122,
+          "line_end": 124,
+          "evidence": "Method prints a message but is never called in the codebase (line 123 comment)."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 126,
+          "line_end": 128,
+          "evidence": "Empty method with no implementation, never called (line 127 comment)."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 130,
+          "line_end": 132,
+          "evidence": "Empty method with no implementation, never called (line 131 comment)."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 137,
+          "line_end": 137,
+          "evidence": "Chain 'this.casher.chef.cleanKitchen()' with three method calls at line 137."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 140,
+          "line_end": 144,
+          "evidence": "Method only delegates to middleMethod() with no added behavior at line 143."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 146,
+          "line_end": 149,
+          "evidence": "Method only delegates to realMethod() with no added behavior at line 148."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 157,
+          "line_end": 157,
+          "evidence": "Accesses 'this.casher.chef.busy' property, reaching into another object's internal state."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 160,
+          "line_end": 178,
+          "evidence": "19-LOC method calling 13 different methods for unrelated tasks at lines 163-177."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "updateContactInfo",
+          "line_start": 54,
+          "line_end": 61,
+          "evidence": "Method has five parameters (firstName, lastName, address, phoneNumber, email) at line 54."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "createPizza",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateContactInfo",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 20,
+    "input_tokens": 5322,
+    "output_tokens": 1491,
+    "total_tokens": 6813,
+    "raw": "```json\n{\n    \"language\": \"javascript\",\n    \"file_path\": \"JavaScript/SmellyAnnotated/Shop.js\",\n    \"class_name\": \"Shop\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 20,\n            \"line_end\": 20,\n            \"evidence\": \"Boolean field 'frequentCustomerDiscount' used for discount status instead of a dedicated class.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"constructor\",\n            \"line_start\": 23,\n            \"line_end\": 27,\n            \"evidence\": \"Five related fields (firstName, lastName, address, phoneNumber, email) declared together at lines 23-27.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"constructor\",\n            \"line_start\": 30,\n            \"line_end\": 31,\n            \"evidence\": \"Fields 'tempDiscountCode' and 'tempOrderNote' are only used temporarily and set to null initially.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"createPizza\",\n            \"line_start\": 35,\n            \"line_end\": 45,\n            \"evidence\": \"Chained if-else statements on string 'pizzaType' with four branches at lines 35-45.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateContactInfo\",\n            \"line_start\": 54,\n            \"line_end\": 61,\n            \"evidence\": \"Method updates five contact fields that also have individual setters (lines 63-82).\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateName\",\n            \"line_start\": 63,\n            \"line_end\": 67,\n            \"evidence\": \"Method updates firstName and lastName, duplicating updateContactInfo functionality.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateAddress\",\n            \"line_start\": 69,\n            \"line_end\": 72,\n            \"evidence\": \"Method updates address field, duplicating updateContactInfo functionality.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updatePhoneNumber\",\n            \"line_start\": 74,\n            \"line_end\": 77,\n            \"evidence\": \"Method updates phoneNumber field, duplicating updateContactInfo functionality.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"updateEmail\",\n            \"line_start\": 79,\n            \"line_end\": 82,\n            \"evidence\": \"Method updates email field, duplicating updateContactInfo functionality.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 13,\n            \"line_end\": 188,\n            \"evidence\": \"Class handles pizza creation, customer contact, notifications, discounts, complaints, and internal delegation.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handleComplaint\",\n            \"line_start\": 111,\n            \"line_end\": 119,\n            \"evidence\": \"Chained if-else statements on string 'complaint' with four branches at lines 111-119.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"askForReceipt\",\n            \"line_start\": 122,\n            \"line_end\": 124,\n            \"evidence\": \"Method prints a message but is never called in the codebase (line 123 comment).\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"anotherUnusedMethod\",\n            \"line_start\": 126,\n            \"line_end\": 128,\n            \"evidence\": \"Empty method with no implementation, never called (line 127 comment).\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yetAnotherUnusedMethod\",\n            \"line_start\": 130,\n            \"line_end\": 132,\n            \"evidence\": \"Empty method with no implementation, never called (line 131 comment).\"\n        },\n        {\n            \"smell_type\": \"Message Chains\",\n            \"category\": \"Couplers\",\n            \"method\": \"chainOfMethods\",\n            \"line_start\": 137,\n            \"line_end\": 137,\n            \"evidence\": \"Chain 'this.casher.chef.cleanKitchen()' with three method calls at line 137.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middlemanMethod\",\n            \"line_start\": 140,\n            \"line_end\": 144,\n            \"evidence\": \"Method only delegates to middleMethod() with no added behavior at line 143.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleMethod\",\n            \"line_start\": 146,\n            \"line_end\": 149,\n            \"evidence\": \"Method only delegates to realMethod() with no added behavior at line 148.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"accessInternalDetails\",\n            \"line_start\": 157,\n            \"line_end\": 157,\n            \"evidence\": \"Accesses 'this.casher.chef.busy' property, reaching into another object's internal state.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"longMethod\",\n            \"line_start\": 160,\n            \"line_end\": 178,\n            \"evidence\": \"19-LOC method calling 13 different methods for unrelated tasks at lines 163-177.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"updateContactInfo\",\n            \"line_start\": 54,\n            \"line_end\": 61,\n            \"evidence\": \"Method has five parameters (firstName, lastName, address, phoneNumber, email) at line 54.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "javascript_main_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/main.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/main.js",
+      "class_name": "main",
+      "findings": []
+    },
+    "gold_keys": [],
+    "pred_keys": [],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 3679,
+    "output_tokens": 44,
+    "total_tokens": 3723,
+    "raw": "```json\n{\n    \"language\": \"javascript\",\n    \"file_path\": \"JavaScript/SmellyAnnotated/main.js\",\n    \"class_name\": \"main\",\n    \"findings\": []\n}\n```"
+  }
+]

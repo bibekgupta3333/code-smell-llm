@@ -1,0 +1,2655 @@
+[
+  {
+    "sample_id": "python_Cashier_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Cashier.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Cashier.py",
+      "class_name": "Cashier",
+      "findings": [
+        {
+          "smell_type": "Control Coupling",
+          "category": "Couplers",
+          "method": "__init__",
+          "line_start": 13,
+          "line_end": 13,
+          "evidence": "Parameter 'chef' is a flag that controls which branch of the callee runs."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 14,
+          "line_end": 14,
+          "evidence": "Boolean 'frequent_customer_discount' used instead of a Discount object."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 16,
+          "line_end": 21,
+          "evidence": "Fields 'first_name', 'last_name', 'address', 'phone_number', 'email' appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "__init__",
+          "line_start": 24,
+          "line_end": 25,
+          "evidence": "Fields 'temp_discount_code' and 'temp_order_note' are only meaningful in some states."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "take_order",
+          "line_start": 29,
+          "line_end": 29,
+          "evidence": "Method calls 'self.chef.bake_pizza()' instead of using its own data."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "calm_customer_down",
+          "line_start": 37,
+          "line_end": 37,
+          "evidence": "Method calls 'self.chef.clean_kitchen()', accessing another class's internals."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "ask_for_receipt",
+          "line_start": 42,
+          "line_end": 43,
+          "evidence": "Method 'ask_for_receipt' has no current concrete user."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "another_unused_method",
+          "line_start": 45,
+          "line_end": 46,
+          "evidence": "Method 'another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yet_another_unused_method",
+          "line_start": 48,
+          "line_end": 49,
+          "evidence": "Method 'yet_another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "long_method",
+          "line_start": 51,
+          "line_end": 58,
+          "evidence": "Method body (8 LOC) orchestrates five unrelated tasks."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "order_with_unnecessary_details",
+          "line_start": 60,
+          "line_end": 65,
+          "evidence": "Method has six parameters: pizza_type, size, crust_type, toppings, extra_cheese, discount_code."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicate_method",
+          "line_start": 67,
+          "line_end": 71,
+          "evidence": "Line 70 and 71 duplicate 'self.take_order(\"Cheese\")'."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chain_of_methods",
+          "line_start": 73,
+          "line_end": 76,
+          "evidence": "Method calls 'self.chef.clean_kitchen()', a chain digging through objects."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleman_method",
+          "line_start": 78,
+          "line_end": 81,
+          "evidence": "Method only delegates to 'self.middle_method()'."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middle_method",
+          "line_start": 83,
+          "line_end": 85,
+          "evidence": "Method only delegates to 'self.real_method()'."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "access_internal_details",
+          "line_start": 90,
+          "line_end": 92,
+          "evidence": "Method accesses 'self.chef.busy', another class's private internals."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_contact_info",
+          "line_start": 94,
+          "line_end": 100,
+          "evidence": "One logical change (contact info) requires edits across five methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_name",
+          "line_start": 102,
+          "line_end": 105,
+          "evidence": "One logical change (name) requires edits across multiple methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_address",
+          "line_start": 107,
+          "line_end": 109,
+          "evidence": "One logical change (address) requires edits across multiple methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_phone_number",
+          "line_start": 111,
+          "line_end": 113,
+          "evidence": "One logical change (phone number) requires edits across multiple methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_email",
+          "line_start": 115,
+          "line_end": 117,
+          "evidence": "One logical change (email) requires edits across multiple methods."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_promotion",
+          "line_start": 119,
+          "line_end": 121,
+          "evidence": "Class changes for many unrelated reasons (promotion, discount, new arrivals)."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_discount",
+          "line_start": 123,
+          "line_end": 125,
+          "evidence": "Class changes for many unrelated reasons (promotion, discount, new arrivals)."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_new_arrivals",
+          "line_start": 127,
+          "line_end": 129,
+          "evidence": "Class changes for many unrelated reasons (promotion, discount, new arrivals)."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_discount",
+          "line_start": 131,
+          "line_end": 133,
+          "evidence": "Adding a discount method likely requires adding a loyalty method."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_loyalty_points",
+          "line_start": 135,
+          "line_end": 137,
+          "evidence": "Adding a loyalty method likely requires adding a discount method."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handle_complaint",
+          "line_start": 139,
+          "line_end": 148,
+          "evidence": "Long if-else-if chain on 'complaint' string (four branches)."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refused_bequest",
+          "line_start": 150,
+          "line_end": 152,
+          "evidence": "Method 'refused_bequest' is empty and not used in the base class."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Control Coupling"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "calm_customer_down",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "take_order",
+        "Feature Envy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Control Coupling"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "calm_customer_down",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "middle_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "take_order",
+        "Feature Envy"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Cashier.py",
+        "Cashier",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 28,
+    "input_tokens": 3973,
+    "output_tokens": 2031,
+    "total_tokens": 6004,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Cashier.py\",\n    \"class_name\": \"Cashier\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Control Coupling\",\n            \"category\": \"Couplers\",\n            \"method\": \"__init__\",\n            \"line_start\": 13,\n            \"line_end\": 13,\n            \"evidence\": \"Parameter 'chef' is a flag that controls which branch of the callee runs.\"\n        },\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 14,\n            \"line_end\": 14,\n            \"evidence\": \"Boolean 'frequent_customer_discount' used instead of a Discount object.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 16,\n            \"line_end\": 21,\n            \"evidence\": \"Fields 'first_name', 'last_name', 'address', 'phone_number', 'email' appear together repeatedly.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"__init__\",\n            \"line_start\": 24,\n            \"line_end\": 25,\n            \"evidence\": \"Fields 'temp_discount_code' and 'temp_order_note' are only meaningful in some states.\"\n        },\n        {\n            \"smell_type\": \"Feature Envy\",\n            \"category\": \"Couplers\",\n            \"method\": \"take_order\",\n            \"line_start\": 29,\n            \"line_end\": 29,\n            \"evidence\": \"Method calls 'self.chef.bake_pizza()' instead of using its own data.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"calm_customer_down\",\n            \"line_start\": 37,\n            \"line_end\": 37,\n            \"evidence\": \"Method calls 'self.chef.clean_kitchen()', accessing another class's internals.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"ask_for_receipt\",\n            \"line_start\": 42,\n            \"line_end\": 43,\n            \"evidence\": \"Method 'ask_for_receipt' has no current concrete user.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"another_unused_method\",\n            \"line_start\": 45,\n            \"line_end\": 46,\n            \"evidence\": \"Method 'another_unused_method' is never called.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yet_another_unused_method\",\n            \"line_start\": 48,\n            \"line_end\": 49,\n            \"evidence\": \"Method 'yet_another_unused_method' is never called.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"long_method\",\n            \"line_start\": 51,\n            \"line_end\": 58,\n            \"evidence\": \"Method body (8 LOC) orchestrates five unrelated tasks.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"order_with_unnecessary_details\",\n            \"line_start\": 60,\n            \"line_end\": 65,\n            \"evidence\": \"Method has six parameters: pizza_type, size, crust_type, toppings, extra_cheese, discount_code.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicate_method\",\n            \"line_start\": 67,\n            \"line_end\": 71,\n            \"evidence\": \"Line 70 and 71 duplicate 'self.take_order(\\\"Cheese\\\")'.\"\n        },\n        {\n            \"smell_type\": \"Message Chains\",\n            \"category\": \"Couplers\",\n            \"method\": \"chain_of_methods\",\n            \"line_start\": 73,\n            \"line_end\": 76,\n            \"evidence\": \"Method calls 'self.chef.clean_kitchen()', a chain digging through objects.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleman_method\",\n            \"line_start\": 78,\n            \"line_end\": 81,\n            \"evidence\": \"Method only delegates to 'self.middle_method()'.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middle_method\",\n            \"line_start\": 83,\n            \"line_end\": 85,\n            \"evidence\": \"Method only delegates to 'self.real_method()'.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"access_internal_details\",\n            \"line_start\": 90,\n            \"line_end\": 92,\n            \"evidence\": \"Method accesses 'self.chef.busy', another class's private internals.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_contact_info\",\n            \"line_start\": 94,\n            \"line_end\": 100,\n            \"evidence\": \"One logical change (contact info) requires edits across five methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_name\",\n            \"line_start\": 102,\n            \"line_end\": 105,\n            \"evidence\": \"One logical change (name) requires edits across multiple methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_address\",\n            \"line_start\": 107,\n            \"line_end\": 109,\n            \"evidence\": \"One logical change (address) requires edits across multiple methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_phone_number\",\n            \"line_start\": 111,\n            \"line_end\": 113,\n            \"evidence\": \"One logical change (phone number) requires edits across multiple methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_email\",\n            \"line_start\": 115,\n            \"line_end\": 117,\n            \"evidence\": \"One logical change (email) requires edits across multiple methods.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_promotion\",\n            \"line_start\": 119,\n            \"line_end\": 121,\n            \"evidence\": \"Class changes for many unrelated reasons (promotion, discount, new arrivals).\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_discount\",\n            \"line_start\": 123,\n            \"line_end\": 125,\n            \"evidence\": \"Class changes for many unrelated reasons (promotion, discount, new arrivals).\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_new_arrivals\",\n            \"line_start\": 127,\n            \"line_end\": 129,\n            \"evidence\": \"Class changes for many unrelated reasons (promotion, discount, new arrivals).\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_discount\",\n            \"line_start\": 131,\n            \"line_end\": 133,\n            \"evidence\": \"Adding a discount method likely requires adding a loyalty method.\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_loyalty_points\",\n            \"line_start\": 135,\n            \"line_end\": 137,\n            \"evidence\": \"Adding a loyalty method likely requires adding a discount method.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handle_complaint\",\n            \"line_start\": 139,\n            \"line_end\": 148,\n            \"evidence\": \"Long if-else-if chain on 'complaint' string (four branches).\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refused_bequest\",\n            \"line_start\": 150,\n            \"line_end\": 152,\n            \"evidence\": \"Method 'refused_bequest' is empty and not used in the base class.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "python_Chef_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Chef.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Chef.py",
+      "class_name": "Chef",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 20,
+          "line_end": 20,
+          "evidence": "Field 'frequent_customer_discount' uses primitive bool instead of a dedicated class."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 23,
+          "line_end": 27,
+          "evidence": "Fields first_name, last_name, address, phone_number, email appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "__init__",
+          "line_start": 30,
+          "line_end": 31,
+          "evidence": "Fields temp_discount_code and temp_order_note are only used in specific states."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_contact_info",
+          "line_start": 52,
+          "line_end": 58,
+          "evidence": "Changing contact info requires updating multiple separate methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_name",
+          "line_start": 60,
+          "line_end": 63,
+          "evidence": "Changing name requires separate method alongside other contact update methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_address",
+          "line_start": 65,
+          "line_end": 67,
+          "evidence": "Changing address requires separate method alongside other contact update methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_phone_number",
+          "line_start": 69,
+          "line_end": 71,
+          "evidence": "Changing phone number requires separate method alongside other contact update methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_email",
+          "line_start": 73,
+          "line_end": 75,
+          "evidence": "Changing email requires separate method alongside other contact update methods."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_promotion",
+          "line_start": 77,
+          "line_end": 79,
+          "evidence": "Class changes for notification reasons unrelated to core chef responsibilities."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_discount",
+          "line_start": 81,
+          "line_end": 83,
+          "evidence": "Class changes for notification reasons unrelated to core chef responsibilities."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_new_arrivals",
+          "line_start": 85,
+          "line_end": 87,
+          "evidence": "Class changes for notification reasons unrelated to core chef responsibilities."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_discount",
+          "line_start": 89,
+          "line_end": 91,
+          "evidence": "Method suggests parallel hierarchy for discount handling alongside loyalty."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_loyalty_points",
+          "line_start": 93,
+          "line_end": 95,
+          "evidence": "Method suggests parallel hierarchy for loyalty handling alongside discount."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handle_complaint",
+          "line_start": 97,
+          "line_end": 106,
+          "evidence": "Long if-elif-else chain on complaint string values at lines 99-106."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "ask_for_receipt",
+          "line_start": 108,
+          "line_end": 109,
+          "evidence": "Method 'ask_for_receipt' has no current concrete user in the code."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "another_unused_method",
+          "line_start": 111,
+          "line_end": 112,
+          "evidence": "Method 'another_unused_method' is never called in the code."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yet_another_unused_method",
+          "line_start": 114,
+          "line_end": 115,
+          "evidence": "Method 'yet_another_unused_method' is never called in the code."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "long_method",
+          "line_start": 117,
+          "line_end": 131,
+          "evidence": "15-LOC method performing 12 distinct tasks across lines 120-131."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "order_with_unnecessary_details",
+          "line_start": 133,
+          "line_end": 138,
+          "evidence": "Method has 6 parameters: pizza_type, size, crust_type, toppings, extra_cheese, discount_code."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicate_method",
+          "line_start": 140,
+          "line_end": 144,
+          "evidence": "Line 143 and 144 duplicate identical 'self.bake_pizza(\"Cheese\")' calls."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleman_method",
+          "line_start": 151,
+          "line_end": 154,
+          "evidence": "Method only delegates to middle_method at line 154 without adding value."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middle_method",
+          "line_start": 156,
+          "line_end": 158,
+          "evidence": "Method only delegates to real_method at line 158 without adding value."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refused_bequest",
+          "line_start": 167,
+          "line_end": 169,
+          "evidence": "Empty method 'refused_bequest' intended to be overridden but unused in base."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "middle_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Chef.py",
+        "Chef",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 23,
+    "input_tokens": 4147,
+    "output_tokens": 1649,
+    "total_tokens": 5796,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Chef.py\",\n    \"class_name\": \"Chef\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 20,\n            \"line_end\": 20,\n            \"evidence\": \"Field 'frequent_customer_discount' uses primitive bool instead of a dedicated class.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 23,\n            \"line_end\": 27,\n            \"evidence\": \"Fields first_name, last_name, address, phone_number, email appear together repeatedly.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"__init__\",\n            \"line_start\": 30,\n            \"line_end\": 31,\n            \"evidence\": \"Fields temp_discount_code and temp_order_note are only used in specific states.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_contact_info\",\n            \"line_start\": 52,\n            \"line_end\": 58,\n            \"evidence\": \"Changing contact info requires updating multiple separate methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_name\",\n            \"line_start\": 60,\n            \"line_end\": 63,\n            \"evidence\": \"Changing name requires separate method alongside other contact update methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_address\",\n            \"line_start\": 65,\n            \"line_end\": 67,\n            \"evidence\": \"Changing address requires separate method alongside other contact update methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_phone_number\",\n            \"line_start\": 69,\n            \"line_end\": 71,\n            \"evidence\": \"Changing phone number requires separate method alongside other contact update methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_email\",\n            \"line_start\": 73,\n            \"line_end\": 75,\n            \"evidence\": \"Changing email requires separate method alongside other contact update methods.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_promotion\",\n            \"line_start\": 77,\n            \"line_end\": 79,\n            \"evidence\": \"Class changes for notification reasons unrelated to core chef responsibilities.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_discount\",\n            \"line_start\": 81,\n            \"line_end\": 83,\n            \"evidence\": \"Class changes for notification reasons unrelated to core chef responsibilities.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_new_arrivals\",\n            \"line_start\": 85,\n            \"line_end\": 87,\n            \"evidence\": \"Class changes for notification reasons unrelated to core chef responsibilities.\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_discount\",\n            \"line_start\": 89,\n            \"line_end\": 91,\n            \"evidence\": \"Method suggests parallel hierarchy for discount handling alongside loyalty.\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_loyalty_points\",\n            \"line_start\": 93,\n            \"line_end\": 95,\n            \"evidence\": \"Method suggests parallel hierarchy for loyalty handling alongside discount.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handle_complaint\",\n            \"line_start\": 97,\n            \"line_end\": 106,\n            \"evidence\": \"Long if-elif-else chain on complaint string values at lines 99-106.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"ask_for_receipt\",\n            \"line_start\": 108,\n            \"line_end\": 109,\n            \"evidence\": \"Method 'ask_for_receipt' has no current concrete user in the code.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"another_unused_method\",\n            \"line_start\": 111,\n            \"line_end\": 112,\n            \"evidence\": \"Method 'another_unused_method' is never called in the code.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yet_another_unused_method\",\n            \"line_start\": 114,\n            \"line_end\": 115,\n            \"evidence\": \"Method 'yet_another_unused_method' is never called in the code.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"long_method\",\n            \"line_start\": 117,\n            \"line_end\": 131,\n            \"evidence\": \"15-LOC method performing 12 distinct tasks across lines 120-131.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"order_with_unnecessary_details\",\n            \"line_start\": 133,\n            \"line_end\": 138,\n            \"evidence\": \"Method has 6 parameters: pizza_type, size, crust_type, toppings, extra_cheese, discount_code.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicate_method\",\n            \"line_start\": 140,\n            \"line_end\": 144,\n            \"evidence\": \"Line 143 and 144 duplicate identical 'self.bake_pizza(\\\"Cheese\\\")' calls.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleman_method\",\n            \"line_start\": 151,\n            \"line_end\": 154,\n            \"evidence\": \"Method only delegates to middle_method at line 154 without adding value.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middle_method\",\n            \"line_start\": 156,\n            \"line_end\": 158,\n            \"evidence\": \"Method only delegates to real_method at line 158 without adding value.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refused_bequest\",\n            \"line_start\": 167,\n            \"line_end\": 169,\n            \"evidence\": \"Empty method 'refused_bequest' intended to be overridden but unused in base.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "python_Customer_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Customer.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Customer.py",
+      "class_name": "Customer",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 13,
+          "line_end": 13,
+          "evidence": "Uses boolean primitive for discount status instead of a dedicated object."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 16,
+          "line_end": 20,
+          "evidence": "Group of five fields (first_name, last_name, address, phone_number, email) appears together."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "__init__",
+          "line_start": 23,
+          "line_end": 24,
+          "evidence": "Fields temp_discount_code and temp_order_note are only meaningful in some states."
+        },
+        {
+          "smell_type": "Lazy Class",
+          "category": "Dispensables",
+          "method": "__init__",
+          "line_start": 27,
+          "line_end": 27,
+          "evidence": "Drink instance does almost nothing and could be inlined."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "order_pizza",
+          "line_start": 31,
+          "line_end": 31,
+          "evidence": "Method calls pizza_shop.receive_order instead of using its own data."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "complain",
+          "line_start": 35,
+          "line_end": 36,
+          "evidence": "Accesses pizza_shop.casher.chef.clean_kitchen, navigating internal details."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "ask_for_receipt",
+          "line_start": 38,
+          "line_end": 39,
+          "evidence": "Method prints but is never used in current implementation."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "another_unused_method",
+          "line_start": 41,
+          "line_end": 42,
+          "evidence": "Method with pass is never called."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yet_another_unused_method",
+          "line_start": 44,
+          "line_end": 45,
+          "evidence": "Method with pass is never called."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "long_complaint_method",
+          "line_start": 47,
+          "line_end": 57,
+          "evidence": "11-LOC body with six complaint calls and unrelated receipt request."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "order_with_unnecessary_details",
+          "line_start": 61,
+          "line_end": 61,
+          "evidence": "Calls order_pizza with 20 parameters in a single line."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicate_complaint",
+          "line_start": 66,
+          "line_end": 69,
+          "evidence": "Repeats identical complain calls for 'Pizza is cold' and 'Pizza is late'."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chain_of_methods",
+          "line_start": 74,
+          "line_end": 74,
+          "evidence": "Chain self.pizza_shop.casher.chef.clean_kitchen() digs through objects."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleman_method",
+          "line_start": 77,
+          "line_end": 79,
+          "evidence": "Method only delegates to middle_method without adding value."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middle_method",
+          "line_start": 81,
+          "line_end": 83,
+          "evidence": "Method only delegates to real_method without adding value."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "access_internal_details",
+          "line_start": 90,
+          "line_end": 90,
+          "evidence": "Accesses internal attribute pizza_shop.casher.chef.busy."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_contact_info",
+          "line_start": 92,
+          "line_end": 98,
+          "evidence": "Updates five contact fields; similar updates spread across four other methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_name",
+          "line_start": 100,
+          "line_end": 103,
+          "evidence": "Updates two name fields; similar logic appears in update_contact_info."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_address",
+          "line_start": 105,
+          "line_end": 107,
+          "evidence": "Updates address field; similar logic appears in update_contact_info."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_phone_number",
+          "line_start": 109,
+          "line_end": 111,
+          "evidence": "Updates phone_number field; similar logic appears in update_contact_info."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_email",
+          "line_start": 113,
+          "line_end": 115,
+          "evidence": "Updates email field; similar logic appears in update_contact_info."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_promotion",
+          "line_start": 117,
+          "line_end": 119,
+          "evidence": "One of three notification methods that change for different reasons."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_discount",
+          "line_start": 121,
+          "line_end": 123,
+          "evidence": "One of three notification methods that change for different reasons."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_new_arrivals",
+          "line_start": 125,
+          "line_end": 127,
+          "evidence": "One of three notification methods that change for different reasons."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_discount",
+          "line_start": 129,
+          "line_end": 131,
+          "evidence": "Method likely requires parallel changes in another hierarchy."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_loyalty_points",
+          "line_start": 133,
+          "line_end": 135,
+          "evidence": "Method likely requires parallel changes in another hierarchy."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handle_complaint",
+          "line_start": 138,
+          "line_end": 146,
+          "evidence": "If-else chain on complaint string with four branches."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refused_bequest",
+          "line_start": 148,
+          "line_end": 150,
+          "evidence": "Empty method intended to be overridden but unused in base class."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "order_drink",
+          "line_start": 154,
+          "line_end": 161,
+          "evidence": "Three comments explain obvious print and method calls."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Control Coupling"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Lazy Class"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "duplicate_complaint",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "long_complaint_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_drink",
+        "Comments"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_pizza",
+        "Feature Envy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Lazy Class"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "duplicate_complaint",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "long_complaint_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "middle_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_drink",
+        "Comments"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_pizza",
+        "Feature Envy"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Customer.py",
+        "Customer",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 29,
+    "input_tokens": 4176,
+    "output_tokens": 2025,
+    "total_tokens": 6201,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Customer.py\",\n    \"class_name\": \"Customer\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 13,\n            \"line_end\": 13,\n            \"evidence\": \"Uses boolean primitive for discount status instead of a dedicated object.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 16,\n            \"line_end\": 20,\n            \"evidence\": \"Group of five fields (first_name, last_name, address, phone_number, email) appears together.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"__init__\",\n            \"line_start\": 23,\n            \"line_end\": 24,\n            \"evidence\": \"Fields temp_discount_code and temp_order_note are only meaningful in some states.\"\n        },\n        {\n            \"smell_type\": \"Lazy Class\",\n            \"category\": \"Dispensables\",\n            \"method\": \"__init__\",\n            \"line_start\": 27,\n            \"line_end\": 27,\n            \"evidence\": \"Drink instance does almost nothing and could be inlined.\"\n        },\n        {\n            \"smell_type\": \"Feature Envy\",\n            \"category\": \"Couplers\",\n            \"method\": \"order_pizza\",\n            \"line_start\": 31,\n            \"line_end\": 31,\n            \"evidence\": \"Method calls pizza_shop.receive_order instead of using its own data.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"complain\",\n            \"line_start\": 35,\n            \"line_end\": 36,\n            \"evidence\": \"Accesses pizza_shop.casher.chef.clean_kitchen, navigating internal details.\"\n        },\n        {\n            \"smell_type\": \"Speculative Generality\",\n            \"category\": \"Dispensables\",\n            \"method\": \"ask_for_receipt\",\n            \"line_start\": 38,\n            \"line_end\": 39,\n            \"evidence\": \"Method prints but is never used in current implementation.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"another_unused_method\",\n            \"line_start\": 41,\n            \"line_end\": 42,\n            \"evidence\": \"Method with pass is never called.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yet_another_unused_method\",\n            \"line_start\": 44,\n            \"line_end\": 45,\n            \"evidence\": \"Method with pass is never called.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"long_complaint_method\",\n            \"line_start\": 47,\n            \"line_end\": 57,\n            \"evidence\": \"11-LOC body with six complaint calls and unrelated receipt request.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"order_with_unnecessary_details\",\n            \"line_start\": 61,\n            \"line_end\": 61,\n            \"evidence\": \"Calls order_pizza with 20 parameters in a single line.\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicate_complaint\",\n            \"line_start\": 66,\n            \"line_end\": 69,\n            \"evidence\": \"Repeats identical complain calls for 'Pizza is cold' and 'Pizza is late'.\"\n        },\n        {\n            \"smell_type\": \"Message Chains\",\n            \"category\": \"Couplers\",\n            \"method\": \"chain_of_methods\",\n            \"line_start\": 74,\n            \"line_end\": 74,\n            \"evidence\": \"Chain self.pizza_shop.casher.chef.clean_kitchen() digs through objects.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleman_method\",\n            \"line_start\": 77,\n            \"line_end\": 79,\n            \"evidence\": \"Method only delegates to middle_method without adding value.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middle_method\",\n            \"line_start\": 81,\n            \"line_end\": 83,\n            \"evidence\": \"Method only delegates to real_method without adding value.\"\n        },\n        {\n            \"smell_type\": \"Inappropriate Intimacy\",\n            \"category\": \"Couplers\",\n            \"method\": \"access_internal_details\",\n            \"line_start\": 90,\n            \"line_end\": 90,\n            \"evidence\": \"Accesses internal attribute pizza_shop.casher.chef.busy.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_contact_info\",\n            \"line_start\": 92,\n            \"line_end\": 98,\n            \"evidence\": \"Updates five contact fields; similar updates spread across four other methods.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_name\",\n            \"line_start\": 100,\n            \"line_end\": 103,\n            \"evidence\": \"Updates two name fields; similar logic appears in update_contact_info.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_address\",\n            \"line_start\": 105,\n            \"line_end\": 107,\n            \"evidence\": \"Updates address field; similar logic appears in update_contact_info.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_phone_number\",\n            \"line_start\": 109,\n            \"line_end\": 111,\n            \"evidence\": \"Updates phone_number field; similar logic appears in update_contact_info.\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_email\",\n            \"line_start\": 113,\n            \"line_end\": 115,\n            \"evidence\": \"Updates email field; similar logic appears in update_contact_info.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_promotion\",\n            \"line_start\": 117,\n            \"line_end\": 119,\n            \"evidence\": \"One of three notification methods that change for different reasons.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_discount\",\n            \"line_start\": 121,\n            \"line_end\": 123,\n            \"evidence\": \"One of three notification methods that change for different reasons.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_new_arrivals\",\n            \"line_start\": 125,\n            \"line_end\": 127,\n            \"evidence\": \"One of three notification methods that change for different reasons.\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_discount\",\n            \"line_start\": 129,\n            \"line_end\": 131,\n            \"evidence\": \"Method likely requires parallel changes in another hierarchy.\"\n        },\n        {\n            \"smell_type\": \"Parallel Inheritance Hierarchies\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"apply_loyalty_points\",\n            \"line_start\": 133,\n            \"line_end\": 135,\n            \"evidence\": \"Method likely requires parallel changes in another hierarchy.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handle_complaint\",\n            \"line_start\": 138,\n            \"line_end\": 146,\n            \"evidence\": \"If-else chain on complaint string with four branches.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refused_bequest\",\n            \"line_start\": 148,\n            \"line_end\": 150,\n            \"evidence\": \"Empty method intended to be overridden but unused in base class.\"\n        },\n        {\n            \"smell_type\": \"Comments\",\n            \"category\": \"Dispensables\",\n            \"method\": \"order_drink\",\n            \"line_start\": 154,\n            \"line_end\": 161,\n            \"evidence\": \"Three comments explain obvious print and method calls.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "python_Drink_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Drink.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Drink.py",
+      "class_name": "Drink",
+      "findings": [
+        {
+          "smell_type": "Data Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 8,
+          "line_end": 22,
+          "evidence": "Class has only fields and getters/setters with no behavior beyond basic assignment."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "create_order",
+          "line_start": 14,
+          "line_end": 16,
+          "evidence": "Method uses string 'drink_type' parameter where an enum or dedicated class would be clearer."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "add_to_order",
+          "line_start": 18,
+          "line_end": 19,
+          "evidence": "Method relies on primitive string field 'drink_type' instead of a proper type."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "__init__",
+        "Data Class"
+      ],
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "add_to_order",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "create_order",
+        "Primitive Obsession"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "Entire Class",
+        "Data Class"
+      ],
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "add_to_order",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Drink.py",
+        "Drink",
+        "create_order",
+        "Primitive Obsession"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 3,
+    "input_tokens": 2451,
+    "output_tokens": 261,
+    "total_tokens": 2712,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Drink.py\",\n    \"class_name\": \"Drink\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Data Class\",\n            \"category\": \"Dispensables\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 8,\n            \"line_end\": 22,\n            \"evidence\": \"Class has only fields and getters/setters with no behavior beyond basic assignment.\"\n        },\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"create_order\",\n            \"line_start\": 14,\n            \"line_end\": 16,\n            \"evidence\": \"Method uses string 'drink_type' parameter where an enum or dedicated class would be clearer.\"\n        },\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"add_to_order\",\n            \"line_start\": 18,\n            \"line_end\": 19,\n            \"evidence\": \"Method relies on primitive string field 'drink_type' instead of a proper type.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "python_Main_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Main.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Main.py",
+      "class_name": "<module>",
+      "findings": []
+    },
+    "gold_keys": [],
+    "pred_keys": [],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 2521,
+    "output_tokens": 46,
+    "total_tokens": 2567,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Main.py\",\n    \"class_name\": \"<module>\",\n    \"findings\": []\n}\n```"
+  },
+  {
+    "sample_id": "python_Pizza_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Pizza.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Pizza.py",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 16,
+          "line_end": 16,
+          "evidence": "Field 'extra_cheese' uses primitive bool instead of dedicated object."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 19,
+          "line_end": 23,
+          "evidence": "Five customer fields (first_name, last_name, address, phone, email) appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "__init__",
+          "line_start": 26,
+          "line_end": 27,
+          "evidence": "Fields 'temp_discount_code' and 'temp_order_note' are only meaningful in some states."
+        },
+        {
+          "smell_type": "Data Class",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 9,
+          "line_end": 182,
+          "evidence": "Class has 15+ fields with getters/setters but minimal business logic."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "update_customer_info",
+          "line_start": 38,
+          "line_end": 44,
+          "evidence": "Method has 5 parameters (first_name, last_name, address, phone_number, email)."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_customer_info",
+          "line_start": 38,
+          "line_end": 44,
+          "evidence": "Changing customer info requires edits across 5 separate update methods."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_promotion",
+          "line_start": 63,
+          "line_end": 65,
+          "evidence": "Class changes for notification reasons unrelated to pizza core logic."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handle_complaint",
+          "line_start": 83,
+          "line_end": 92,
+          "evidence": "Long if-elif chain on complaint type strings (cold pizza, late delivery, wrong order)."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "another_unused_method",
+          "line_start": 97,
+          "line_end": 98,
+          "evidence": "Method 'another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yet_another_unused_method",
+          "line_start": 100,
+          "line_end": 101,
+          "evidence": "Method 'yet_another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "long_method",
+          "line_start": 103,
+          "line_end": 116,
+          "evidence": "14-LOC body performing 8+ unrelated tasks (setters, notifications, complaints)."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "order_with_unnecessary_details",
+          "line_start": 117,
+          "line_end": 124,
+          "evidence": "Method has 6 parameters (pizza_type, size, crust_type, toppings, extra_cheese, discount_code)."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicate_method",
+          "line_start": 125,
+          "line_end": 130,
+          "evidence": "Line 129 duplicates 'self.set_topping(\"Cheese\")' from line 128."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleman_method",
+          "line_start": 136,
+          "line_end": 140,
+          "evidence": "Method only delegates to 'middle_method' without adding value."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refused_bequest",
+          "line_start": 152,
+          "line_end": 154,
+          "evidence": "Empty method 'refused_bequest' intended for inheritance but unused."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "Entire Class",
+        "Data Class"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "duplicate_method",
+        "Duplicate Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "refused_bequest",
+        "Refused Bequest"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_info",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "update_customer_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Pizza.py",
+        "Pizza",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 15,
+    "input_tokens": 4310,
+    "output_tokens": 1117,
+    "total_tokens": 5427,
+    "raw": "```json\n{\n    \"language\": \"python\",\n    \"file_path\": \"Python/SmellyAnnotated/Pizza.py\",\n    \"class_name\": \"Pizza\",\n    \"findings\": [\n        {\n            \"smell_type\": \"Primitive Obsession\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 16,\n            \"line_end\": 16,\n            \"evidence\": \"Field 'extra_cheese' uses primitive bool instead of dedicated object.\"\n        },\n        {\n            \"smell_type\": \"Data Clumps\",\n            \"category\": \"Bloaters\",\n            \"method\": \"__init__\",\n            \"line_start\": 19,\n            \"line_end\": 23,\n            \"evidence\": \"Five customer fields (first_name, last_name, address, phone, email) appear together repeatedly.\"\n        },\n        {\n            \"smell_type\": \"Temporary Field\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"__init__\",\n            \"line_start\": 26,\n            \"line_end\": 27,\n            \"evidence\": \"Fields 'temp_discount_code' and 'temp_order_note' are only meaningful in some states.\"\n        },\n        {\n            \"smell_type\": \"Data Class\",\n            \"category\": \"Dispensables\",\n            \"method\": \"Entire Class\",\n            \"line_start\": 9,\n            \"line_end\": 182,\n            \"evidence\": \"Class has 15+ fields with getters/setters but minimal business logic.\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"update_customer_info\",\n            \"line_start\": 38,\n            \"line_end\": 44,\n            \"evidence\": \"Method has 5 parameters (first_name, last_name, address, phone_number, email).\"\n        },\n        {\n            \"smell_type\": \"Shotgun Surgery\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"update_customer_info\",\n            \"line_start\": 38,\n            \"line_end\": 44,\n            \"evidence\": \"Changing customer info requires edits across 5 separate update methods.\"\n        },\n        {\n            \"smell_type\": \"Divergent Change\",\n            \"category\": \"Change Preventers\",\n            \"method\": \"notify_for_promotion\",\n            \"line_start\": 63,\n            \"line_end\": 65,\n            \"evidence\": \"Class changes for notification reasons unrelated to pizza core logic.\"\n        },\n        {\n            \"smell_type\": \"Switch Statements\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"handle_complaint\",\n            \"line_start\": 83,\n            \"line_end\": 92,\n            \"evidence\": \"Long if-elif chain on complaint type strings (cold pizza, late delivery, wrong order).\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"another_unused_method\",\n            \"line_start\": 97,\n            \"line_end\": 98,\n            \"evidence\": \"Method 'another_unused_method' is never called.\"\n        },\n        {\n            \"smell_type\": \"Dead Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"yet_another_unused_method\",\n            \"line_start\": 100,\n            \"line_end\": 101,\n            \"evidence\": \"Method 'yet_another_unused_method' is never called.\"\n        },\n        {\n            \"smell_type\": \"Long Method\",\n            \"category\": \"Bloaters\",\n            \"method\": \"long_method\",\n            \"line_start\": 103,\n            \"line_end\": 116,\n            \"evidence\": \"14-LOC body performing 8+ unrelated tasks (setters, notifications, complaints).\"\n        },\n        {\n            \"smell_type\": \"Long Parameter List\",\n            \"category\": \"Bloaters\",\n            \"method\": \"order_with_unnecessary_details\",\n            \"line_start\": 117,\n            \"line_end\": 124,\n            \"evidence\": \"Method has 6 parameters (pizza_type, size, crust_type, toppings, extra_cheese, discount_code).\"\n        },\n        {\n            \"smell_type\": \"Duplicate Code\",\n            \"category\": \"Dispensables\",\n            \"method\": \"duplicate_method\",\n            \"line_start\": 125,\n            \"line_end\": 130,\n            \"evidence\": \"Line 129 duplicates 'self.set_topping(\\\"Cheese\\\")' from line 128.\"\n        },\n        {\n            \"smell_type\": \"Middle Man\",\n            \"category\": \"Couplers\",\n            \"method\": \"middleman_method\",\n            \"line_start\": 136,\n            \"line_end\": 140,\n            \"evidence\": \"Method only delegates to 'middle_method' without adding value.\"\n        },\n        {\n            \"smell_type\": \"Refused Bequest\",\n            \"category\": \"Object-Orientation Abusers\",\n            \"method\": \"refused_bequest\",\n            \"line_start\": 152,\n            \"line_end\": 154,\n            \"evidence\": \"Empty method 'refused_bequest' intended for inheritance but unused.\"\n        }\n    ]\n}\n```"
+  },
+  {
+    "sample_id": "python_Shop_py",
+    "language": "python",
+    "file_path": "Python/SmellyAnnotated/Shop.py",
+    "parsed": {
+      "language": "python",
+      "file_path": "Python/SmellyAnnotated/Shop.py",
+      "class_name": "Shop",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 20,
+          "line_end": 20,
+          "evidence": "Boolean field 'frequent_customer_discount' used instead of a proper Discount class."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "__init__",
+          "line_start": 23,
+          "line_end": 27,
+          "evidence": "Fields 'first_name', 'last_name', 'address', 'phone_number', 'email' appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Object-Orientation Abusers",
+          "method": "__init__",
+          "line_start": 30,
+          "line_end": 31,
+          "evidence": "Fields 'temp_discount_code' and 'temp_order_note' are only used in some states."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "create_pizza",
+          "line_start": 34,
+          "line_end": 43,
+          "evidence": "Long if-elif chain on string 'pizza_type' to create pizza objects."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_contact_info",
+          "line_start": 50,
+          "line_end": 56,
+          "evidence": "Changing contact info requires updating multiple separate methods."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_name",
+          "line_start": 58,
+          "line_end": 61,
+          "evidence": "Separate method 'update_name' duplicates contact info updates."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_address",
+          "line_start": 63,
+          "line_end": 65,
+          "evidence": "Separate method 'update_address' duplicates contact info updates."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_phone_number",
+          "line_start": 67,
+          "line_end": 69,
+          "evidence": "Separate method 'update_phone_number' duplicates contact info updates."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "update_email",
+          "line_start": 71,
+          "line_end": 73,
+          "evidence": "Separate method 'update_email' duplicates contact info updates."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_promotion",
+          "line_start": 75,
+          "line_end": 77,
+          "evidence": "Class changes for notification reasons; separate notification methods exist."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_discount",
+          "line_start": 79,
+          "line_end": 81,
+          "evidence": "Class changes for notification reasons; separate notification methods exist."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notify_for_new_arrivals",
+          "line_start": 83,
+          "line_end": 85,
+          "evidence": "Class changes for notification reasons; separate notification methods exist."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_discount",
+          "line_start": 87,
+          "line_end": 89,
+          "evidence": "Method 'apply_discount' suggests parallel hierarchy with loyalty points."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "apply_loyalty_points",
+          "line_start": 91,
+          "line_end": 93,
+          "evidence": "Method 'apply_loyalty_points' suggests parallel hierarchy with discounts."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handle_complaint",
+          "line_start": 97,
+          "line_end": 104,
+          "evidence": "If-elif chain on string 'complaint' with identical handling for all cases."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "ask_for_receipt",
+          "line_start": 106,
+          "line_end": 107,
+          "evidence": "Method 'ask_for_receipt' appears unused and overly specific."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "another_unused_method",
+          "line_start": 109,
+          "line_end": 110,
+          "evidence": "Method 'another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yet_another_unused_method",
+          "line_start": 112,
+          "line_end": 113,
+          "evidence": "Method 'yet_another_unused_method' is never called."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chain_of_methods",
+          "line_start": 118,
+          "line_end": 118,
+          "evidence": "Chain 'self.casher.chef.clean_kitchen()' digs through multiple objects."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleman_method",
+          "line_start": 120,
+          "line_end": 123,
+          "evidence": "Method 'middleman_method' only delegates to 'middle_method'."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middle_method",
+          "line_start": 125,
+          "line_end": 127,
+          "evidence": "Method 'middle_method' only delegates to 'real_method'."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "access_internal_details",
+          "line_start": 134,
+          "line_end": 134,
+          "evidence": "Accesses internal attribute 'self.casher.chef.busy' of another class."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "long_method",
+          "line_start": 136,
+          "line_end": 154,
+          "evidence": "Method body spans 19 lines and calls 13 other methods for unrelated tasks."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "update_contact_info",
+          "line_start": 50,
+          "line_end": 56,
+          "evidence": "Method has 5 parameters: first_name, last_name, address, phone_number, email."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "order_with_unnecessary_details",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Data Clumps"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Primitive Obsession"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "__init__",
+        "Temporary Field"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "access_internal_details",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "another_unused_method",
+        "Dead Code"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "apply_discount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "apply_loyalty_points",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "ask_for_receipt",
+        "Speculative Generality"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "chain_of_methods",
+        "Message Chains"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "create_pizza",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "handle_complaint",
+        "Switch Statements"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "long_method",
+        "Long Method"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "middle_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "middleman_method",
+        "Middle Man"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_discount",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_new_arrivals",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "notify_for_promotion",
+        "Divergent Change"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_address",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_contact_info",
+        "Long Parameter List"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_contact_info",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_email",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_name",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "update_phone_number",
+        "Shotgun Surgery"
+      ],
+      [
+        "Python/SmellyAnnotated/Shop.py",
+        "Shop",
+        "yet_another_unused_method",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 24,
+    "input_tokens": 4044,
+    "output_tokens": 1724,
+    "total_tokens": 5768,
+    "raw": "```json\n{\n  \"language\": \"python\",\n  \"file_path\": \"Python/SmellyAnnotated/Shop.py\",\n  \"class_name\": \"Shop\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"__init__\",\n      \"line_start\": 20,\n      \"line_end\": 20,\n      \"evidence\": \"Boolean field 'frequent_customer_discount' used instead of a proper Discount class.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"__init__\",\n      \"line_start\": 23,\n      \"line_end\": 27,\n      \"evidence\": \"Fields 'first_name', 'last_name', 'address', 'phone_number', 'email' appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"__init__\",\n      \"line_start\": 30,\n      \"line_end\": 31,\n      \"evidence\": \"Fields 'temp_discount_code' and 'temp_order_note' are only used in some states.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"create_pizza\",\n      \"line_start\": 34,\n      \"line_end\": 43,\n      \"evidence\": \"Long if-elif chain on string 'pizza_type' to create pizza objects.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"update_contact_info\",\n      \"line_start\": 50,\n      \"line_end\": 56,\n      \"evidence\": \"Changing contact info requires updating multiple separate methods.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"update_name\",\n      \"line_start\": 58,\n      \"line_end\": 61,\n      \"evidence\": \"Separate method 'update_name' duplicates contact info updates.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"update_address\",\n      \"line_start\": 63,\n      \"line_end\": 65,\n      \"evidence\": \"Separate method 'update_address' duplicates contact info updates.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"update_phone_number\",\n      \"line_start\": 67,\n      \"line_end\": 69,\n      \"evidence\": \"Separate method 'update_phone_number' duplicates contact info updates.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"update_email\",\n      \"line_start\": 71,\n      \"line_end\": 73,\n      \"evidence\": \"Separate method 'update_email' duplicates contact info updates.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notify_for_promotion\",\n      \"line_start\": 75,\n      \"line_end\": 77,\n      \"evidence\": \"Class changes for notification reasons; separate notification methods exist.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notify_for_discount\",\n      \"line_start\": 79,\n      \"line_end\": 81,\n      \"evidence\": \"Class changes for notification reasons; separate notification methods exist.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notify_for_new_arrivals\",\n      \"line_start\": 83,\n      \"line_end\": 85,\n      \"evidence\": \"Class changes for notification reasons; separate notification methods exist.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"apply_discount\",\n      \"line_start\": 87,\n      \"line_end\": 89,\n      \"evidence\": \"Method 'apply_discount' suggests parallel hierarchy with loyalty points.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"apply_loyalty_points\",\n      \"line_start\": 91,\n      \"line_end\": 93,\n      \"evidence\": \"Method 'apply_loyalty_points' suggests parallel hierarchy with discounts.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handle_complaint\",\n      \"line_start\": 97,\n      \"line_end\": 104,\n      \"evidence\": \"If-elif chain on string 'complaint' with identical handling for all cases.\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"ask_for_receipt\",\n      \"line_start\": 106,\n      \"line_end\": 107,\n      \"evidence\": \"Method 'ask_for_receipt' appears unused and overly specific.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"another_unused_method\",\n      \"line_start\": 109,\n      \"line_end\": 110,\n      \"evidence\": \"Method 'another_unused_method' is never called.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yet_another_unused_method\",\n      \"line_start\": 112,\n      \"line_end\": 113,\n      \"evidence\": \"Method 'yet_another_unused_method' is never called.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chain_of_methods\",\n      \"line_start\": 118,\n      \"line_end\": 118,\n      \"evidence\": \"Chain 'self.casher.chef.clean_kitchen()' digs through multiple objects.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleman_method\",\n      \"line_start\": 120,\n      \"line_end\": 123,\n      \"evidence\": \"Method 'middleman_method' only delegates to 'middle_method'.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middle_method\",\n      \"line_start\": 125,\n      \"line_end\": 127,\n      \"evidence\": \"Method 'middle_method' only delegates to 'real_method'.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"access_internal_details\",\n      \"line_start\": 134,\n      \"line_end\": 134,\n      \"evidence\": \"Accesses internal attribute 'self.casher.chef.busy' of another class.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"long_method\",\n      \"line_start\": 136,\n      \"line_end\": 154,\n      \"evidence\": \"Method body spans 19 lines and calls 13 other methods for unrelated tasks.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"update_contact_info\",\n      \"line_start\": 50,\n      \"line_end\": 56,\n      \"evidence\": \"Method has 5 parameters: first_name, last_name, address, phone_number, email.\"\n    }\n  ]\n}\n```"
+  }
+]

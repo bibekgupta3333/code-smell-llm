@@ -1,0 +1,1672 @@
+[
+  {
+    "sample_id": "javascript_Cashier_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Cashier.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Cashier.js",
+      "class_name": "Cashier",
+      "findings": [
+        {
+          "smell_type": "Large Class",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 12,
+          "line_end": 26,
+          "evidence": "7 fields and 25 methods, mixing ordering, customer interaction, and notification responsibilities."
+        },
+        {
+          "smell_type": "Control Coupling",
+          "category": "Couplers",
+          "method": "constructor",
+          "line_start": 13,
+          "line_end": 13,
+          "evidence": "depends on chef's state via this.chef = chef;"
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 14,
+          "line_end": 14,
+          "evidence": "uses boolean frequentCustomerDiscount to represent a state."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 16,
+          "line_end": 21,
+          "evidence": "group of 5 contact fields (firstName, lastName, address, phoneNumber, email) repeated in constructor."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "constructor",
+          "line_start": 24,
+          "line_end": 25,
+          "evidence": "tempDiscountCode and tempOrderNote used only temporarily."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Object-Orientation Abusers",
+          "method": "takeOrder",
+          "line_start": 30,
+          "line_end": 30,
+          "evidence": "calls chef.bakePizza(pizzaType) instead of handling pizza ordering internally."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Object-Orientation Abusers",
+          "method": "calmCustomerDown",
+          "line_start": 40,
+          "line_end": 40,
+          "evidence": "calls chef.cleanKitchen() which is an internal method of Chef."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 48,
+          "line_end": 48,
+          "evidence": "method askForReceipt is never called and exists for an imagined use."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 51,
+          "line_end": 53,
+          "evidence": "method is never invoked."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 55,
+          "line_end": 57,
+          "evidence": "method is never called."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 59,
+          "line_end": 67,
+          "evidence": "performs 5 different tasks (taking order, hurrying chef, calming customer, delivering pizza, asking for receipt)."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 70,
+          "line_end": 75,
+          "evidence": "6 parameters including pizzaType, size, crustType, toppings, extraCheese, discountCode."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 78,
+          "line_end": 82,
+          "evidence": "calls takeOrder(\"Cheese\") twice with same parameters."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 93,
+          "line_end": 93,
+          "evidence": "delegates to middleMethod without adding behavior."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 98,
+          "line_end": 98,
+          "evidence": "delegates to realMethod without adding behavior."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Object-Orientation Abusers",
+          "method": "accessInternalDetails",
+          "line_start": 107,
+          "line_end": 107,
+          "evidence": "accesses chef.busy which is an internal detail of Chef."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 110,
+          "line_end": 117,
+          "evidence": "updates all contact fields in one method."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateName",
+          "line_start": 119,
+          "line_end": 123,
+          "evidence": "updates firstName and lastName, part of contact info changes."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateAddress",
+          "line_start": 125,
+          "line_end": 128,
+          "evidence": "updates address, part of contact info changes."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updatePhoneNumber",
+          "line_start": 130,
+          "line_end": 133,
+          "evidence": "updates phoneNumber, part of contact info changes."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateEmail",
+          "line_start": 135,
+          "line_end": 138,
+          "evidence": "updates email, part of contact info changes."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "applyDiscount",
+          "line_start": 157,
+          "line_end": 158,
+          "evidence": "applies discount code, similar to applyLoyaltyPoints."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "applyLoyaltyPoints",
+          "line_start": 163,
+          "line_end": 163,
+          "evidence": "applies loyalty points, similar to applyDiscount."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 167,
+          "line_end": 175,
+          "evidence": "uses if-else chain to handle different complaint types."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 179,
+          "line_end": 180,
+          "evidence": "method is empty and should be inherited but does nothing."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "calmCustomerDown",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "takeOrder",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "Entire Class",
+        "Large Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "calmCustomerDown",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "takeOrder",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Cashier.js",
+        "Cashier",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 25,
+    "input_tokens": 5642,
+    "output_tokens": 6251,
+    "total_tokens": 11893,
+    "raw": "Okay, let's tackle this problem step by step. I need to apply the decision procedure provided to the given JavaScript code and generate a JSON output with the findings. The key is to follow the 23 smells from Fowler's taxonomy exactly, ensuring each smell type is a leaf name and not a category. Also, I must deduplicate findings so that each (method, smell_type) pair appears only once.\n\nFirst, I'll go through each method in the Cashier class and check against the decision procedure's checks. Let's start with the class-level smells.\n\nLooking at the Cashier class, it has several fields. The constructor initializes firstName, lastName, address, phoneNumber, email, tempDiscountCode, and tempOrderNote. The class has 7 fields. The Large Class smell is triggered if the class has >10 fields, >15 methods, or >200 LOC. Since 7 fields is under 10, that's not a trigger. The number of methods: let's count. The Cashier class has methods like takeOrder, hurryUpChef, calmCustomerDown, deliverPizzaToCustomer, askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod, longMethod, orderWithUnnecessaryDetails, duplicateMethod, chainOfMethods, middlemanMethod, middleMethod, realMethod, accessInternalDetails, updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints, handleComplaint, refusedBequest. That's 25 methods. Wait, but some of these might be considered. The Large Class threshold is >15 methods. 25 is over 15, so that's a trigger. Also, the class might mix responsibilities. The Cashier seems to handle ordering, customer interaction, notifications, etc. So Large Class applies here. So that's one finding: Smell Type \"Large Class\", category \"Bloaters\", method \"Entire Class\".\n\nNext, check for Lazy Class. The class has 25 methods, so not lazy. Data Class: the class has methods beyond just getters/setters. So no. Alternative Classes with Different Interfaces: not sure, but maybe not. Let's move to per-method checks.\n\nLooking at the constructor: line 12-26. The constructor has a comment about Control Coupling. The line 13: this.chef = chef; is a Control Coupling because the Cashier depends on the chef's state. So Control Coupling is a finding here. Smell Type \"Control Coupling\", category \"Couplers\", method \"constructor\".\n\nThen, in the constructor, there's a comment about Primitive Obsession: this.frequentCustomerDiscount = false;. That's a boolean used to represent a state that could be an enum or a class. So Primitive Obsession. Smell Type \"Primitive Obsession\", category \"Bloaters\", method \"constructor\".\n\nData Clumps: lines 16-21, the fields firstName, lastName, address, phoneNumber, email are grouped together. That's a Data Clump. Smell Type \"Data Clumps\", category \"Bloaters\", method \"constructor\".\n\nTemporary Fields: lines 23-25, tempDiscountCode and tempOrderNote. These are fields that are only used temporarily. So Temporary Field. Smell Type \"Temporary Field\", category \"Dispensables\", method \"constructor\".\n\nNow, looking at takeOrder (lines 28-31). The method calls this.chef.bakePizza(pizzaType). The comment says Feature Envy. The Cashier is using the chef's method, which might indicate that the Cashier should not be responsible for this. So Feature Envy. Smell Type \"Feature Envy\", category \"Object-Orientation Abusers\", method \"takeOrder\".\n\nhurryUpChef (lines 33-36): calls this.chef.hurryUp(). The comment doesn't mention a smell, but according to the code, maybe no smell here. But need to check. The method is straightforward, no obvious issues.\n\ncalmCustomerDown (lines 38-41): calls this.chef.cleanKitchen(). The comment says Inappropriate Intimacy. The Cashier is accessing the chef's internal method, which is a private detail. So Inappropriate Intimacy. Smell Type \"Inappropriate Intimacy\", category \"Object-Orientation Abusers\", method \"calmCustomerDown\".\n\ndeliverPizzaToCustomer (lines 43-45): no obvious smell. The method is simple.\n\naskForReceipt (lines 47-49): the comment says Speculative Generality. The method is never called, so it's dead code. But the comment indicates it's speculative. So Speculative Generality. Smell Type \"Speculative Generality\", category \"Dispensables\", method \"askForReceipt\".\n\nanotherUnusedMethod (lines 51-53): Dead Code. The method is never called. Smell Type \"Dead Code\", category \"Dispensables\", method \"anotherUnusedMethod\".\n\nyetAnotherUnusedMethod (lines 55-57): same as above. Dead Code. Smell Type \"Dead Code\", category \"Dispensables\", method \"yetAnotherUnusedMethod\".\n\nlongMethod (lines 59-67): the comment says Long Method. The method does multiple tasks: takeOrder, hurryUpChef, calmCustomerDown, deliverPizza, askForReceipt. That's multiple conceptual tasks. So Long Method. Smell Type \"Long Method\", category \"Bloaters\", method \"longMethod\".\n\norderWithUnnecessaryDetails (lines 69-75): the comment says Long Parameter List. The method has 6 parameters. So Long Parameter List. Smell Type \"Long Parameter List\", category \"Bloaters\", method \"orderWithUnnecessaryDetails\".\n\nduplicateMethod (lines 77-82): the comment says Duplicate Code. The method calls takeOrder twice with the same parameter. So Duplicate Code. Smell Type \"Duplicate Code\", category \"Dispensables\", method \"duplicateMethod\".\n\nchainOfMethods (lines 84-88): the comment says Message Chain. The method calls this.chef.cleanKitchen(), which is a single method call. Wait, the message chain is when there are multiple hops. Here, it's just one call. So maybe not a message chain. The comment might be incorrect. But according to the code, the method is just calling one method. So maybe no finding here. But the comment says Message Chain, but the code doesn't show a chain. So perhaps this is a false positive. But according to the decision procedure, we should only emit if the trigger is met. Since the code doesn't have a chain of three or more hops, this might not be a valid finding. So skip.\n\nmiddlemanMethod (lines 90-94): calls this.middleMethod(). The comment says Middle Man. The method's body is a single delegating call. So Middle Man. Smell Type \"Middle Man\", category \"Couplers\", method \"middlemanMethod\".\n\nmiddleMethod (lines 96-99): calls this.realMethod(). Again, a single delegation. So Middle Man. Smell Type \"Middle Man\", category \"Couplers\", method \"middleMethod\".\n\nrealMethod (lines 101-103): no smell here.\n\naccessInternalDetails (lines 105-108): the comment says Inappropriate Intimacy. The method accesses this.chef.busy, which is an internal detail of the chef. So Inappropriate Intimacy. Smell Type \"Inappropriate Intimacy\", category \"Object-Orientation Abusers\", method \"accessInternalDetails\".\n\nupdateContactInfo (lines 110-117): the comment says Shotgun Surgery. The method updates all contact fields in one place. So Shotgun Surgery. Smell Type \"Shotgun Surgery\", category \"Change Preventers\", method \"updateContactInfo\".\n\nupdateName (lines 119-123): updates first and last name. This is part of the shotgun surgery. But since updateContactInfo already covers this, maybe this is a duplicate. But according to the decision procedure, we need to check each method. The updateName method is a separate method that does part of the contact info. However, the presence of multiple methods for each field (updateName, updateAddress, etc.) is Shotgun Surgery. So each of these methods (updateName, updateAddress, etc.) would trigger Shotgun Surgery. But the comment in updateContactInfo says Shotgun Surgery. So the main finding is in updateContactInfo. However, the other methods (updateName, etc.) might also be considered. But according to the decision procedure, we need to check each method. For example, updateName is a separate method that does part of the contact info. So Shotgun Surgery applies here as well. But the decision procedure says to emit per method. So updateContactInfo, updateName, updateAddress, etc., all would have Shotgun Surgery. However, the user might have intended that the presence of multiple methods for the same purpose is Shotgun Surgery. So each of these methods (updateContactInfo, updateName, updateAddress, etc.) would be flagged. But in the code, updateContactInfo is a method that does all fields, and the others are separate. So Shotgun Surgery applies to all of them. However, the decision procedure says to emit per method. So each of these methods would have a finding. But in the code, the comments for updateName, updateAddress, etc., don't mention Shotgun Surgery. But according to the decision procedure, we need to check if the method is part of a shotgun surgery. Since updateContactInfo exists, and there are separate methods for each field, that's Shotgun Surgery. So each of these methods (updateContactInfo, updateName, updateAddress, etc.) would be flagged. However, the user might have intended that the existence of multiple methods for the same purpose is the issue. So each of these methods would be a finding. But in the code, the comments for updateName, etc., don't mention Shotgun Surgery. But according to the decision procedure, we need to check if the method is part of a shotgun surgery. So for example, updateName is a separate method that does part of the contact info, which is part of the shotgun surgery. So each of these methods would be flagged. However, the decision procedure's check for Shotgun Surgery is: \"one logical change requires edits to \u2265 3 different methods\". So if changing contact info requires editing updateContactInfo, updateName, updateAddress, etc., then each of these methods would be part of the shotgun surgery. Therefore, each of these methods would have a finding. But in the code, the comments for updateName, etc., don't mention Shotgun Surgery. However, the decision procedure requires us to check based on the code, not the comments. So even if the comment isn't there, if the method is part of a shotgun surgery, it should be flagged. Therefore, updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail would all have Shotgun Surgery. But in the code, the comments for updateName, etc., don't mention it. However, the decision procedure says to use the code, not the comments. So we need to check if the method is part of a shotgun surgery. Since updateContactInfo exists, and there are separate methods for each field, that's a shotgun surgery. Therefore, each of these methods would be flagged. However, the user might have intended that only updateContactInfo is flagged. But according to the decision procedure, we need to check each method. So for example, updateName is a separate method that does part of the contact info. So changing contact info would require editing updateName, updateAddress, etc. Therefore, each of these methods would be flagged. But in the code, the comments for these methods don't mention Shotgun Surgery. However, the decision procedure says to use the code, not the comments. So we need to check if the method is part of a shotgun surgery. Therefore, all these methods would be flagged. However, this might lead to multiple findings. But the user's code has comments for updateContactInfo saying Shotgun Surgery, but not for the others. But according to the decision procedure, we should not rely on comments. So we need to check if the method is part of a shotgun surgery. Therefore, all these methods would be flagged. However, this might be too many. But let's proceed.\n\nnotifyForPromotion (lines 140-143): no obvious smell. The method is specific to promotion.\n\nnotifyForDiscount (lines 145-148): same.\n\nnotifyForNewArrivals (lines 150-153): same.\n\napplyDiscount (lines 155-158): the comment says Parallel Inheritance Hierarchies. The method applies a discount code. But why is that a parallel hierarchy? Maybe because there's another method applyLoyaltyPoints, which is similar. So if there are multiple methods for similar purposes, that's Parallel Inheritance Hierarchies. So applyDiscount and applyLoyaltyPoints are two methods that do similar things (applying different types of points/discounts). So Parallel Inheritance Hierarchies. Smell Type \"Parallel Inheritance Hierarchies\", category \"Object-Orientation Abusers\", method \"applyDiscount\" and \"applyLoyaltyPoints\".\n\nhandleComplaint (lines 166-176): the comment says Switch Statements. The method uses an if-else chain to handle different complaints. So Switch Statements. Smell Type \"Switch Statements\", category \"Object-Orientation Abusers\", method \"handleComplaint\".\n\nrefusedBequest (lines 178-180): the method is empty. The comment says Refused Bequest. So Refused Bequest. Smell Type \"Refused Bequest\", category \"Object-Orientation Abusers\", method \"refusedBequest\".\n\nNow, let's check for duplicates. For example, Inappropriate Intimacy is found in calmCustomerDown and accessInternalDetails. So two findings for that smell type. But they are different methods, so they are separate. Similarly, Dead Code is found in anotherUnusedMethod and yetAnotherUnusedMethod. So two findings for Dead Code. But each is a different method, so they are separate.\n\nNow, compiling all the findings:\n\n1. Large Class (Entire Class)\n2. Control Coupling (constructor)\n3. Primitive Obsession (constructor)\n4. Data Clumps (constructor)\n5. Temporary Field (constructor)\n6. Feature Envy (takeOrder)\n7. Inappropriate Intimacy (calmCustomerDown)\n8. Speculative Generality (askForReceipt)\n9. Dead Code (anotherUnusedMethod)\n10. Dead Code (yetAnotherUnusedMethod)\n11. Long Method (longMethod)\n12. Long Parameter List (orderWithUnnecessaryDetails)\n13. Duplicate Code (duplicateMethod)\n14. Middle Man (middlemanMethod)\n15. Middle Man (middleMethod)\n16. Inappropriate Intimacy (accessInternalDetails)\n17. Shotgun Surgery (updateContactInfo)\n18. Shotgun Surgery (updateName)\n19. Shotgun Surgery (updateAddress)\n20. Shotgun Surgery (updatePhoneNumber)\n21. Shotgun Surgery (updateEmail)\n22. Parallel Inheritance Hierarchies (applyDiscount)\n23. Parallel Inheritance Hierarchies (applyLoyaltyPoints)\n24. Switch Statements (handleComplaint)\n25. Refused Bequest (refusedBequest)\n\nWait, but some of these might be duplicates. For example, Inappropriate Intimacy appears in calmCustomerDown and accessInternalDetails. So two separate findings. Similarly, Dead Code in two methods. Shotgun Surgery in five methods. Parallel Inheritance Hierarchies in two methods. So all are separate.\n\nBut need to check if any (method, smell_type) pairs are duplicated. For example, if two methods have the same smell type and method name, but in this case, all methods are unique. So no duplicates.\n\nNow, check if all smell types are leaf names. For example, \"Parallel Inheritance Hierarchies\" is a leaf. \"Shotgun Surgery\" is a leaf. \"Inappropriate Intimacy\" is a leaf. All seem correct.\n\nNow, the JSON should have these findings. Also, ensure that the lines are 1-indexed and inclusive. For example, the constructor's lines are 12-26. The evidence sentences should cite specific code.\n\nNow, let's structure each finding with the correct lines and evidence.\n\nFor example:\n\n- Large Class: method \"Entire Class\", lines 12-26 (the entire class), evidence: \"7 fields and 25 methods, mixing ordering, customer interaction, and notification responsibilities.\"\n\nBut according to the decision procedure, the evidence must be a short sentence citing specific code. So for Large Class, the evidence could be \"7 fields and 25 methods, mixing ordering, customer interaction, and notification responsibilities.\"\n\nSimilarly, for Control Coupling: line 13, evidence: \"depends on chef's state via this.chef = chef;\".\n\nPrimitive Obsession: line 14, evidence: \"uses boolean frequentCustomerDiscount to represent a state.\"\n\nData Clumps: lines 16-21, evidence: \"group of 5 contact fields (firstName, lastName, address, phoneNumber, email) repeated in constructor.\"\n\nTemporary Field: lines 23-25, evidence: \"tempDiscountCode and tempOrderNote used only temporarily.\"\n\nFeature Envy: line 30, evidence: \"calls chef.bakePizza(pizzaType) instead of handling pizza ordering internally.\"\n\nInappropriate Intimacy (calmCustomerDown): line 40, evidence: \"calls chef.cleanKitchen() which is an internal method of Chef.\"\n\nSpeculative Generality: line 48, evidence: \"method askForReceipt is never called and exists for an imagined use.\"\n\nDead Code (anotherUnusedMethod): line 51, evidence: \"method is never invoked.\"\n\nDead Code (yetAnotherUnusedMethod): line 55, evidence: \"method is never called.\"\n\nLong Method: lines 59-67, evidence: \"performs 5 different tasks (taking order, hurrying chef, calming customer, delivering pizza, asking for receipt).\"\n\nLong Parameter List: lines 69-75, evidence: \"6 parameters including pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n\nDuplicate Code: lines 77-82, evidence: \"calls takeOrder(\"Cheese\") twice with same parameters.\"\n\nMiddle Man (middlemanMethod): line 93, evidence: \"delegates to middleMethod without adding behavior.\"\n\nMiddle Man (middleMethod): line 98, evidence: \"delegates to realMethod without adding behavior.\"\n\nInappropriate Intimacy (accessInternalDetails): line 107, evidence: \"accesses chef.busy which is an internal detail of Chef.\"\n\nShotgun Surgery (updateContactInfo): lines 110-117, evidence: \"updates all contact fields in one method.\"\n\nShotgun Surgery (updateName): lines 119-123, evidence: \"updates firstName and lastName, part of contact info changes.\"\n\nShotgun Surgery (updateAddress): lines 125-128, evidence: \"updates address, part of contact info changes.\"\n\nShotgun Surgery (updatePhoneNumber): lines 130-133, evidence: \"updates phoneNumber, part of contact info changes.\"\n\nShotgun Surgery (updateEmail): lines 135-138, evidence: \"updates email, part of contact info changes.\"\n\nParallel Inheritance Hierarchies (applyDiscount): line 157, evidence: \"applies discount code, similar to applyLoyaltyPoints.\"\n\nParallel Inheritance Hierarchies (applyLoyaltyPoints): line 163, evidence: \"applies loyalty points, similar to applyDiscount.\"\n\nSwitch Statements: lines 167-175, evidence: \"uses if-else chain to handle different complaint types.\"\n\nRefused Bequest: line 179, evidence: \"method is empty and should be inherited but does nothing.\"\n\nNow, compiling all these into the JSON structure, ensuring no duplicates and correct smell types.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Cashier.js\",\n  \"class_name\": \"Cashier\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Large Class\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 12,\n      \"line_end\": 26,\n      \"evidence\": \"7 fields and 25 methods, mixing ordering, customer interaction, and notification responsibilities.\"\n    },\n    {\n      \"smell_type\": \"Control Coupling\",\n      \"category\": \"Couplers\",\n      \"method\": \"constructor\",\n      \"line_start\": 13,\n      \"line_end\": 13,\n      \"evidence\": \"depends on chef's state via this.chef = chef;\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 14,\n      \"line_end\": 14,\n      \"evidence\": \"uses boolean frequentCustomerDiscount to represent a state.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 16,\n      \"line_end\": 21,\n      \"evidence\": \"group of 5 contact fields (firstName, lastName, address, phoneNumber, email) repeated in constructor.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"constructor\",\n      \"line_start\": 24,\n      \"line_end\": 25,\n      \"evidence\": \"tempDiscountCode and tempOrderNote used only temporarily.\"\n    },\n    {\n      \"smell_type\": \"Feature Envy\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"takeOrder\",\n      \"line_start\": 30,\n      \"line_end\": 30,\n      \"evidence\": \"calls chef.bakePizza(pizzaType) instead of handling pizza ordering internally.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"calmCustomerDown\",\n      \"line_start\": 40,\n      \"line_end\": 40,\n      \"evidence\": \"calls chef.cleanKitchen() which is an internal method of Chef.\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 48,\n      \"line_end\": 48,\n      \"evidence\": \"method askForReceipt is never called and exists for an imagined use.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 51,\n      \"line_end\": 53,\n      \"evidence\": \"method is never invoked.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 55,\n      \"line_end\": 57,\n      \"evidence\": \"method is never called.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 59,\n      \"line_end\": 67,\n      \"evidence\": \"performs 5 different tasks (taking order, hurrying chef, calming customer, delivering pizza, asking for receipt).\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 70,\n      \"line_end\": 75,\n      \"evidence\": \"6 parameters including pizzaType, size, crustType, toppings, extraCheese, discountCode.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 78,\n      \"line_end\": 82,\n      \"evidence\": \"calls takeOrder(\\\"Cheese\\\") twice with same parameters.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 93,\n      \"line_end\": 93,\n      \"evidence\": \"delegates to middleMethod without adding behavior.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 98,\n      \"line_end\": 98,\n      \"evidence\": \"delegates to realMethod without adding behavior.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 107,\n      \"line_end\": 107,\n      \"evidence\": \"accesses chef.busy which is an internal detail of Chef.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 110,\n      \"line_end\": 117,\n      \"evidence\": \"updates all contact fields in one method.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateName\",\n      \"line_start\": 119,\n      \"line_end\": 123,\n      \"evidence\": \"updates firstName and lastName, part of contact info changes.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateAddress\",\n      \"line_start\": 125,\n      \"line_end\": 128,\n      \"evidence\": \"updates address, part of contact info changes.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updatePhoneNumber\",\n      \"line_start\": 130,\n      \"line_end\": 133,\n      \"evidence\": \"updates phoneNumber, part of contact info changes.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateEmail\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateEmail\",\n      \"line_start\": 135,\n      \"line_end\": 138,\n      \"evidence\": \"updates email, part of contact info changes.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyDiscount\",\n      \"line_start\": 157,\n      \"line_end\": 158,\n      \"evidence\": \"applies discount code, similar to applyLoyaltyPoints.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyLoyaltyPoints\",\n      \"line_start\": 163,\n      \"line_end\": 163,\n      \"evidence\": \"applies loyalty points, similar to applyDiscount.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 167,\n      \"line_end\": 175,\n      \"evidence\": \"uses if-else chain to handle different complaint types.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 179,\n      \"line_end\": 180,\n      \"evidence\": \"method is empty and should be inherited but does nothing.\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_Chef_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Chef.js",
+    "parsed": {
+      "smell_type": "Primitive Obsession",
+      "category": "Bloaters",
+      "method": "Entire Class",
+      "line_start": 19,
+      "line_end": 19,
+      "evidence": "boolean used to model discount for frequent customers"
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Chef.js",
+        "Chef",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 5867,
+    "output_tokens": 7722,
+    "total_tokens": 13589,
+    "raw": "Okay, let's tackle this problem. I need to apply the decision procedure to the given JavaScript code and output the JSON findings. Let me start by understanding the code and the taxonomy.\n\nFirst, the code is a Chef class in JavaScript. The task is to find code smells based on Fowler's 23 smells. The output must be a JSON object with specific fields. I need to go through each part of the code and check against the checklist.\n\nStarting with Pass 1: class/file scope checks.\n\n1. **Large Class**: The Chef class has 16 fields (this.pizza, this.busy, this.completedOrders, this.breaksTaken, this.kitchenClean, this.frequentCustomerDiscount, this.firstName, this.lastName, this.address, this.phoneNumber, this.email, this.tempDiscountCode, this.tempOrderNote). That's 13 fields. Wait, let me count again. From lines 12-17: 5 fields. Then lines 19-28: 5 more (frequentCustomerDiscount, firstName, lastName, address, phoneNumber, email). Then lines 30-32: 2 more (tempDiscountCode, tempOrderNote). Total 12 fields. Methods: constructor, bakePizza, cutPizzaAndPutInBox, deliverPizza, hurryUp, cleanKitchen, updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints, handleComplaint, askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod, longMethod, orderWithUnnecessaryDetails, duplicateMethod, chainOfMethods, middlemanMethod, middleMethod, realMethod, accessInternalDetails, refusedBequest. That's 26 methods. So 12 fields and 26 methods. The Large Class threshold is >10 fields or >15 methods. Since methods are 26, which is over 15, this should trigger Large Class. So emit with method \"Entire Class\".\n\n2. **Lazy Class**: The class has more than 2 substantive methods. Definitely not lazy. Skip.\n\n3. **Data Class**: The class has methods beyond getters/setters. So no.\n\n4. **Alternative Classes with Different Interfaces**: Not sure, but the file only has Chef class. Maybe not applicable here.\n\nPass 1: Large Class is triggered.\n\nPass 2: per-method checks.\n\nLooking at each method:\n\n- **bakePizza**: 3 lines of code. Not long. No parameters. No issues.\n\n- **cutPizzaAndPutInBox**: 3 lines. No issues.\n\n- **deliverPizza**: 2 lines. No.\n\n- **hurryUp**: 2 lines. No.\n\n- **cleanKitchen**: 3 lines. No.\n\n- **updateContactInfo**: 6 lines. Parameters: 5. So Long Parameter List (5 parameters). Also, this method is part of Shotgun Surgery because it's called in multiple places. Wait, the method itself is called in orderWithUnnecessaryDetails. But the method's parameters are 5, which is over 4. So Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places (updateContactInfo, orderWithUnnecessaryDetails). Wait, no. The method is called in orderWithUnnecessaryDetails, but the method itself is not duplicated. The Shotgun Surgery is when a change requires edits in multiple methods. But here, the method is called in one place. However, the method's name is updateContactInfo, and there are separate methods for each field (updateName, updateAddress, etc.), which is Shotgun Surgery. So the method updateContactInfo is part of Shotgun Surgery. So for this method, the smell is Shotgun Surgery. Also, the parameters are 5, which is Long Parameter List. So two smells here: Long Parameter List and Shotgun Surgery.\n\nWait, but according to the decision procedure, each method is checked for each smell. So for updateContactInfo, the parameters are 5, so Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method itself is part of Shotgun Surgery because it's a single method that does multiple things? The Shotgun Surgery is when a logical change requires edits in multiple methods. But in this case, the method updateContactInfo is a single method that does multiple things (updating all contact fields). So maybe it's a Long Method? Let me check. The method has 6 lines of code (lines 59-65). That's not very long. But the parameters are 5, which is Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method is a single method that does multiple things, which would be a Long Method? The method's body is 6 lines, which is not over 25 LOC. So maybe not Long Method. But the parameters are 5, so Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method is a single method that does multiple things, which is a different smell. The Shotgun Surgery is when a change requires edits in multiple methods. For example, if you need to change all the contact fields, you have to edit this method and the separate methods. But in this case, the method updateContactInfo is a single method that does all the updates. So maybe it's not Shotgun Surgery. However, the presence of separate methods (updateName, updateAddress, etc.) suggests that the code is using Shotgun Surgery because instead of having a single method, they have multiple methods. So the existence of these separate methods is Shotgun Surgery. But the method updateContactInfo itself is a single method that does multiple things. So maybe that's a Long Method? But the LOC is 6, which is not over 25. So perhaps not. So for updateContactInfo, the Long Parameter List is triggered (5 parameters). Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method is a single method that does multiple things, which is a different smell. The Shotgun Surgery is when a logical change requires edits in multiple methods. For example, if you need to change all the contact fields, you have to edit this method and the separate methods. But in this case, the method updateContactInfo is a single method that does all the updates. So maybe it's not Shotgun Surgery. However, the presence of separate methods (updateName, etc.) is Shotgun Surgery. So the method updateContactInfo is part of Shotgun Surgery because it's a single method that does multiple things, but the separate methods are also part of Shotgun Surgery. Wait, the Shotgun Surgery is when a logical change requires edits in multiple methods. For example, if you need to change the way contact info is updated, you have to edit updateContactInfo, updateName, updateAddress, etc. So the existence of these separate methods is Shotgun Surgery. So the method updateContactInfo is part of Shotgun Surgery because it's a single method that does multiple things, but the separate methods are also part of Shotgun Surgery. However, the decision procedure says to check for each method. So for the method updateContactInfo, the parameters are 5, so Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method is a single method that does multiple things, which is a different smell. The Shotgun Surgery is when a logical change requires edits in multiple methods. So if you need to change the way contact info is updated, you have to edit this method and the separate methods. Therefore, the method updateContactInfo is part of Shotgun Surgery. So for this method, both Long Parameter List and Shotgun Surgery would be emitted. But according to the rules, we need to check each method for each smell. So for updateContactInfo, the parameters are 5, so Long Parameter List. Also, the method is part of Shotgun Surgery because it's called in multiple places? Or is it that the method is a single method that does multiple things, which is a different smell. The Shotgun Surgery is when a logical change requires edits in multiple methods. So if you need to change the way contact info is updated, you have to edit this method and the separate methods. Therefore, the method updateContactInfo is part of Shotgun Surgery. So for this method, both Long Parameter List and Shotgun Surgery would be emitted. But I need to check if that's correct.\n\nNext, **updateName**: 2 parameters. Not long. But it's part of Shotgun Surgery because it's a separate method for updating name, which is part of the Shotgun Surgery pattern. So this method is part of Shotgun Surgery.\n\nSimilarly, updateAddress, updatePhoneNumber, updateEmail: each has 1 parameter. But they are separate methods, which is Shotgun Surgery.\n\n**notifyForPromotion, notifyForDiscount, notifyForNewArrivals**: each has no parameters. But they are separate methods, which is Shotgun Surgery. Also, these methods are part of Divergent Change because they are different methods for different notifications. So for each of these methods, Divergent Change is triggered. Because each method is for a different notification, and if you need to change the notification logic, you have to edit each method. So Divergent Change.\n\n**applyDiscount and applyLoyaltyPoints**: these are separate methods, which is Parallel Inheritance Hierarchies. Because they are similar methods but with different names. So each of these methods would trigger Parallel Inheritance Hierarchies.\n\n**handleComplaint**: this method uses a series of if-else statements to handle different complaints. The threshold is \u22653 arms. Here, there are 4 arms (cold pizza, late delivery, wrong order, else). So Switch Statements is triggered.\n\n**askForReceipt**: this method is never called. So Dead Code.\n\n**anotherUnusedMethod and yetAnotherUnusedMethod**: both are dead code.\n\n**longMethod**: this method has 14 lines of code (lines 139-153). That's 15 lines. The threshold is >25 LOC, so not triggered. But the method does multiple tasks: baking, cutting, delivering, hurrying, cleaning, updating contact info, notifying, applying discount, handling complaint. So it's a Long Method. Wait, the threshold is >25 LOC. 15 lines is under 25. So not triggered. But the method is doing multiple conceptual tasks. So maybe it's a Long Method. However, the LOC is 15, which is under 25. So according to the decision procedure, it's not triggered. But maybe the method is doing multiple tasks. The decision procedure says to check if the body covers \u22652 conceptual tasks. The method does baking, cutting, delivering, etc. So that's multiple tasks. So even though LOC is under 25, it's a Long Method. But according to the decision procedure, the trigger is LOC >25 or \u22652 conceptual tasks. So in this case, the method has \u22652 conceptual tasks, so it should be emitted. So Long Method.\n\n**orderWithUnnecessaryDetails**: this method has 6 parameters. So Long Parameter List. Also, it's called in some places, but the method itself is not duplicated. So Long Parameter List.\n\n**duplicateMethod**: this method calls bakePizza twice. The body is 3 lines. But it's a duplicate of bakePizza? Or is it a separate method. The method is called in some place? Not sure. But the method itself is a duplicate of bakePizza? Or is it a separate method. The method is called in some place? The code shows that duplicateMethod is called, but in the given code, I don't see where it's called. But the method itself is a duplicate of bakePizza? Or is it a separate method. The method's body is similar to bakePizza but with some differences. However, the method is called in some place? The code provided doesn't show where it's called. But the method is present. So if it's a duplicate of another method, then Duplicate Code. But in this case, duplicateMethod is a separate method that does similar things. So if it's a duplicate of another method, then Duplicate Code. But in this case, it's a separate method. So maybe not. However, the method is called in some place? The code provided doesn't show that. So maybe not. But the method is present. So perhaps not. But the method is called in some place? The code provided doesn't show that. So maybe not. So maybe not Duplicate Code.\n\n**chainOfMethods**: this method calls cleanKitchen, which is a single method. So no message chain. Wait, the method is chainOfMethods, which calls cleanKitchen. So it's a single method call. So no message chain. Unless the cleanKitchen method is called in a chain. But in this case, it's just one call. So no.\n\n**middlemanMethod**: this method calls middleMethod, which calls realMethod. So it's a chain of two methods. But the threshold is \u22653 hops. So not triggered.\n\n**accessInternalDetails**: this method accesses this.pizza, which is an internal detail of the Pizza class. So Inappropriate Intimacy.\n\n**refusedBequest**: this method is empty. So Refused Bequest.\n\n**dead code methods**: askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod. These are dead code.\n\n**longParameterList methods**: updateContactInfo (5 parameters), orderWithUnnecessaryDetails (6 parameters).\n\n**switch statements**: handleComplaint uses if-else with 4 arms. So Switch Statements.\n\n**feature envy**: not sure. For example, in handleComplaint, it's using this.pizza, which is part of the Chef class. So maybe not. Or in other methods. Not sure.\n\n**message chains**: chainOfMethods calls cleanKitchen, which is a single method. So no.\n\n**middle man**: middlemanMethod calls middleMethod, which calls realMethod. So middlemanMethod is a middle man.\n\n**temporary fields**: tempDiscountCode and tempOrderNote. These are fields that are only used in the constructor and not elsewhere. So Temporary Field.\n\n**data clumps**: firstName, lastName, address, phoneNumber, email. These are used together in updateContactInfo. So Data Clumps.\n\n**primitive obsession**: frequentCustomerDiscount is a boolean. Maybe that's a primitive obsession. Because it's a boolean instead of an enum or a class. So Primitive Obsession.\n\n**dead code**: askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod.\n\n**speculative generality**: askForReceipt is a method that's never called. So Speculative Generality.\n\n**control coupling**: not sure. For example, in handleComplaint, the if-else is based on the complaint string. So maybe Control Coupling.\n\n**duplicate code**: duplicateMethod calls bakePizza twice. But is that duplicate code? Or is it a separate method. If duplicateMethod is a separate method that does similar things, but not exactly the same. So maybe not.\n\nNow, compiling all these findings, making sure to deduplicate and use exact names.\n\nFor example:\n\n- Large Class (Entire Class)\n- Long Parameter List (updateContactInfo, orderWithUnnecessaryDetails)\n- Shotgun Surgery (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints)\n- Switch Statements (handleComplaint)\n- Dead Code (askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod)\n- Speculative Generality (askForReceipt)\n- Inappropriate Intimacy (accessInternalDetails)\n- Refused Bequest (refusedBequest)\n- Temporary Field (tempDiscountCode, tempOrderNote)\n- Data Clumps (updateContactInfo's fields)\n- Primitive Obsession (frequentCustomerDiscount)\n- Parallel Inheritance Hierarchies (applyDiscount, applyLoyaltyPoints)\n- Long Method (longMethod)\n- Message Chain (chainOfMethods? No, because it's only one call. Maybe not. Or maybe chainOfMethods is not a message chain. The method chainOfMethods calls cleanKitchen, which is a single method. So no message chain. Unless the cleanKitchen method is called in a chain. But in this case, it's just one call. So no.)\n\nWait, the message chain is when you have a chain of method calls. For example, a.b().c().d(). In this code, chainOfMethods calls cleanKitchen, which is a single method. So no message chain. So no.\n\nMiddle man: middlemanMethod calls middleMethod, which calls realMethod. So middlemanMethod is a middle man.\n\nSo for middlemanMethod, the smell is Middle Man.\n\nAlso, the method updateContactInfo is part of Shotgun Surgery because it's a single method that does multiple things, and there are separate methods for each field. So Shotgun Surgery.\n\nNow, compiling all these into the JSON, making sure each smell is a leaf name, and no duplicates.\n\nFor example:\n\n- Large Class (Entire Class)\n- Long Parameter List (updateContactInfo, orderWithUnnecessaryDetails)\n- Shotgun Surgery (updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints)\n- Switch Statements (handleComplaint)\n- Dead Code (askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod)\n- Speculative Generality (askForReceipt)\n- Inappropriate Intimacy (accessInternalDetails)\n- Refused Bequest (refusedBequest)\n- Temporary Field (tempDiscountCode, tempOrderNote)\n- Data Clumps (updateContactInfo's fields)\n- Primitive Obsession (frequentCustomerDiscount)\n- Parallel Inheritance Hierarchies (applyDiscount, applyLoyaltyPoints)\n- Long Method (longMethod)\n- Middle Man (middlemanMethod)\n\nBut need to check if all these are correct.\n\nFor example, the Data Clumps: the fields firstName, lastName, address, phoneNumber, email are used together in updateContactInfo. So Data Clumps.\n\nPrimitive Obsession: frequentCustomerDiscount is a boolean. So that's a primitive obsession.\n\nParallel Inheritance Hierarchies: applyDiscount and applyLoyaltyPoints are separate methods that do similar things. So that's Parallel Inheritance Hierarchies.\n\nLong Method: longMethod has multiple tasks, even though LOC is under 25. So according to the decision procedure, if the body covers \u22652 conceptual tasks, it's a Long Method. So yes.\n\nMiddle Man: middlemanMethod calls middleMethod, which calls realMethod. So it's a middle man.\n\nNow, deduplicate: for example, updateContactInfo is in both Long Parameter List and Shotgun Surgery. So in the JSON, it should appear once for each smell. But according to the rules, we need to keep at most one finding per (method, smell_type) pair. So for updateContactInfo, it would have two entries: one for Long Parameter List and one for Shotgun Surgery.\n\nBut the user said to deduplicate, keeping at most one finding per (method, smell_type) pair. So each method can have multiple smells, but each (method, smell_type) pair is unique.\n\nSo the final JSON should have all these entries, ensuring no duplicates.\n\nNow, let's list all the findings:\n\n1. Large Class (Entire Class)\n2. Long Parameter List (updateContactInfo)\n3. Long Parameter List (orderWithUnnecessaryDetails)\n4. Shotgun Surgery (updateContactInfo)\n5. Shotgun Surgery (updateName)\n6. Shotgun Surgery (updateAddress)\n7. Shotgun Surgery (updatePhoneNumber)\n8. Shotgun Surgery (updateEmail)\n9. Shotgun Surgery (notifyForPromotion)\n10. Shotgun Surgery (notifyForDiscount)\n11. Shotgun Surgery (notifyForNewArrivals)\n12. Shotgun Surgery (applyDiscount)\n13. Shotgun Surgery (applyLoyaltyPoints)\n14. Switch Statements (handleComplaint)\n15. Dead Code (askForReceipt)\n16. Dead Code (anotherUnusedMethod)\n17. Dead Code (yetAnotherUnusedMethod)\n18. Speculative Generality (askForReceipt)\n19. Inappropriate Intimacy (accessInternalDetails)\n20. Refused Bequest (refusedBequest)\n21. Temporary Field (tempDiscountCode)\n22. Temporary Field (tempOrderNote)\n23. Data Clumps (updateContactInfo's fields)\n24. Primitive Obsession (frequentCustomerDiscount)\n25. Parallel Inheritance Hierarchies (applyDiscount)\n26. Parallel Inheritance Hierarchies (applyLoyaltyPoints)\n27. Long Method (longMethod)\n28. Middle Man (middlemanMethod)\n\nBut need to check if all these are correct.\n\nFor example, the Data Clumps: the fields are used together in updateContactInfo. So the smell is Data Clumps, and the method is updateContactInfo.\n\nPrimitive Obsession: frequentCustomerDiscount is a boolean. So the smell is Primitive Obsession, method is frequentCustomerDiscount? Or is it the field? The smell is Primitive Obsession, and the method is where it's used. But in the code, the field is this.frequentCustomerDiscount. So the smell is Primitive Obsession, and the method is where it's declared. But the decision procedure says to emit the smell_type and the method where it's found. So for the field, it's part of the class, but the smell is in the class. However, the decision procedure's Pass 1 is for class-level smells. But in Pass 2, per-method checks. So for the field, it's part of the class, but the smell is Primitive Obsession. However, the decision procedure's Pass 1 is for class-level smells. But in this case, the field is part of the class, so it's a class-level smell. But the decision procedure's Pass 1 includes Primitive Obsession as a class-level smell? No, looking back, the Pass 1 checks are for class-level smells like Large Class, Lazy Class, Data Class, Alternative Classes. The Pass 2 is per-method. So the Primitive Obsession is a per-method or per-field smell. But according to the taxonomy, Primitive Obsession is a smell that can be in a method or field. However, the decision procedure's Pass 2 includes Primitive Obsession as a per-method check. Wait, looking at the decision procedure's Pass 2:\n\nPass 2 \u2014 per-method scope (apply to every method/function)\n\nFor each method M:\n\n...\n\n11. **Primitive Obsession** \u2014 `M` references another object's accessors more often than its own (`other.x()` count > `this.x()` count). \u2192 emit.\n\nWait, no. The Primitive Obsession in Pass 2 is not listed. Wait, looking back:\n\nThe decision procedure's Pass 2 includes:\n\n5. **Long Method** \u2014 body LOC > 25 or \u22652 tasks.\n\n6. **Long Parameter List** \u2014 \u22654 parameters or \u22653 same type.\n\n7. **Switch Statements** \u2014 \u22653 arms.\n\n8. **Feature Envy** \u2014 references another's accessors more.\n\n9. **Message Chains** \u2014 \u22653 hops.\n\n10. **Middle Man** \u2014 single delegating call.\n\n11. **Duplicate Code** \u2014 \u226580% identical.\n\n12. **Dead Code** \u2014 never invoked.\n\n13. **Speculative Generality** \u2014 no current use.\n\n14. **Control Coupling** \u2014 flag parameter.\n\nSo Primitive Obsession is not in Pass 2. It's in Pass 3 \u2014 field/cross-cutting scope.\n\nPass 3:\n\n15. **Primitive Obsession** \u2014 primitive types used to model concepts that warrant a small class/enum.\n\nSo for the field this.frequentCustomerDiscount, which is a boolean, it's a Primitive Obsession. So in Pass 3, this would be emitted. But how to represent that in the JSON. The method would be the class, but the smell is Primitive Obsession. However, the decision procedure's Pass 3 is for field-level smells. So the method would be the class, but the smell is Primitive Obsession. But according to the output schema, the method is the method or \"Entire Class\" for class-level smells. So for Primitive Obsession, if it's a field, the method would be \"Entire Class\". But in the code, the field is in the class, so the method is \"Entire Class\".\n\nBut in the given code, the field is this.frequentCustomerDiscount. So the smell is Primitive Obsession, and the method is \"Entire Class\".\n\nBut in the decision procedure, Pass 3 is for field-level smells. So for each field, check if it's a Primitive Obsession. So in this case, the field is a boolean, which is a primitive, and it's used to model a concept (discount for frequent customers) that could be an enum or a class. So this is a Primitive Obsession. So the finding would be:\n\n{\n  \"smell_type\": \"Primitive Obsession\",\n  \"category\": \"Bloaters\",\n  \"method\": \"Entire Class\",\n  \"line_start\": 19,\n  \"line_end\": 19,\n  \"evidence\": \"boolean used to model discount for frequent customers\"\n}\n\nBut the line_start and line_end would be the line where the field is declared. In the code, line 19 is this.frequentCustomerDiscount = false;. So line 19.\n\nBut the decision procedure's Pass 3 is for field-level smells. So this would be emitted.\n\nSimilarly, the tempDiscountCode and tempOrderNote are temporary fields, so Temporary Field.\n\nSo adding these to the findings.\n\nSo the final list would include:\n\n- Primitive Obsession (Entire Class)\n- Temporary Field (tempDiscountCode, tempOrderNote)\n\nSo updating the list:\n\n24. Primitive Obsession (Entire Class)\n25. Temporary Field (tempDiscountCode)\n26. Temporary Field (tempOrderNote)\n\nAlso, the Data Clumps: the fields firstName, lastName, address, phoneNumber, email are used together in updateContactInfo. So Data Clumps, method is updateContactInfo.\n\nSo adding that.\n\nNow, compiling all these into the JSON, ensuring each smell is a leaf name, and no duplicates.\n\nThe final JSON should have all these entries, with correct line numbers and evidence.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Chef.js\",\n  \"class_name\": \"Chef\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Large Class\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 12,\n      \"line_end\": 17,\n      \"evidence\": \"12 fields and 26 methods exceeding thresholds for size and responsibility mixing\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 58,\n      \"line_end\": 64,\n      \"evidence\": \"5 parameters in method declaration\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 155,\n      \"line_end\": 160,\n      \"evidence\": \"6 parameters in method declaration\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 58,\n      \"line_end\": 64,\n      \"evidence\": \"Single method handling multiple contact field updates\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"updateName\",\n      \"line_start\": 67,\n      \"line_end\": 70,\n      \"evidence\": \"Separate method for name update instead of single method\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"updateAddress\",\n      \"line_start\": 73,\n      \"line_end\": 75,\n      \"evidence\": \"Separate method for address update\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"updatePhoneNumber\",\n      \"line_start\": 77,\n      \"line_end\": 79,\n      \"evidence\": \"Separate method for phone number update\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"updateEmail\",\n      \"line_start\": 83,\n      \"line_end\": 85,\n      \"evidence\": \"Separate method for email update\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"notifyForPromotion\",\n      \"line_start\": 88,\n      \"line_end\": 90,\n      \"evidence\": \"Separate method for promotion notification\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"notifyForDiscount\",\n      \"line_start\": 92,\n      \"line_end\": 94,\n      \"evidence\": \"Separate method for discount notification\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"notifyForNewArrivals\",\n      \"line_start\": 96,\n      \"line_end\": 98,\n      \"evidence\": \"Separate method for new arrivals notification\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyDiscount\",\n      \"line_start\": 103,\n      \"line_end\": 105,\n      \"evidence\": \"Separate method for discount application\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyLoyaltyPoints\",\n      \"line_start\": 107,\n      \"line_end\": 109,\n      \"evidence\": \"Separate method for loyalty points application\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 114,\n      \"line_end\": 123,\n      \"evidence\": \"4-arm if-else chain simulating switch logic\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 126,\n      \"line_end\": 128,\n      \"evidence\": \"Method never called in code\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 130,\n      \"line_end\": 132,\n      \"evidence\": \"Method never called in code\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 133,\n      \"line_end\": 136,\n      \"evidence\": \"Method never called in code\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 126,\n      \"line_end\": 128,\n      \"evidence\": \"Method exists for imagined future use with no current caller\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 191,\n      \"line_end\": 193,\n      \"evidence\": \"Direct access to Pizza instance's internal state\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 196,\n      \"line_end\": 198,\n      \"evidence\": \"Empty method that should be inherited\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 30,\n      \"line_end\": 31,\n      \"evidence\": \"Field only used during object initialization\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 31,\n      \"line_end\": 32,\n      \"evidence\": \"Field only used during object initialization\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 58,\n      \"line_end\": 64,\n      \"evidence\": \"Repeated group of 5 contact fields in multiple declarations\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 19,\n      \"line_end\": 19,\n      \"evidence\": \"Boolean used to model discount state instead of enum/class\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyDiscount\",\n      \"line_start\": 103,\n      \"line_end\": 105,\n      \"evidence\": \"Separate method for discount application without shared interface\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyLoyaltyPoints\",\n      \"line_start\": 107,\n      \"line_end\": 109,\n      \"evidence\": \"Separate method for loyalty points application without shared interface\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 138,\n      \"line_end\": 152,\n      \"evidence\": \"15-line method handling 8 distinct conceptual tasks\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 176,\n      \"line_end\": 178,\n      \"evidence\": \"Method solely delegating to another method\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_Customer_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Customer.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Customer.js",
+      "class_name": "Customer",
+      "findings": [
+        {
+          "smell_type": "Large Class",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 11,
+          "line_end": 191,
+          "evidence": "Class has >15 methods and mixes multiple responsibilities (order handling, complaints, contact management, notifications)."
+        },
+        {
+          "smell_type": "Control Coupling",
+          "category": "Couplers",
+          "method": "constructor",
+          "line_start": 12,
+          "line_end": 15,
+          "evidence": "Constructor accepts Shop parameter, creating dependency on external class."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "complain",
+          "line_start": 37,
+          "line_end": 39,
+          "evidence": "Directly accesses Shop.casher.calmCustomerDown() and Shop.casher.chef.cleanKitchen(), internal details."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 46,
+          "line_end": 48,
+          "evidence": "Method is never called."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 50,
+          "line_end": 52,
+          "evidence": "Method is never called."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longComplaintMethod",
+          "line_start": 55,
+          "line_end": 72,
+          "evidence": "Handles 6 complaints and calls askForReceipt(), exceeding single responsibility."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 66,
+          "line_end": 72,
+          "evidence": "6 parameters including size, crustType, toppings, etc."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateComplaint",
+          "line_start": 74,
+          "line_end": 81,
+          "evidence": "Repeats complain calls with same messages as longComplaintMethod."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 84,
+          "line_end": 87,
+          "evidence": "Calls Shop.casher.chef.cleanKitchen() in a single chain."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 90,
+          "line_end": 93,
+          "evidence": "Delegates to middleMethod without adding behavior."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 105,
+          "line_end": 107,
+          "evidence": "Accesses Shop.casher.chef.busy, an internal detail."
+        },
+        {
+          "smell_type": "Shotgun Surgery",
+          "category": "Change Preventers",
+          "method": "updateContactInfo",
+          "line_start": 110,
+          "line_end": 116,
+          "evidence": "Updates all contact fields in one method."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "frequentCustomerDiscount",
+          "line_start": 14,
+          "line_end": 14,
+          "evidence": "Uses boolean to represent customer discount state."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 17,
+          "line_end": 21,
+          "evidence": "Fields firstName, lastName, address, phoneNumber, and email are grouped together."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 24,
+          "line_end": 25,
+          "evidence": "Fields tempDiscountCode and tempOrderNote are used temporarily and reset."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 165,
+          "line_end": 174,
+          "evidence": "Uses if-else chain to handle different complaint types."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "orderDrink",
+          "line_start": 182,
+          "line_end": 189,
+          "evidence": "Comments explain each line's purpose redundantly."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Lazy Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "duplicateComplaint",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "longComplaintMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderDrink",
+        "Comments"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderPizza",
+        "Feature Envy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "Entire Class",
+        "Large Class"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "complain",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Control Coupling"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "duplicateComplaint",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "frequentCustomerDiscount",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "longComplaintMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderDrink",
+        "Comments"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Customer.js",
+        "Customer",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 17,
+    "input_tokens": 5865,
+    "output_tokens": 4729,
+    "total_tokens": 10594,
+    "raw": "Okay, let's tackle this. I need to apply the decision procedure to the given JavaScript code for the Customer class. The goal is to find code smells based on Fowler's taxonomy and output the JSON with the findings. Let me go through each step methodically.\n\nFirst, I'll start by understanding the input. The file is Customer.js, language is JavaScript, class name is Customer. The code has several methods and fields. I need to check each part against the 23 smells.\n\nStarting with Pass 1: class/file scope checks.\n\n1. **Large Class**: The Customer class has several fields (firstName, lastName, address, phoneNumber, email, tempDiscountCode, tempOrderNote, Drink) and methods (constructor, orderPizza, complain, askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod, longComplaintMethod, orderWithUnnecessaryDetails, duplicateComplaint, chainOfMethods, middlemanMethod, middleMethod, realMethod, accessInternalDetails, updateContactInfo, updateName, updateAddress, updatePhoneNumber, updateEmail, notifyForPromotion, notifyForDiscount, notifyForNewArrivals, applyDiscount, applyLoyaltyPoints, handleComplaint, refusedBequest, orderDrink). That's more than 10 fields and methods. Also, the class seems to handle multiple responsibilities like handling orders, complaints, contact info, notifications. So this might be a Large Class. The method count is way over 15, and responsibilities are mixed. So emit Large Class with method \"Entire Class\".\n\n2. **Lazy Class**: The class has methods beyond just getters/setters. The constructor initializes some fields and creates a Drink instance. The methods like orderPizza, complain, etc., are substantive. So not a Lazy Class.\n\n3. **Data Class**: The class has behavior (methods), so not a Data Class.\n\n4. **Alternative Classes with Different Interfaces**: Not sure if there are other classes in the file. The file only has Customer, so probably not applicable here.\n\nSo Pass 1: Large Class is a finding.\n\nPass 2: per-method checks.\n\nLooking at each method:\n\n- **constructor**: Not sure if any smells here. It's initializing fields and a Drink. Maybe not.\n\n- **orderPizza**: Calls this.Shop.receiveOrder. This could be Feature Envy since it's using Shop's method. Also, maybe Control Coupling if the Shop is passed in. But according to the code, the constructor takes Shop as a parameter, so maybe Control Coupling is present here. Wait, the comment says \"Dependency Injection (Control Coupling)\" in line 13. So Control Coupling is a finding here. So emit Control Coupling for orderPizza.\n\n- **complain**: Calls this.Shop.casher.calmCustomerDown and this.Shop.casher.chef.cleanKitchen. These are Inappropriate Intimacy because they're accessing internal details of Shop's casher and chef. So two instances of Inappropriate Intimacy here. But need to check if they are in the same method. Yes, both in complain. So emit Inappropriate Intimacy once for this method.\n\n- **askForReceipt**: The comment says it's Speculative Generality. The method is never called (since anotherUnusedMethod and yetAnotherUnusedMethod are dead code, but askForReceipt is called in longComplaintMethod). Wait, in longComplaintMethod, askForReceipt is called. So maybe it's not dead code. But the comment says \"unused method\". Wait, the code for askForReceipt is called in longComplaintMethod. So maybe the comment is wrong. But according to the code, askForReceipt is called. So maybe Speculative Generality isn't applicable here. Or maybe the method is still considered speculative because it's not part of the main flow? Not sure. Maybe skip this.\n\n- **anotherUnusedMethod**: Dead Code. The method is never called. So emit Dead Code.\n\n- **yetAnotherUnusedMethod**: Also Dead Code. Emit Dead Code.\n\n- **longComplaintMethod**: The comment says Long Method. The body has 6 calls to complain and askForReceipt. The line count is 64-65 to 72, which is 9 lines. But LOC is more than 25? Let's count. Each line from 55 to 72 is 18 lines. Wait, line 55 is the start, line 72 is the end. 72-55+1=18 lines. So LOC is 18, which is under 25. But the method does multiple things: logging, multiple complains, asking for receipt. So maybe it's a Long Method because it's doing more than one conceptual task. The comment says \"too many complaints handled in one method\". So emit Long Method.\n\n- **orderWithUnnecessaryDetails**: The comment says Long Parameter List. The method has 6 parameters. So \u22654 parameters. Emit Long Parameter List.\n\n- **duplicateComplaint**: The comment says Duplicate Code. The method calls complain multiple times with the same messages. The body is similar to longComplaintMethod but with duplicates. So emit Duplicate Code.\n\n- **chainOfMethods**: Calls this.Shop.casher.chef.cleanKitchen(). This is a Message Chain? The method is a single call, but the chain is Shop.casher.chef.cleanKitchen. So three hops. So Message Chains. Emit Message Chains.\n\n- **middlemanMethod**: Calls this.middleMethod(). The middleMethod then calls realMethod. So middlemanMethod is a Middle Man. Emit Middle Man.\n\n- **middleMethod**: Delegates to realMethod. Not a Middle Man because it's a single call. So no.\n\n- **realMethod**: No issues.\n\n- **accessInternalDetails**: Calls this.Shop.casher.chef.busy. This is Inappropriate Intimacy. Emit Inappropriate Intimacy.\n\n- **updateContactInfo**: This method updates all contact fields. The comment says Shotgun Surgery because it's changing multiple fields in one method. Emit Shotgun Surgery.\n\n- **updateName, updateAddress, etc.**: These are separate methods for each field. But the presence of updateContactInfo which does all in one is Shotgun Surgery. The individual methods might not be smells, but the updateContactInfo is.\n\n- **notifyForPromotion, notifyForDiscount, notifyForNewArrivals**: These are three methods that do similar things (notify for different events). This could be Alternative Classes with Different Interfaces? No, they are in the same class. Maybe Divergent Change? Each method handles a different notification. But they are separate methods. Not sure. Maybe not a smell here.\n\n- **applyDiscount, applyLoyaltyPoints**: These are two methods that might be part of Parallel Inheritance Hierarchies? Not sure. They are separate methods in the same class. Maybe not.\n\n- **handleComplaint**: Uses an if-else chain to simulate a switch. The comment says Switch Statements. Emit Switch Statements.\n\n- **refusedBequest**: The method is empty. If it's supposed to be inherited but is empty, then Refused Bequest. Emit Refused Bequest.\n\n- **orderDrink**: Has unnecessary comments explaining each line. The comment says Unnecessary Comments. Emit Comments.\n\nNow, Pass 3: field/cross-cutting.\n\n- **Primitive Obsession**: The field frequentCustomerDiscount is a boolean. It's used to represent a state that could be an enum or a class. So emit Primitive Obsession.\n\n- **Data Clumps**: The fields firstName, lastName, address, phoneNumber, email are grouped together in the constructor and update methods. So Data Clumps. Emit Data Clumps.\n\n- **Temporary Fields**: tempDiscountCode and tempOrderNote are set and then probably used briefly. Emit Temporary Field.\n\n- **Inappropriate Intimacy**: Already covered in Pass 2 for complain and accessInternalDetails.\n\n- **Refused Bequest**: Already covered.\n\n- **Divergent Change**: The notify methods (Promotion, Discount, New Arrivals) are separate methods for similar purposes. Maybe Divergent Change? But they are separate methods, not a single class changing for multiple reasons. Not sure. Maybe not.\n\n- **Shotgun Surgery**: Covered in updateContactInfo.\n\n- **Comments**: orderDrink has unnecessary comments. Emit Comments.\n\nNow, compiling all findings, ensuring no duplicates per (method, smell_type).\n\nLet me list them:\n\n1. Large Class (Entire Class)\n2. Control Coupling (orderPizza)\n3. Inappropriate Intimacy (complain)\n4. Dead Code (anotherUnusedMethod)\n5. Dead Code (yetAnotherUnusedMethod)\n6. Long Method (longComplaintMethod)\n7. Long Parameter List (orderWithUnnecessaryDetails)\n8. Duplicate Code (duplicateComplaint)\n9. Message Chains (chainOfMethods)\n10. Middle Man (middlemanMethod)\n11. Inappropriate Intimacy (accessInternalDetails)\n12. Shotgun Surgery (updateContactInfo)\n13. Primitive Obsession (frequentCustomerDiscount)\n14. Data Clumps (fields in constructor)\n15. Temporary Field (tempDiscountCode, tempOrderNote)\n16. Switch Statements (handleComplaint)\n17. Unnecessary Comments (orderDrink)\n\nWait, need to check if any duplicates. For example, Inappropriate Intimacy appears twice (complain and accessInternalDetails). But they are different methods, so each is a separate finding. Similarly, Dead Code for two methods. Each is a separate finding.\n\nNow, check the output format. Each finding must have smell_type, category, method, line_start, line_end, evidence.\n\nFor example:\n\n- Large Class: category Bloaters, method Entire Class, lines 11-191 (the entire class), evidence about multiple responsibilities and size.\n\nBut need to be precise with lines. The class starts at line 11 and ends at 191. But the code has 191 lines? Let me check the input. The last line is 192, but the class is up to line 191. So line_start 11, line_end 191.\n\nBut maybe the exact lines for each finding. For example, Control Coupling in orderPizza is line 13 (the comment) but the actual code is line 13: this.Shop = Shop; // Dependency Injection (Control Coupling). So the line range for Control Coupling would be line 13. But the method orderPizza is lines 31-40. Wait, the Control Coupling is in the constructor, not in orderPizza. Wait, the comment in line 13 says \"Dependency Injection (Control Coupling)\". So the Control Coupling is in the constructor. So the method is constructor, lines 12-15. So the finding for Control Coupling would be in the constructor method.\n\nWait, the decision procedure says for each method. So Control Coupling is in the constructor. So the method is constructor, lines 12-15. The evidence is the line 13 comment.\n\nSimilarly, Inappropriate Intimacy in complain is lines 37-39 (the two calls to Shop.casher...). The method is complain, lines 31-40.\n\nSo need to adjust the line ranges for each finding.\n\nThis requires going through each finding and determining the exact lines.\n\nThis is time-consuming but necessary.\n\nLet me go through each finding:\n\n1. Large Class: Entire Class. Lines 11-191. Evidence: \"Class has >15 methods and mixes multiple responsibilities (order handling, complaints, contact management, notifications).\"\n\n2. Control Coupling: Method constructor, lines 12-15. Evidence: \"Constructor accepts Shop parameter, creating dependency on external class.\"\n\n3. Inappropriate Intimacy (complain): Method complain, lines 37-39. Evidence: \"Directly accesses Shop.casher.calmCustomerDown() and Shop.casher.chef.cleanKitchen(), internal details.\"\n\n4. Dead Code (anotherUnusedMethod): Method anotherUnusedMethod, lines 46-48. Evidence: \"Method is never called.\"\n\n5. Dead Code (yetAnotherUnusedMethod): Method yetAnotherUnusedMethod, lines 50-52. Evidence: \"Method is never called.\"\n\n6. Long Method: Method longComplaintMethod, lines 55-72. Evidence: \"Handles 6 complaints and calls askForReceipt(), exceeding single responsibility.\"\n\n7. Long Parameter List: Method orderWithUnnecessaryDetails, lines 66-72. Evidence: \"6 parameters including size, crustType, toppings, etc.\"\n\n8. Duplicate Code: Method duplicateComplaint, lines 74-81. Evidence: \"Repeats complain calls with same messages as longComplaintMethod.\"\n\n9. Message Chains: Method chainOfMethods, line 84. Evidence: \"Calls Shop.casher.chef.cleanKitchen() in a single chain.\"\n\n10. Middle Man: Method middlemanMethod, lines 90-93. Evidence: \"Delegates to middleMethod without adding behavior.\"\n\n11. Inappropriate Intimacy (accessInternalDetails): Method accessInternalDetails, lines 105-107. Evidence: \"Accesses Shop.casher.chef.busy, an internal detail.\"\n\n12. Shotgun Surgery: Method updateContactInfo, lines 110-116. Evidence: \"Updates all contact fields in one method.\"\n\n13. Primitive Obsession: Field frequentCustomerDiscount, line 14. Evidence: \"Uses boolean to represent customer discount state.\"\n\n14. Data Clumps: Fields firstName, lastName, address, phoneNumber, email in constructor (lines 17-21). Evidence: \"Same group of fields appears together.\"\n\n15. Temporary Field: Fields tempDiscountCode (line 24) and tempOrderNote (line 25). Evidence: \"Fields used temporarily and reset.\"\n\n16. Switch Statements: Method handleComplaint, lines 165-174. Evidence: \"Uses if-else chain to simulate switch on complaint type.\"\n\n17. Unnecessary Comments: Method orderDrink, lines 182-189. Evidence: \"Comments explain each line's purpose redundantly.\"\n\nNow, check for duplicates. Each (method, smell_type) pair is unique. For example, Inappropriate Intimacy appears in two different methods (complain and accessInternalDetails), so two separate findings. Dead Code for two methods. All good.\n\nNow, format the JSON accordingly. Each finding must have the exact smell_type from the taxonomy. For example, \"Inappropriate Intimacy\" not \"Inappropriate Intimacies\".\n\nAlso, ensure that the category matches the smell_type. For example, Control Coupling is in Couplers category.\n\nLet me verify each smell_type and category:\n\n- Large Class: Bloaters\n- Control Coupling: Couplers\n- Inappropriate Intimacy: Couplers\n- Dead Code: Dispensables\n- Long Method: Bloaters\n- Long Parameter List: Bloaters\n- Duplicate Code: Dispensables\n- Message Chains: Couplers\n- Middle Man: Couplers\n- Shotgun Surgery: Change Preventers\n- Primitive Obsession: Bloaters\n- Data Clumps: Bloaters\n- Temporary Field: Bloaters\n- Switch Statements: Object-Orientation Abusers\n- Unnecessary Comments: Dispensables\n\nYes, all categories match.\n\nNow, the JSON should have these findings. Also, ensure that the evidence is a short sentence citing specific code.\n\nFor example, for Data Clumps: \"Fields firstName, lastName, address, phoneNumber, and email are grouped together in the constructor.\"\n\nFor Temporary Field: \"Fields tempDiscountCode and tempOrderNote are used temporarily and reset.\"\n\nFor Switch Statements: \"Uses if-else chain to handle different complaint types.\"\n\nNow, compiling all into the JSON structure.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Customer.js\",\n  \"class_name\": \"Customer\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Large Class\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 11,\n      \"line_end\": 191,\n      \"evidence\": \"Class has >15 methods and mixes multiple responsibilities (order handling, complaints, contact management, notifications).\"\n    },\n    {\n      \"smell_type\": \"Control Coupling\",\n      \"category\": \"Couplers\",\n      \"method\": \"constructor\",\n      \"line_start\": 12,\n      \"line_end\": 15,\n      \"evidence\": \"Constructor accepts Shop parameter, creating dependency on external class.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"complain\",\n      \"line_start\": 37,\n      \"line_end\": 39,\n      \"evidence\": \"Directly accesses Shop.casher.calmCustomerDown() and Shop.casher.chef.cleanKitchen(), internal details.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 46,\n      \"line_end\": 48,\n      \"evidence\": \"Method is never called.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 50,\n      \"line_end\": 52,\n      \"evidence\": \"Method is never called.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longComplaintMethod\",\n      \"line_start\": 55,\n      \"line_end\": 72,\n      \"evidence\": \"Handles 6 complaints and calls askForReceipt(), exceeding single responsibility.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 66,\n      \"line_end\": 72,\n      \"evidence\": \"6 parameters including size, crustType, toppings, etc.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateComplaint\",\n      \"line_start\": 74,\n      \"line_end\": 81,\n      \"evidence\": \"Repeats complain calls with same messages as longComplaintMethod.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 84,\n      \"line_end\": 87,\n      \"evidence\": \"Calls Shop.casher.chef.cleanKitchen() in a single chain.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 90,\n      \"line_end\": 93,\n      \"evidence\": \"Delegates to middleMethod without adding behavior.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 105,\n      \"line_end\": 107,\n      \"evidence\": \"Accesses Shop.casher.chef.busy, an internal detail.\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 110,\n      \"line_end\": 116,\n      \"evidence\": \"Updates all contact fields in one method.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"frequentCustomerDiscount\",\n      \"line_start\": 14,\n      \"line_end\": 14,\n      \"evidence\": \"Uses boolean to represent customer discount state.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 17,\n      \"line_end\": 21,\n      \"evidence\": \"Fields firstName, lastName, address, phoneNumber, and email are grouped together.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 24,\n      \"line_end\": 25,\n      \"evidence\": \"Fields tempDiscountCode and tempOrderNote are used temporarily and reset.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 165,\n      \"line_end\": 174,\n      \"evidence\": \"Uses if-else chain to handle different complaint types.\"\n    },\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"orderDrink\",\n      \"line_start\": 182,\n      \"line_end\": 189,\n      \"evidence\": \"Comments explain each line's purpose redundantly.\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_Drink_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Drink.js",
+    "parsed": {
+      "smell_type": "Primitive Obsession",
+      "category": "Bloaters",
+      "method": "Entire Class",
+      "line_start": 10,
+      "line_end": 26,
+      "evidence": "Uses string 'drinkType' instead of an enum for drink types."
+    },
+    "gold_keys": [],
+    "pred_keys": [],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 3705,
+    "output_tokens": 2391,
+    "total_tokens": 6096,
+    "raw": "Okay, let's tackle this problem. I need to apply the decision procedure to the given JavaScript code and output the JSON findings. Let me start by understanding the code and the taxonomy.\n\nFirst, the code is a JavaScript class called Drink. It has a constructor and three methods: createOrder, addToOrder, and confirmOrder. Each method seems to handle a specific part of creating and confirming an order for a drink. The class is pretty straightforward, but I need to check for any code smells based on the 23 smells from Fowler's taxonomy.\n\nLet me go through each of the passes as outlined in the decision procedure.\n\n**Pass 1 \u2014 Class/ File Scope Checks:**\n\n1. **Large Class**: The class has 3 methods (createOrder, addToOrder, confirmOrder) plus the constructor. The constructor is a method, so total methods are 4. The class doesn't have any fields except drinkType, which is a single field. So fields count is 1, methods are 4. The LOC for the class: let's count. The constructor is 3 lines (10-12), createOrder is 4 lines (14-17), addToOrder is 2 lines (19-20), confirmOrder is 2 lines (23-24). Total LOC is 3+4+2+2 = 11. So 11 LOC is way below 200. So Large Class doesn't apply here.\n\n2. **Lazy Class**: The class has 3 substantive methods (createOrder, addToOrder, confirmOrder). The constructor is a method but it's initializing a field. The methods are all doing something. So not a Lazy Class.\n\n3. **Data Class**: The class has a field (drinkType) and methods. Since it has methods, it's not just data. So Data Class doesn't apply.\n\n4. **Alternative Classes with Different Interfaces**: There's only one class here, so this doesn't apply.\n\nSo Pass 1 doesn't find any smells.\n\n**Pass 2 \u2014 Per-Method Checks:**\n\nNow, check each method.\n\n**createOrder(drinkType):**\n\n- **Long Method**: The method has 4 lines (14-17). 4 lines is way below 25 LOC. So no.\n- **Long Parameter List**: It has one parameter, drinkType. So no.\n- **Switch Statements**: No switch or if-else chain here.\n- **Feature Envy**: The method uses this.drinkType, which is its own field. No other object's data is used. So no.\n- **Message Chains**: No chaining here.\n- **Middle Man**: The method just sets the drinkType and logs. No delegation.\n- **Duplicate Code**: Not applicable here as it's a unique method.\n- **Dead Code**: The method is called in the module.exports, so it's part of the API. Not dead.\n- **Speculative Generality**: The method seems to be used for creating an order, which is a current use. Not speculative.\n- **Control Coupling**: The method doesn't take any flags or parameters that control branches. So no.\n\nSo createOrder doesn't trigger any smells.\n\n**addToOrder():**\n\n- **Long Method**: 2 lines. No.\n- **Long Parameter List**: No parameters. No.\n- **Switch Statements**: No.\n- **Feature Envy**: Uses this.drinkType. No other object.\n- **Message Chains**: No.\n- **Middle Man**: No.\n- **Duplicate Code**: No.\n- **Dead Code**: No.\n- **Speculative Generality**: No.\n- **Control Coupling**: No.\n\nNo smells here.\n\n**confirmOrder():**\n\n- Similar to addToOrder. 2 lines. No parameters. No issues.\n\nSo Pass 2 doesn't find any smells.\n\n**Pass 3 \u2014 Field / Cross-Cutting Checks:**\n\nCheck fields and cross-cutting issues.\n\n**Primitive Obsession**: The class uses drinkType as a string. But is that a primitive obsession? The field is a string, but maybe it could be an enum. However, the code doesn't have an enum. The smell is when primitives are used where a small object/enum would be better. Since there's no enum, but the code uses a string, maybe this is a candidate. However, the code is simple, and using a string might be acceptable. But according to the taxonomy, if it's a string used to model a concept that could be an enum, it's a smell. So maybe this is a smell. But I need to check if the code uses it in a way that's problematic. The methods just set and use the string. So perhaps this is a case of Primitive Obsession. But I'm not sure. The code doesn't have an enum, but maybe it's better to have one. However, the code is simple, and the string is just a type. Maybe this is not a smell. Alternatively, if the drinkType could be an enum, then using a string is a smell. But since the code doesn't have an enum, maybe it's a candidate. However, the decision procedure says to emit only if the trigger is met. The trigger is using primitives where a small object/enum would be clearer. Since the code uses a string, and there's no enum, this could be a smell. But I need to check if the code is using it in a way that's problematic. The methods just set and log the string. So maybe this is a smell. But I'm not certain. Let me think. The smell is when you use primitives (like string) where a small object or enum would be better. Since the code uses a string for drinkType, which could be an enum, this might be a case of Primitive Obsession. So this could be a finding.\n\n**Data Clumps**: Are there any groups of fields/parameters that appear together? The class has only one field, drinkType. So no data clumps here.\n\n**Temporary Field**: The drinkType is set in the constructor and used in all methods. It's not temporary. So no.\n\n**Inappropriate Intimacy**: The class doesn't access any private fields of another class. So no.\n\n**Refused Bequest**: No subclasses here. So no.\n\n**Parallel Inheritance Hierarchies**: No inheritance here. So no.\n\n**Divergent Change**: The class has methods that are all related to order creation. No unrelated changes. So no.\n\n**Shotgun Surgery**: No changes that require edits across multiple methods. So no.\n\n**Comments**: The comments are copyright and license info. The code itself doesn't have comments explaining what it does. The methods are straightforward. So no comments that are needed to explain what the code does. So no.\n\nSo the only possible smell here is Primitive Obsession for using a string instead of an enum. But I need to check if that's a valid trigger. The code uses a string for drinkType. If there's an enum, that would be better. Since there's no enum, this could be a smell. So I should emit that.\n\nNow, check if there are any other smells. Let me go through each method again.\n\nAnother thing: the methods createOrder, addToOrder, confirmOrder all use this.drinkType. They all depend on the drinkType being set. But that's normal. No feature envy here.\n\nAnother check: the methods are all separate, but they all rely on the same field. That's okay.\n\nSo the only possible smell is Primitive Obsession. But I need to confirm if that's applicable. The code uses a string for drinkType. If the drinkType could be an enum (like 'Coffee', 'Tea', etc.), then using a string is a primitive obsession. Since the code doesn't have an enum, this is a valid finding.\n\nSo the findings would be:\n\n{\n  \"smell_type\": \"Primitive Obsession\",\n  \"category\": \"Bloaters\",\n  \"method\": \"Entire Class\",\n  \"line_start\": 10,\n  \"line_end\": 26,\n  \"evidence\": \"Uses string 'drinkType' instead of an enum for drink types.\"\n}\n\nWait, but the method is the entire class. The smell is for the class, not a specific method. The Primitive Obsession is a class-level smell? Or is it per occurrence? The taxonomy says \"Primitive Obsession\" is a smell where primitives are used where a small object/enum would be better. The class uses a string for drinkType. So the entire class is using a primitive (string) where an enum would be better. So the smell applies to the entire class. So the method would be \"Entire Class\".\n\nBut I need to check the taxonomy. The taxonomy says \"Primitive Obsession\" is a smell where primitives are used where a small object/enum would be clearer. So the class is using a string (primitive) for drinkType. So this is a case of Primitive Obsession. Therefore, the finding is for the entire class.\n\nBut wait, the code has only one field, drinkType. So the entire class is using a primitive. So the finding is for the entire class.\n\nSo the JSON would be:\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Drink.js\",\n  \"class_name\": \"Drink\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 10,\n      \"line_end\": 26,\n      \"evidence\": \"Uses string 'drinkType' instead of an enum for drink types.\"\n    }\n  ]\n}\n\nBut I need to check if there are any other smells. Let me think again.\n\nAnother possible smell: the methods createOrder, addToOrder, confirmOrder all have similar structures. They all take no parameters (except createOrder has one) and just log. But that's not a smell. They are separate methods for different steps, which is good.\n\nAnother check: the class has a single field, which is okay. No data clumps.\n\nAnother thing: the methods are all in the same class, but that's normal.\n\nSo the only smell is Primitive Obsession. But I need to make sure that the evidence is correct. The evidence should cite specific code. The line where drinkType is declared is line 11: this.drinkType = null;. The methods use this.drinkType. So the evidence could be \"Uses string 'drinkType' instead of an enum for drink types.\"\n\nYes, that's a valid evidence sentence.\n\nSo the final JSON should have that finding.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Drink.js\",\n  \"class_name\": \"Drink\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 10,\n      \"line_end\": 26,\n      \"evidence\": \"Uses string 'drinkType' instead of an enum for drink types.\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_Pizza_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Pizza.js",
+    "parsed": {
+      "language": "javascript",
+      "file_path": "JavaScript/SmellyAnnotated/Pizza.js",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 15,
+          "line_end": 16,
+          "evidence": "this.extraCheese = false;"
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 18,
+          "line_end": 23,
+          "evidence": "customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail initialized together"
+        },
+        {
+          "smell_type": "Temporary Fields",
+          "category": "Bloaters",
+          "method": "constructor",
+          "line_start": 25,
+          "line_end": 26,
+          "evidence": "tempDiscountCode and tempOrderNote initialized in constructor"
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 98,
+          "line_end": 107,
+          "evidence": "if-else chain with 3 conditions for different complaints"
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 72,
+          "line_end": 85,
+          "evidence": "multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) for different purposes"
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 110,
+          "line_end": 112,
+          "evidence": "method is never called"
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 113,
+          "line_end": 116,
+          "evidence": "method is never called"
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "yetAnotherUnusedMethod",
+          "line_start": 117,
+          "line_end": 120,
+          "evidence": "method is never called"
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 137,
+          "line_end": 140,
+          "evidence": "6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode"
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 146,
+          "line_end": 151,
+          "evidence": "duplicate setTopping calls"
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 158,
+          "line_end": 162,
+          "evidence": "delegates to middleMethod without adding behavior"
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "CheesePizza.refusedBequest",
+          "line_start": 180,
+          "line_end": 181,
+          "evidence": "empty method that should be inherited"
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "askForReceipt",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Pizza.js",
+        "Pizza",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 12,
+    "input_tokens": 6080,
+    "output_tokens": 6508,
+    "total_tokens": 12588,
+    "raw": "Okay, let's tackle this problem. I need to analyze the provided JavaScript code for the Pizza class and identify any code smells based on Fowler's 23 smells. The output should be a JSON object with specific fields. Let me go through each part step by step.\n\nFirst, I'll start by understanding the code structure. The Pizza class has a constructor and several methods. There are also subclasses like CheesePizza, VeggiePizza, etc. The code includes comments that sometimes indicate smells, but I shouldn't rely solely on those; I need to verify based on the actual code.\n\nLet me go through each method and check against the smell taxonomy.\n\nStarting with the constructor. It initializes size, doughType, topping, and some other fields. The comments mention Primitive Obsession, Data Clumps, and Temporary Fields. Let's check each:\n\n- Primitive Obsession: The constructor has this.extraCheese = false. That's a boolean used to represent a state. Maybe that's a smell. But the comment says it's an example. So I should check if this is a valid case. Since it's a boolean, and maybe could be an enum or a class, this might be a Primitive Obsession.\n\n- Data Clumps: The customer fields (firstName, lastName, address, phone, email) are all set in the constructor. They appear together, which is a data clump. The comment points this out, so this is a valid finding.\n\n- Temporary Fields: tempDiscountCode and tempOrderNote are set in the constructor but might be used temporarily. The comment says they are temporary fields. So that's another smell.\n\nNext, looking at the methods:\n\nsetSize, setDoughType, setTopping: These are simple setters. They don't seem to have any issues. No smells here.\n\nupdateCustomerInfo: This method updates all customer fields. The comment says it's an example of Shotgun Surgery because it changes multiple methods. But wait, Shotgun Surgery is when a change requires edits in multiple classes. Here, it's a single method that does multiple updates. Wait, the definition says Shotgun Surgery is when a logical change requires edits across many classes/methods. In this case, the method itself is doing multiple updates, but maybe the comment is indicating that this method is a result of shotgun surgery. However, according to the decision procedure, Shotgun Surgery is when a change requires edits in multiple methods. Here, the method is handling multiple updates, but maybe the smell is that this method is doing too much. Alternatively, maybe this is an example of a Long Method? Let me check. The method has 8 lines of code (lines 43-49). The body is 6 lines (43-49, but 43 is the method declaration). The body is 6 lines. The threshold for Long Method is 25 LOC. So this is under. So maybe not a Long Method. But the comment says it's Shotgun Surgery. Wait, the comment says \"Shotgun Surgery (changing multiple methods to update contact info)\". But in the code, this method is handling all the updates. So maybe the smell is that this method is doing too much, but according to the taxonomy, Shotgun Surgery is when a change requires edits in multiple methods. Here, the method is handling multiple updates, but perhaps the smell is that this method is a result of shotgun surgery. However, according to the decision procedure, Shotgun Surgery is when a logical change requires edits in multiple methods. In this case, if someone wanted to change how customer info is updated, they would have to modify this method. But the comment says that this method is an example of Shotgun Surgery because it's changing multiple methods. Wait, maybe the comment is incorrect. Alternatively, maybe the method is an example of a Long Method? No, the body is 6 lines. So perhaps the comment is a red herring. But according to the decision procedure, I need to check the code, not the comments. So for Shotgun Surgery, the trigger is that a logical change requires edits in multiple methods. In this case, the method updateCustomerInfo is handling multiple updates. If a change is needed (like adding a new field), this method would need to be modified. But that's a single method. So maybe this isn't Shotgun Surgery. Alternatively, maybe the comment is indicating that this method is a result of shotgun surgery, but the code itself doesn't show that. So perhaps this is not a valid finding. I need to be careful here.\n\nThen there are methods like updateCustomerName, updateCustomerAddress, etc. These are separate methods for each field. The comment says they are examples of Shotgun Surgery because they are separate methods to update each part. But according to the definition, Shotgun Surgery is when a change requires edits in multiple methods. For example, if you need to change how the customer's name is updated, you have to modify this method. But if you have separate methods, maybe that's better. However, the comment says that these methods are examples of Shotgun Surgery. Wait, the comment says \"Shotgun Surgery (separate method to update name)\". But according to the taxonomy, Shotgun Surgery is when a logical change requires edits across many classes/methods. So if you have separate methods, maybe that's not Shotgun Surgery. Alternatively, maybe the comment is incorrect. This is confusing. I need to check the code. The method updateCustomerName only updates first and last name. If a change is needed (like adding a middle name), you would have to modify this method. But that's a single method. So maybe this isn't Shotgun Surgery. The comment might be misleading. So perhaps this isn't a valid finding.\n\nNext, the notifyForPromotion, notifyForDiscount, notifyForNewArrivals methods. Each logs a different message. The comment says they are examples of Divergent Change. Divergent Change is when a class changes for many unrelated reasons. Here, each method is handling a different notification. So if you need to add a new notification, you have to add a new method. That's a case of Divergent Change. So each of these methods would be a finding for Divergent Change. But wait, the method notifyForPromotion is a single method. The smell is that the class has multiple methods for different purposes, leading to Divergent Change. So each of these methods would be a finding. However, the decision procedure says to emit at most one finding per (method, smell_type) pair. So for each of these methods, if they are part of Divergent Change, they would be emitted. But I need to check if the method itself is an example of Divergent Change. The method notifyForPromotion is a single method that handles a specific notification. The smell is that the class has multiple methods for different purposes, which is Divergent Change. So each of these methods would be a finding. However, the decision procedure says to emit at most one finding per (method, smell_type). So for each method, if it's part of Divergent Change, it would be a finding. But I need to check if the method itself is an example. For example, the method notifyForPromotion is a single method that handles a specific notification. The Divergent Change smell is when a class has multiple methods for different reasons. So the presence of multiple such methods (notifyForPromotion, notifyForDiscount, etc.) would be Divergent Change. But the decision procedure says to check per method. Wait, the Divergent Change smell is when a class changes for many unrelated reasons. So the class Pizza has multiple methods (notifyForPromotion, notifyForDiscount, etc.) each handling a different notification. So the class as a whole is an example of Divergent Change. But according to the decision procedure, the find is per method. Wait, the Divergent Change is a class-level smell. The decision procedure says for Divergent Change, the action is to emit with method = \"Entire Class\". So in this case, the Pizza class has multiple methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) each handling different notifications. So the class is changing for multiple unrelated reasons. Therefore, this would be a Divergent Change finding with method = \"Entire Class\".\n\nThen there's the handleComplaint method. It uses a series of if-else statements to handle different complaints. The comment says it's an example of Switch Statements. According to the taxonomy, Switch Statements is when there's a long if-else chain on a type code. Here, the method has three if-else conditions. The threshold is \u22653 arms. So this would be a Switch Statements finding. The method handleComplaint has three conditions, so it meets the threshold. So this is a valid finding.\n\nThe askForReceipt method is commented as Speculative Generality. The comment says it's unused. The code has this method, but it's never called. So this is Dead Code. The method is never invoked, so it's a Dead Code finding.\n\nThe anotherUnusedMethod and yetAnotherUnusedMethod are also Dead Code. They are never called. So each of these would be Dead Code findings. However, the decision procedure says to emit at most one finding per (method, smell_type). So for each of these methods, if they are Dead Code, they would be emitted. But since they are separate methods, each would be a separate finding. However, the user might have multiple Dead Code findings. But according to the deduplication rule, we need to keep at most one per (method, smell_type). So each of these methods would be a separate finding.\n\nThe longMethod method is commented as Long Method. The body has 12 lines (from line 124 to 135). The threshold is 25 LOC. So 12 lines is under. But the comment says it's a Long Method. However, according to the decision procedure, the trigger is body LOC >25. So this is not a Long Method. So this is not a valid finding. The comment might be incorrect.\n\nThe orderWithUnnecessaryDetails method has 14 parameters. The comment says it's a Long Parameter List. The threshold is \u22654 parameters. This method has 6 parameters (pizzaType, size, crustType, toppings, extraCheese, discountCode). So this is a Long Parameter List. So this is a valid finding.\n\nThe duplicateMethod method has duplicate code (setting topping twice). The comment says it's Duplicate Code. The method has two setTopping calls. So this is a Duplicate Code finding.\n\nThe chainOfMethods method calls updateCustomerAddress, which is a method chain. The comment says it's a Message Chain. The method chain has two calls (updateCustomerAddress and then nothing else). Wait, the code is:\n\nthis.updateCustomerAddress(\"123 Street\");\n\nSo it's a single method call. The message chain is when there are multiple method calls in a chain, like a.b().c().d(). Here, it's only one call. So this might not meet the threshold. The threshold is \u22653 hops. So this is not a Message Chain. The comment might be incorrect.\n\nThe middlemanMethod calls middleMethod, which calls realMethod. The comment says it's a Middle Man. The middlemanMethod's body is a single delegating call. So this is a Middle Man finding.\n\nThe accessInternalDetails method accesses this.size, this.doughType, this.topping. The comment says it's Inappropriate Intimacy. But in JavaScript, there's no private access, so accessing these fields is allowed. However, the smell is about accessing another class's private internals. Since this is the same class, it's not Inappropriate Intimacy. So this is not a valid finding.\n\nThe refusedBequest method in CheesePizza is empty. The comment says it's Refused Bequest. The method is supposed to be inherited but is empty. So this is a Refused Bequest finding.\n\nNow, let's compile all these findings:\n\n1. Primitive Obsession: this.extraCheese = false; (method: constructor)\n2. Data Clumps: customer fields in constructor (method: constructor)\n3. Temporary Fields: tempDiscountCode and tempOrderNote in constructor (method: constructor)\n4. Switch Statements: handleComplaint method (3 if-else conditions)\n5. Divergent Change: notifyForPromotion, notifyForDiscount, notifyForNewArrivals (but as Entire Class)\n6. Dead Code: askForReceipt, anotherUnusedMethod, yetAnotherUnusedMethod\n7. Long Parameter List: orderWithUnnecessaryDetails (6 parameters)\n8. Duplicate Code: duplicateMethod (two setTopping calls)\n9. Middle Man: middlemanMethod (delegates to middleMethod)\n10. Refused Bequest: CheesePizza's refusedBequest method\n\nWait, but for Divergent Change, the finding should be on the entire class. So the method would be \"Entire Class\" for Divergent Change. Similarly, for Refused Bequest, it's on the CheesePizza class.\n\nNow, checking for duplicates. For example, if multiple methods have the same smell, but each is a different method, they should be separate entries. However, the deduplication rule says to keep at most one per (method, smell_type). So each method with a unique smell_type and method name is okay.\n\nNow, let's structure the JSON:\n\nlanguage: javascript\nfile_path: JavaScript/SmellyAnnotated/Pizza.js\nclass_name: Pizza\n\nfindings array:\n\n- Smell: Primitive Obsession, category: Bloaters, method: constructor, lines 15-16, evidence: \"this.extraCheese = false;\"\n- Smell: Data Clumps, category: Bloaters, method: constructor, lines 18-23, evidence: \"customer fields initialized together\"\n- Smell: Temporary Fields, category: Bloaters, method: constructor, lines 25-26, evidence: \"tempDiscountCode and tempOrderNote\"\n- Smell: Switch Statements, category: Object-Orientation Abusers, method: handleComplaint, lines 98-107, evidence: \"if-else chain with 3 conditions\"\n- Smell: Divergent Change, category: Change Preventers, method: Entire Class, lines N/A, evidence: \"multiple notification methods for different purposes\"\n- Smell: Dead Code, category: Dispensables, method: askForReceipt, lines 110-112, evidence: \"never called\"\n- Smell: Dead Code, category: Dispensables, method: anotherUnusedMethod, lines 113-116, evidence: \"never called\"\n- Smell: Dead Code, category: Dispensables, method: yetAnotherUnusedMethod, lines 117-120, evidence: \"never called\"\n- Smell: Long Parameter List, category: Bloaters, method: orderWithUnnecessaryDetails, lines 137-140, evidence: \"6 parameters\"\n- Smell: Duplicate Code, category: Dispensables, method: duplicateMethod, lines 146-151, evidence: \"duplicate setTopping calls\"\n- Smell: Middle Man, category: Couplers, method: middlemanMethod, lines 158-162, evidence: \"delegates to middleMethod\"\n- Smell: Refused Bequest, category: Object-Orientation Abusers, method: CheesePizza.refusedBequest, lines 180-181, evidence: \"empty method\"\n\nWait, but the class_name is Pizza, but the Refused Bequest is in CheesePizza. However, the class_name in the output is the top-level class or module. The input says class_name is Pizza. But the Refused Bequest is in a subclass. However, the output's class_name is Pizza. So the finding for Refused Bequest would be in the CheesePizza class, but the class_name in the output is Pizza. That might be a problem. Wait, the output's class_name is the top-level class or module. The input says class_name is Pizza. So even if the finding is in a subclass, the class_name remains Pizza. But according to the output schema, class_name is the top-level class or module. So in this case, the class_name is Pizza, but the Refused Bequest is in CheesePizza. However, the output's class_name is Pizza. So the finding would still be under Pizza's class_name. But that might not be accurate. However, according to the problem statement, the class_name is given as Pizza. So we have to use that.\n\nBut the Refused Bequest is in CheesePizza. However, the output's class_name is Pizza. So the finding would still be under Pizza's class_name. But that might not be correct. However, the user's input specifies class_name as Pizza, so we have to follow that.\n\nNow, checking the evidence sentences. They need to be specific and cite code. For example, for Data Clumps, the evidence could be \"customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail initialized together in constructor\".\n\nFor the Divergent Change, the evidence is \"multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) handling different customer notifications\".\n\nFor Dead Code, each method's evidence would be \"method is never called\".\n\nFor Long Parameter List, the evidence is \"6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode\".\n\nFor Duplicate Code, \"two setTopping calls in duplicateMethod\".\n\nFor Middle Man, \"middlemanMethod delegates to middleMethod\".\n\nFor Refused Bequest, \"empty method in CheesePizza\".\n\nNow, ensuring that each smell_type is a leaf name. For example, Divergent Change is a category, but the smell_type should be \"Divergent Change\" (which is a leaf in the taxonomy). Wait, looking back at the taxonomy:\n\nThe categories are Bloaters, Object-Orientation Abusers, etc. The leaves are the 23 smells. For example, Divergent Change is a leaf under Change Preventers. So the smell_type for Divergent Change is correct.\n\nNow, checking for duplicates. For example, if multiple methods have the same smell_type and method name, but in this case, each finding is unique.\n\nNow, the JSON structure:\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Pizza.js\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 15,\n      \"line_end\": 16,\n      \"evidence\": \"this.extraCheese = false;\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 18,\n      \"line_end\": 23,\n      \"evidence\": \"customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail initialized together\"\n    },\n    {\n      \"smell_type\": \"Temporary Fields\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 25,\n      \"line_end\": 26,\n      \"evidence\": \"tempDiscountCode and tempOrderNote initialized in constructor\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 98,\n      \"line_end\": 107,\n      \"evidence\": \"if-else chain with 3 conditions for different complaints\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 72,\n      \"line_end\": 85,\n      \"evidence\": \"multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) for different purposes\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 110,\n      \"line_end\": 112,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 113,\n      \"line_end\": 116,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 117,\n      \"line_end\": 120,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 137,\n      \"line_end\": 140,\n      \"evidence\": \"6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 146,\n      \"line_end\": 151,\n      \"evidence\": \"duplicate setTopping calls\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 158,\n      \"line_end\": 162,\n      \"evidence\": \"delegates to middleMethod without adding behavior\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"CheesePizza.refusedBequest\",\n      \"line_start\": 180,\n      \"line_end\": 181,\n      \"evidence\": \"empty method that should be inherited\"\n    }\n  ]\n}\n\nWait, but the method for Refused Bequest is in CheesePizza, but the class_name is Pizza. However, the output's class_name is Pizza as per the input. So it's acceptable.\n\nNow, checking for any other smells. For example, the handleComplaint method in CheesePizza overrides handleComplaint but adds a new condition. However, the original handleComplaint in Pizza is already a Switch Statement. The CheesePizza's handleComplaint is not part of the Pizza class, so it's not considered here.\n\nAnother possible smell: the constructor has multiple parameters. But the constructor's parameters are size, doughType, topping. That's 3 parameters, which is under the threshold of 4. So no Long Parameter List there.\n\nThe method orderWithUnnecessaryDetails has 6 parameters, which is over 4, so that's a Long Parameter List.\n\nThe duplicateMethod has two setTopping calls, which is Duplicate Code.\n\nThe middlemanMethod is a Middle Man.\n\nThe Refused Bequest is in CheesePizza's refusedBequest method.\n\nNow, ensuring that each smell_type is a leaf. For example, \"Divergent Change\" is a leaf under Change Preventers. Yes.\n\nAlso, checking that the method names are correct. For example, \"CheesePizza.refusedBequest\" is the method name. But in the output, the method field should be the name of the method. However, in JavaScript, methods are part of the class. So the method name is \"refusedBequest\" in the CheesePizza class. But the class_name in the output is Pizza. However, the output's class_name is Pizza, but the method is in a subclass. But according to the problem statement, the class_name is given as Pizza. So the method is part of the Pizza class's hierarchy. However, the output's method field should be the exact method name. So \"refusedBequest\" is correct.\n\nNow, the evidence sentences need to be concise. For example, for Data Clumps, the evidence is \"customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail initialized together in constructor\".\n\nFor the Divergent Change, the evidence is \"multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) for different purposes\".\n\nFor Dead Code, each method's evidence is \"method is never called\".\n\nFor Long Parameter List, \"6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode\".\n\nFor Duplicate Code, \"duplicate setTopping calls\".\n\nFor Middle Man, \"delegates to middleMethod without adding behavior\".\n\nFor Refused Bequest, \"empty method that should be inherited\".\n\nNow, checking the line numbers. For example, the constructor's lines are 9-14. The lines 15-16 are the extraCheese assignment. Lines 18-23 are the customer fields. Lines 25-26 are the temp fields. The handleComplaint is lines 98-107. The orderWithUnnecessaryDetails is lines 137-140. The duplicateMethod is lines 146-151. The middlemanMethod is lines 158-162. The refusedBequest is lines 180-181.\n\nAll line numbers are 1-indexed and inclusive.\n\nNow, ensuring that there are no duplicates. Each (method, smell_type) pair is unique. For example, constructor has multiple smells, but each is a different smell_type. The method \"constructor\" appears multiple times with different smell_types, which is allowed.\n\nFinally, the JSON should be valid, with no extra text. The user specified to respond with the JSON object only.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Pizza.js\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 15,\n      \"line_end\": 16,\n      \"evidence\": \"this.extraCheese = false;\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 18,\n      \"line_end\": 23,\n      \"evidence\": \"customerFirstName, customerLastName, customerAddress, customerPhoneNumber, customerEmail initialized together\"\n    },\n    {\n      \"smell_type\": \"Temporary Fields\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 25,\n      \"line_end\": 26,\n      \"evidence\": \"tempDiscountCode and tempOrderNote initialized in constructor\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 98,\n      \"line_end\": 107,\n      \"evidence\": \"if-else chain with 3 conditions for different complaints\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 72,\n      \"line_end\": 85,\n      \"evidence\": \"multiple notification methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) for different purposes\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 110,\n      \"line_end\": 112,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 113,\n      \"line_end\": 116,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 117,\n      \"line_end\": 120,\n      \"evidence\": \"method is never called\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 137,\n      \"line_end\": 140,\n      \"evidence\": \"6 parameters: pizzaType, size, crustType, toppings, extraCheese, discountCode\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 146,\n      \"line_end\": 151,\n      \"evidence\": \"duplicate setTopping calls\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 158,\n      \"line_end\": 162,\n      \"evidence\": \"delegates to middleMethod without adding behavior\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"CheesePizza.refusedBequest\",\n      \"line_start\": 180,\n      \"line_end\": 181,\n      \"evidence\": \"empty method that should be inherited\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_Shop_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/Shop.js",
+    "parsed": null,
+    "gold_keys": [
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Data Clumps"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Primitive Obsession"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "constructor",
+        "Temporary Field"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updateName",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "updatePhoneNumber",
+        "Shotgun Surgery"
+      ],
+      [
+        "JavaScript/SmellyAnnotated/Shop.js",
+        "Shop",
+        "yetAnotherUnusedMethod",
+        "Dead Code"
+      ]
+    ],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": true,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 5793,
+    "output_tokens": 3829,
+    "total_tokens": 9622,
+    "raw": "Okay, let's tackle this problem. I need to apply the decision procedure to the given JavaScript code and output the JSON findings. Let me start by understanding the code and the smells to look for.\n\nFirst, the code is a Shop class in JavaScript. The task is to find instances of the 23 canonical smells. Let me go through each method and check against the checklist.\n\nStarting with the constructor. It initializes some fields. Looking at the fields: firstName, lastName, address, phoneNumber, email. These are all set to null. The comment says \"Data Clumps\" because these fields appear together. So that's a Data Clumps smell. The method is the constructor, so I need to note that.\n\nNext, the createPizza method. It uses a series of if-else statements to return different pizza types. That's a Switch Statement smell. The method name is createPizza, so that's one finding.\n\nThen there's updateContactInfo. The comment mentions Shotgun Surgery because it updates multiple fields. The method is updateContactInfo, so that's another finding.\n\nThe updateName, updateAddress, updatePhoneNumber, updateEmail methods are all separate. The comment in updateName says Shotgun Surgery because they're separate methods for each field. But according to the checklist, Shotgun Surgery is when a logical change requires edits to multiple methods. Here, each method handles a single field, but the original updateContactInfo had all in one. So maybe the separate methods are not Shotgun Surgery, but the original method was. However, the current methods are separate, so maybe they are not a smell. Wait, the checklist says Shotgun Surgery is when a change requires edits to many methods. In this case, if you need to update all contact info, you have to call multiple methods. So the original updateContactInfo was a Shotgun Surgery, but the separate methods might not be. However, the comment in updateName says \"Shotgun Surgery (separate method to update name)\" which might be a false positive. But according to the checklist, Shotgun Surgery is when a logical change requires edits to many methods. So if you need to change all contact info, you have to call multiple methods. So the original updateContactInfo was a Shotgun Surgery, but the separate methods are not. However, the comment in updateName says that, but maybe that's a mistake. But according to the code, the separate methods are there, so maybe they are not a smell. But the original method was a Shotgun Surgery. However, the current code has separate methods, so maybe that's a refactoring. But the task is to find smells in the current code. So the updateContactInfo method is a Shotgun Surgery, but the separate methods are not. So that's one finding for updateContactInfo.\n\nThen there's notifyForPromotion, notifyForDiscount, notifyForNewArrivals. Each of these methods does a similar thing: log a message. The comment says Divergent Change because each is a separate method for a different notification. So each of these methods is a Divergent Change. But wait, Divergent Change is when a class changes for many unrelated reasons. Here, each method is a separate notification, but they are similar. However, the comment says Divergent Change, so maybe each of these methods is a Divergent Change. But according to the checklist, Divergent Change is when a class would change for \u22652 unrelated reasons. Here, each method is a separate notification, but they are similar. However, the comment says Divergent Change, so maybe each of these methods is a Divergent Change. But I need to check. The method notifyForPromotion is for promotion, notifyForDiscount for discount, etc. So each is a separate reason. So each of these methods is a Divergent Change. But the checklist says Divergent Change is when a class would change for \u22652 unrelated reasons. So if the class has multiple methods for different notifications, that's Divergent Change. So each of these methods would be a Divergent Change. But the checklist says to emit on each method. However, the comment says Divergent Change for each. So three findings here.\n\nThen applyDiscount and applyLoyaltyPoints. The comment says Parallel Inheritance Hierarchies. But in JavaScript, there's no inheritance hierarchy here. The class is not part of an inheritance hierarchy. So maybe that's a false positive. The comment says \"Parallel Inheritance Hierarchies (method to apply discount)\" but in the code, there's no inheritance. So this might be a mistake. So maybe this is not a valid finding. But according to the code, the comment is there, but the actual code doesn't have inheritance. So this might be a false positive. So I should not emit this.\n\nhandleComplaint uses a series of if-else statements to handle different complaints. That's a Switch Statement. The method is handleComplaint, so that's another finding.\n\naskForReceipt is a method that's never called. The comment says Speculative Generality. So that's a finding.\n\nanotherUnusedMethod and yetAnotherUnusedMethod are dead code. So Dead Code for each. But the checklist says to emit at most one per (method, smell_type). So two findings here.\n\nchainOfMethods has a message chain: this.casher.chef.cleanKitchen(). That's a Message Chain. So that's a finding.\n\nmiddlemanMethod calls middleMethod, which calls realMethod. That's a Middle Man. So that's a finding.\n\naccessInternalDetails accesses this.casher.chef.busy, which is an internal detail of another class. That's Inappropriate Intimacy. So that's a finding.\n\nlongMethod is a method that does a lot of things. The comment says Long Method. The method has many calls to other methods. So that's a Long Method. The line range is 161-178. So that's a finding.\n\norderWithUnnecessaryDetails has a long parameter list. The method has 4 parameters (pizzaType, firstName, lastName, address, phoneNumber, email). Wait, the method is orderWithUnnecessaryDetails, and in the code, it's called with receiveOrder(\"Veggie\"), then updateContactInfo with 5 parameters. So the method orderWithUnnecessaryDetails has 4 parameters? Let me check the code. The method is defined as:\n\norderWithUnnecessaryDetails() {\n    console.log(\"Shop is placing a detailed order\");\n    this.receiveOrder(\"Veggie\");\n    this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n    this.applyDiscount();\n    this.applyLoyaltyPoints();\n}\n\nSo the method orderWithUnnecessaryDetails has no parameters. Wait, the code shows:\n\n181|     orderWithUnnecessaryDetails() {\n182|         // Long Parameter List (too many parameters in the method)\n183|         this.receiveOrder(\"Veggie\");\n184|         this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n185|         this.applyDiscount();\n186|         this.applyLoyaltyPoints();\n187|     }\n\nSo the method orderWithUnnecessaryDetails has no parameters. The comment says Long Parameter List, but the method doesn't have parameters. So that's a mistake. The comment is incorrect. So this is not a Long Parameter List. So no finding here.\n\nNow, looking for other smells. The constructor has Data Clumps. The updateContactInfo is Shotgun Surgery. The createPizza is Switch Statement. handleComplaint is Switch Statement. askForReceipt is Speculative Generality. anotherUnusedMethod and yetAnotherUnusedMethod are Dead Code. chainOfMethods is Message Chain. middlemanMethod is Middle Man. accessInternalDetails is Inappropriate Intimacy. longMethod is Long Method.\n\nNow, check for duplicates. For example, if multiple methods have the same smell. For example, createPizza and handleComplaint both have Switch Statements. So each should be a separate finding. Similarly, the Dead Code for anotherUnusedMethod and yetAnotherUnusedMethod are separate.\n\nNow, the JSON structure needs to have language, file_path, class_name, and findings. Each finding has smell_type, category, method, line_start, line_end, evidence.\n\nLet me list all the findings:\n\n1. Data Clumps in constructor. Method is constructor. Lines 23-27. Evidence: \"this.firstName = null; this.lastName = null; this.address = null; this.phoneNumber = null; this.email = null;\"\n\n2. Switch Statement in createPizza. Method createPizza. Lines 35-45. Evidence: \"if (pizzaType === \"Cheese\") { ... } else if ... else { ... }\"\n\n3. Shotgun Surgery in updateContactInfo. Method updateContactInfo. Lines 55-61. Evidence: \"this.firstName = firstName; ... this.email = email;\"\n\n4. Divergent Change in notifyForPromotion, notifyForDiscount, notifyForNewArrivals. Each method. For example, notifyForPromotion: lines 85-87. Evidence: \"console.log(\"Notifying customer for promotion\");\"\n\n5. Divergent Change in notifyForDiscount: lines 90-92. Evidence: \"console.log(\"Notifying customer for discount\");\"\n\n6. Divergent Change in notifyForNewArrivals: lines 95-97. Evidence: \"console.log(\"Notifying customer for new arrivals\");\"\n\n7. Switch Statement in handleComplaint. Method handleComplaint. Lines 111-119. Evidence: \"if (complaint === \"cold pizza\") { ... } else if ... else { ... }\"\n\n8. Speculative Generality in askForReceipt. Method askForReceipt. Lines 123-124. Evidence: \"console.log(\"Customer is asking for a receipt.\");\"\n\n9. Dead Code in anotherUnusedMethod. Method anotherUnusedMethod. Lines 127-128. Evidence: \"// Dead Code (method is never called)\"\n\n10. Dead Code in yetAnotherUnusedMethod. Method yetAnotherUnusedMethod. Lines 131-132. Evidence: \"// More Dead Code\"\n\n11. Message Chain in chainOfMethods. Method chainOfMethods. Lines 135-137. Evidence: \"this.casher.chef.cleanKitchen();\"\n\n12. Middle Man in middlemanMethod. Method middlemanMethod. Lines 141-144. Evidence: \"this.middleMethod();\"\n\n13. Inappropriate Intimacy in accessInternalDetails. Method accessInternalDetails. Lines 156-158. Evidence: \"console.log(`Accessing internal details: ${this.casher.chef.busy}`);\"\n\n14. Long Method in longMethod. Method longMethod. Lines 161-178. Evidence: \"this.updateContactInfo(...); ... this.accessInternalDetails();\"\n\nNow, check for duplicates. For example, if any (method, smell_type) pair is repeated. All seem unique.\n\nNow, check the categories. For example, Data Clumps is a Bloaters category. Switch Statement is Object-Orientation Abusers. Shotgun Surgery is Change Preventers. Divergent Change is Change Preventers. Speculative Generality is Dispensables. Dead Code is Dispensables. Message Chain is Couplers. Middle Man is Couplers. Inappropriate Intimacy is Couplers. Long Method is Bloaters.\n\nSo the categories are correct.\n\nNow, the JSON should have all these findings. Also, ensure that each smell_type is a leaf name, not a category. For example, \"Data Clumps\" is a leaf, \"Switch Statement\" is a leaf, etc.\n\nNow, the line numbers: for the constructor, lines 14-17 (the constructor is lines 13-18, but the fields are 23-27). Wait, the constructor is lines 13-18. The fields are lines 23-27. So line_start is 23, line_end 27.\n\nFor createPizza, lines 35-45 (the if-else block).\n\nFor updateContactInfo, lines 55-61.\n\nFor notifyForPromotion, lines 85-87.\n\nSimilarly for others.\n\nNow, the evidence sentences need to be concise, citing specific code. For example, for Data Clumps, the evidence is the lines where the fields are initialized.\n\nNow, putting it all together in JSON.\n</think>\n\n{\n  \"language\": \"javascript\",\n  \"file_path\": \"JavaScript/SmellyAnnotated/Shop.js\",\n  \"class_name\": \"Shop\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"constructor\",\n      \"line_start\": 23,\n      \"line_end\": 27,\n      \"evidence\": \"this.firstName = null; this.lastName = null; this.address = null; this.phoneNumber = null; this.email = null;\"\n    },\n    {\n      \"smell_type\": \"Switch Statement\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"createPizza\",\n      \"line_start\": 35,\n      \"line_end\": 45,\n      \"evidence\": \"if (pizzaType === \\\"Cheese\\\") { ... } else if ... else { ... }\"\n    },\n    {\n      \"smell_type\": \"Shotgun Surgery\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"updateContactInfo\",\n      \"line_start\": 55,\n      \"line_end\": 61,\n      \"evidence\": \"this.firstName = firstName; this.lastName = lastName; this.address = address; this.phoneNumber = phoneNumber; this.email = email;\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForPromotion\",\n      \"line_start\": 85,\n      \"line_end\": 87,\n      \"evidence\": \"console.log(\\\"Notifying customer for promotion\\\");\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForDiscount\",\n      \"line_start\": 90,\n      \"line_end\": 92,\n      \"evidence\": \"console.log(\\\"Notifying customer for discount\\\");\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForNewArrivals\",\n      \"line_start\": 95,\n      \"line_end\": 97,\n      \"evidence\": \"console.log(\\\"Notifying customer for new arrivals\\\");\"\n    },\n    {\n      \"smell_type\": \"Switch Statement\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 111,\n      \"line_end\": 119,\n      \"evidence\": \"if (complaint === \\\"cold pizza\\\") { ... } else if ... else { ... }\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 123,\n      \"line_end\": 124,\n      \"evidence\": \"console.log(\\\"Customer is asking for a receipt.\\\");\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 127,\n      \"line_end\": 128,\n      \"evidence\": \"// Dead Code (method is never called)\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"yetAnotherUnusedMethod\",\n      \"line_start\": 131,\n      \"line_end\": 132,\n      \"evidence\": \"// More Dead Code\"\n    },\n    {\n      \"smell_type\": \"Message Chain\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 135,\n      \"line_end\": 137,\n      \"evidence\": \"this.casher.chef.cleanKitchen();\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 141,\n      \"line_end\": 144,\n      \"evidence\": \"this.middleMethod();\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 156,\n      \"line_end\": 158,\n      \"evidence\": \"console.log(`Accessing internal details: ${this.casher.chef.busy}`);\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 161,\n      \"line_end\": 178,\n      \"evidence\": \"this.updateContactInfo(...); ... this.accessInternalDetails();\"\n    }\n  ]\n}\n"
+  },
+  {
+    "sample_id": "javascript_main_js",
+    "language": "javascript",
+    "file_path": "JavaScript/SmellyAnnotated/main.js",
+    "parsed": null,
+    "gold_keys": [],
+    "pred_keys": [],
+    "parse_error": true,
+    "truncated": true,
+    "invalid_findings": 0,
+    "total_findings": 0,
+    "input_tokens": 3779,
+    "output_tokens": 2416,
+    "total_tokens": 6195,
+    "raw": "Okay, let's tackle this problem. I need to apply the decision procedure to the given JavaScript code and output the JSON findings. Let me start by understanding the code and the taxonomy.\n\nFirst, the code is a JavaScript file that measures the execution time of a Shop and Customer interaction. The main function is measureExecutionTime, which runs a loop, creates a Shop and Customer, orders a pizza, complains, and calculates average time. Then it logs the result.\n\nLooking at the taxonomy, I need to check each of the 23 smells. Let's go through each possible smell step by step.\n\nStarting with Pass 1: class/file scope. The class_name is 'main', but in JavaScript, the class here might refer to the module or the top-level functions. The file has a Shop and Customer class, but the main code is in the global scope. The class 'main' isn't a class here; maybe it's a module. But the code doesn't have a class named 'main'. So maybe Pass 1 doesn't apply here. The file doesn't have a class with too many fields or methods. So probably no findings in Pass 1.\n\nPass 2: per-method scope. Let's look at each method.\n\nFirst, the measureExecutionTime function. Let's check each smell for this function.\n\n5. Long Method: The function has 29 lines (from line 12 to 29). The body is from line 13 to 28. Let's count the lines. From line 13 (let totalTime=0) to line 28 (return averageTime). That's 16 lines. Wait, line 13 to 28 is 16 lines? Let me count: 13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28. Yes, 16 lines. The threshold is 25 LOC. So 16 is under. But maybe the conceptual tasks? The function does: initialize totalTime, loop runs, create shop and customer, order pizza, complain, calculate end time, add to total, compute average. That's multiple steps. But are they separate conceptual tasks? Maybe. The loop is a single task, but inside the loop, creating objects and performing actions. However, the threshold is 25 lines. Since it's 16 lines, maybe not. But maybe the code is doing multiple things. However, the line count is under 25, so maybe not a Long Method. But I need to be careful. The code inside the loop is creating a Shop and Customer each time, which might be a code smell if it's unnecessary. But that's more about duplication or other smells.\n\n6. Long Parameter List: The function has one parameter 'runs' with a default. So only one parameter. Not a problem.\n\n7. Switch Statements: No switch here.\n\n8. Feature Envy: The function uses Shop and Customer instances. Does it access their methods more than its own? The function's own variables are totalTime, i, startTime, endTime, executionTime, averageTime. The Shop and Customer are external. The function calls customer.orderPizza and customer.complain. So the function is using Customer's methods. But Feature Envy is when a method uses another class's data more than its own. Here, the function is using Customer's methods, but the function's own data is the timing variables. So maybe not Feature Envy. Unless the function is more concerned with Customer's state than its own. But I don't see that here.\n\n9. Message Chains: No chained method calls here. The calls are direct: customer.orderPizza and customer.complain.\n\n10. Middle Man: The function's body is not a single delegating call. It has loops, variable assignments, etc. So no.\n\n11. Duplicate Code: Are there duplicate methods? The code has measureExecutionTime, and then the Customer and Shop classes. But in this file, the only methods are measureExecutionTime and the ones in Shop and Customer. Since we're looking at this file, maybe no duplicates here. Unless the same code is repeated in different parts. But in this function, I don't see duplicates.\n\n12. Dead Code: The function is called once, so it's not dead. The code is used.\n\n13. Speculative Generality: The function is measuring execution time, which seems specific. Not sure if it's speculative.\n\n14. Control Coupling: The function doesn't take any flags or parameters that control branches. The 'runs' parameter is for the number of iterations, but that's a straightforward loop. No branches based on flags.\n\nSo for measureExecutionTime, maybe no smells here. But wait, maybe the loop is creating a new Shop and Customer each time. That could be a code smell if it's unnecessary. But that's more about duplication or maybe a Lazy Class? Not sure.\n\nNext, looking at the Customer class. The code requires './Customer', but we don't have the code for Customer. However, the problem states that the input is the given JavaScript file. So we can only analyze the code provided. The Customer class is not in this file, so we can't check its methods. Similarly for Shop. So we can only look at the code in main.js.\n\nSo the only methods in this file are measureExecutionTime and possibly any functions in the requires, but since they are not provided, we can't analyze them. So the only method to check is measureExecutionTime.\n\nWait, but the code has 'const { Shop } = require('./Shop');' and 'const { Customer } = require('./Customer');' but those are module exports. The actual code in main.js is the measureExecutionTime function and the code that calls it. So the only method in this file is measureExecutionTime.\n\nSo Pass 2 for this method. Let me recheck.\n\nAnother possible smell: Data Clumps. Are there groups of fields/parameters that appear together? In measureExecutionTime, the parameters are 'runs' with a default. The variables inside are totalTime, i, startTime, endTime, executionTime, averageTime. Not sure if any clumps here.\n\nAlternatively, maybe the code in the loop is creating a new Shop and Customer each time. That could be a code smell if it's unnecessary. But that's more about efficiency or maybe a Lazy Class? Not sure. The Lazy Class smell is when a class does almost nothing. But Shop and Customer are from other files, so we can't check their code here.\n\nAnother possible smell: Maybe the function is doing too much. It's creating a Shop and Customer, ordering a pizza, complaining, and measuring time. That's multiple responsibilities. But the line count is under 25, so maybe not a Long Method. However, the conceptual tasks: creating objects, ordering, complaining, measuring time. Are these separate tasks? If so, maybe it's a Long Method. But the line count is 16, which is under 25. The threshold is 25, so maybe not. But the decision procedure says to use the thresholds as heuristics. So if the line count is under, maybe skip. But the conceptual tasks might be more than one. However, the code is a single loop that does all these steps. It's a single logical task of measuring the time taken for the entire process. So maybe not a Long Method.\n\nAnother possible smell: Maybe the function is using a magic number for runs (10). But that's not a smell in the taxonomy. The taxonomy doesn't mention magic numbers.\n\nWhat about the Customer.orderPizza and Customer.complain calls? If those methods are in the Customer class, but we can't see their code. However, the current file's code is using them. But unless there's a smell in how they're used here. For example, if the Customer class has a method that's being called in a way that causes Feature Envy. But again, without seeing the Customer code, it's hard to tell.\n\nAlternatively, maybe the function is using the Customer's methods in a way that violates some smell. But I don't see that here.\n\nAnother possible smell: Maybe the function is a Data Class? No, because it's a function, not a class. Data Class is for classes with only fields and getters/setters.\n\nWhat about the 'measureExecutionTime' function's parameters? It has one parameter, which is fine.\n\nAnother thing: The function returns the average time, but the code is in a global scope. However, the class_name is 'main', which might refer to the module. But in JavaScript, modules are not classes. So maybe the class_name is 'main' as per the input, but the code is a module. Not sure if that affects anything.\n\nLooking for other smells. Let's check Pass 3.\n\n15. Primitive Obsession: Are primitives used where objects would be better? For example, using a string for status instead of an enum. In this code, the parameters are 'runs' (number), 'Customer' is an object. Not sure. The 'orderPizza' takes a string \"Cheese\". That's a string, but maybe it's okay. Not sure if that's a smell here.\n\n16. Data Clumps: Are there groups of fields/parameters that appear together? In the function, the parameters are 'runs', and inside the loop, variables are totalTime, i, startTime, endTime, executionTime, averageTime. Not sure if any clumps here.\n\n17. Temporary Field: Are there fields that are only used in certain states? The function is a function, not an object, so fields don't apply here. This smell is for classes.\n\n18. Inappropriate Intimacy: The function is using Customer's methods, but since it's a function, not a class, this might not apply. Unless the function is part of a class, but in this case, it's a top-level function.\n\n19. Refused Bequest: Not applicable here, as it's about subclasses.\n\n20. Parallel Inheritance Hierarchies: Not applicable.\n\n21. Divergent Change: The function might change for different reasons, but without more context, hard to tell.\n\n22. Shotgun Surgery: If changing this function requires changes elsewhere, but again, without more context.\n\n23. Comments: The comments in the code are the copyright and license, which are not code comments. The code itself has no comments explaining what it does. The function's purpose is clear from the name. So no comments that are unnecessary.\n\nSo, after going through all the smells, I don't see any that apply to this code. The function measureExecutionTime is 16 lines, under the 25 threshold. It doesn't have long parameters, no switch statements, no feature envy (as far as we can tell), no message chains, etc. The code seems straightforward. The only possible issue could be creating a new Shop and Customer each time in the loop, but that's more about efficiency or maybe a code smell not in the taxonomy. Since the taxonomy doesn't include that, it's not a smell here.\n\nTherefore, the JSON should have an empty findings array.\n</think>\n\n{\"language\":\"javascript\",\"file_path\":\"JavaScript/SmellyAnnotated/main.js\",\"class_name\":\"main\",\"findings\":[]}\n"
+  }
+]
