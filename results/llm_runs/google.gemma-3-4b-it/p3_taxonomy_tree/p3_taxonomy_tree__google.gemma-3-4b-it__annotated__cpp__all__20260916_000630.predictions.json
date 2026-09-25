@@ -1,0 +1,2182 @@
+[
+  {
+    "sample_id": "cpp_Cashier_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Cashier.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Cashier.cpp",
+      "class_name": "Cashier",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 75,
+          "line_end": 82,
+          "evidence": "The `longMethod` function body exceeds 25 lines and performs multiple conceptual tasks, including taking orders, notifying for promotions, applying discounts, and handling complaints."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "entire Class",
+          "line_start": 36,
+          "line_end": 47,
+          "evidence": "The `notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`, `applyDiscount`, `applyLoyaltyPoints`, and `handleComplaint` methods all share a common set of parameters (pizzaType, discountCode, complaint)."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 93,
+          "line_end": 96,
+          "evidence": "The `duplicateMethod` function body contains identical code to the `takeOrder` method."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 99,
+          "line_end": 101,
+          "evidence": "The `chainOfMethods` function calls `accessInternalDetails`, which then calls `middleMethod`."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 118,
+          "line_end": 119,
+          "evidence": "The `accessInternalDetails` method directly accesses the `isBusy()` method of the `chef` object, which is a private member."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 86,
+          "line_end": 90,
+          "evidence": "The `orderWithUnnecessaryDetails` method takes 7 parameters, exceeding the recommended limit of 4."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.cpp",
+        "Cashier",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 6,
+    "input_tokens": 5183,
+    "output_tokens": 626,
+    "total_tokens": 5809,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Cashier.cpp\",\n  \"class_name\": \"Cashier\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 75,\n      \"line_end\": 82,\n      \"evidence\": \"The `longMethod` function body exceeds 25 lines and performs multiple conceptual tasks, including taking orders, notifying for promotions, applying discounts, and handling complaints.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"entire Class\",\n      \"line_start\": 36,\n      \"line_end\": 47,\n      \"evidence\": \"The `notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`, `applyDiscount`, `applyLoyaltyPoints`, and `handleComplaint` methods all share a common set of parameters (pizzaType, discountCode, complaint).\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 93,\n      \"line_end\": 96,\n      \"evidence\": \"The `duplicateMethod` function body contains identical code to the `takeOrder` method.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 99,\n      \"line_end\": 101,\n      \"evidence\": \"The `chainOfMethods` function calls `accessInternalDetails`, which then calls `middleMethod`.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 118,\n      \"line_end\": 119,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses the `isBusy()` method of the `chef` object, which is a private member.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 86,\n      \"line_end\": 90,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method takes 7 parameters, exceeding the recommended limit of 4.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Cashier_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Cashier.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Cashier.h",
+      "class_name": "Cashier",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 35,
+          "line_end": 37,
+          "evidence": "The `longMethod` function has a body of 68 lines and performs multiple conceptual tasks."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 36,
+          "line_end": 36,
+          "evidence": "The `duplicateMethod` function's body is identical to the body of `orderWithUnnecessaryDetails`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 41,
+          "line_end": 41,
+          "evidence": "The `chainOfMethods` function contains a chain of method calls: `applyDiscount()` -> `applyLoyaltyPoints()`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 42,
+          "line_end": 42,
+          "evidence": "The `middleMethod` function delegates to `realMethod` without adding any specific behavior."
+        },
+        {
+          "smell_type": "Access Internal Details",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 43,
+          "line_end": 43,
+          "evidence": "The `accessInternalDetails` method directly accesses the `chef` object's private member."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 44,
+          "line_end": 44,
+          "evidence": "The `refusedBequest` method overrides inherited methods with empty bodies and throws `NotImplementedError`."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 45,
+          "line_end": 47,
+          "evidence": "The class uses primitive types (`bool`, `std::string`) to represent concepts that could be better modeled with small objects or enums."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 45,
+          "line_end": 47,
+          "evidence": "The class contains a group of fields (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) that appear together repeatedly."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 2,
+          "line_end": 5,
+          "evidence": "The comments explain *what* the code does rather than *why*, suggesting the code is unclear."
+        }
+      ]
+    },
+    "gold_keys": [],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "Entire Class",
+        "Comments"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Cashier.h",
+        "Cashier",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 1,
+    "total_findings": 9,
+    "input_tokens": 4163,
+    "output_tokens": 849,
+    "total_tokens": 5012,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Cashier.h\",\n  \"class_name\": \"Cashier\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 35,\n      \"line_end\": 37,\n      \"evidence\": \"The `longMethod` function has a body of 68 lines and performs multiple conceptual tasks.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 36,\n      \"line_end\": 36,\n      \"evidence\": \"The `duplicateMethod` function's body is identical to the body of `orderWithUnnecessaryDetails`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 41,\n      \"line_end\": 41,\n      \"evidence\": \"The `chainOfMethods` function contains a chain of method calls: `applyDiscount()` -> `applyLoyaltyPoints()`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 42,\n      \"line_end\": 42,\n      \"evidence\": \"The `middleMethod` function delegates to `realMethod` without adding any specific behavior.\"\n    },\n    {\n      \"smell_type\": \"Access Internal Details\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 43,\n      \"line_end\": 43,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses the `chef` object's private member.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 44,\n      \"line_end\": 44,\n      \"evidence\": \"The `refusedBequest` method overrides inherited methods with empty bodies and throws `NotImplementedError`.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 45,\n      \"line_end\": 47,\n      \"evidence\": \"The class uses primitive types (`bool`, `std::string`) to represent concepts that could be better modeled with small objects or enums.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 45,\n      \"line_end\": 47,\n      \"evidence\": \"The class contains a group of fields (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) that appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 2,\n      \"line_end\": 5,\n      \"evidence\": \"The comments explain *what* the code does rather than *why*, suggesting the code is unclear.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Chef_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Chef.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Chef.cpp",
+      "class_name": "Chef",
+      "findings": [
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "bakePizza",
+          "line_start": 19,
+          "line_end": 20,
+          "evidence": "Using `extraCheese` as a boolean primitive instead of a `Pizza` object."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 111,
+          "line_end": 128,
+          "evidence": "The `longMethod` contains 15 method calls and covers multiple conceptual tasks."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Bloaters",
+          "method": "handleComplaint",
+          "line_start": 89,
+          "line_end": 97,
+          "evidence": "The `handleComplaint` method uses a `switch` statement on a string type."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "bakePizza",
+          "line_start": 23,
+          "line_end": 24,
+          "evidence": "The `bakePizza` method uses `pizza->getTopping()` more than `this->getTopping()`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 146,
+          "line_end": 147,
+          "evidence": "The `chainOfMethods` method calls `cleanKitchen()` through a chain of method calls."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 152,
+          "line_end": 153,
+          "evidence": "The `middleMethod` delegates to `realMethod` without adding any significant behavior."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 167,
+          "line_end": 168,
+          "evidence": "The `accessInternalDetails` method directly accesses `pizza->getTopping()`."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 132,
+          "line_end": 133,
+          "evidence": "The `duplicateMethod` method calls `bakePizza` twice with the same arguments."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 132,
+          "line_end": 133,
+          "evidence": "The `orderWithUnnecessaryDetails` method takes 8 parameters."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 53,
+          "line_end": 67,
+          "evidence": "The `updateContactInfo`, `notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`, `applyDiscount`, `applyLoyaltyPoints`, `handleComplaint`, and `askForReceipt` methods all perform different tasks."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 172,
+          "line_end": 172,
+          "evidence": "The `refusedBequest` method overrides inherited methods with empty bodies."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "updateContactInfo",
+        "Shotgun Surgery"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "bakePizza",
+        "Feature Envy"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "bakePizza",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.cpp",
+        "Chef",
+        "refusedBequest",
+        "Parallel Inheritance Hierarchies"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 11,
+    "input_tokens": 5734,
+    "output_tokens": 1017,
+    "total_tokens": 6751,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Chef.cpp\",\n  \"class_name\": \"Chef\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"bakePizza\",\n      \"line_start\": 19,\n      \"line_end\": 20,\n      \"evidence\": \"Using `extraCheese` as a boolean primitive instead of a `Pizza` object.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 111,\n      \"line_end\": 128,\n      \"evidence\": \"The `longMethod` contains 15 method calls and covers multiple conceptual tasks.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Bloaters\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 89,\n      \"line_end\": 97,\n      \"evidence\": \"The `handleComplaint` method uses a `switch` statement on a string type.\"\n    },\n    {\n      \"smell_type\": \"Feature Envy\",\n      \"category\": \"Couplers\",\n      \"method\": \"bakePizza\",\n      \"line_start\": 23,\n      \"line_end\": 24,\n      \"evidence\": \"The `bakePizza` method uses `pizza->getTopping()` more than `this->getTopping()`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 146,\n      \"line_end\": 147,\n      \"evidence\": \"The `chainOfMethods` method calls `cleanKitchen()` through a chain of method calls.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 152,\n      \"line_end\": 153,\n      \"evidence\": \"The `middleMethod` delegates to `realMethod` without adding any significant behavior.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 167,\n      \"line_end\": 168,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses `pizza->getTopping()`.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 132,\n      \"line_end\": 133,\n      \"evidence\": \"The `duplicateMethod` method calls `bakePizza` twice with the same arguments.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 132,\n      \"line_end\": 133,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method takes 8 parameters.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 53,\n      \"line_end\": 67,\n      \"evidence\": \"The `updateContactInfo`, `notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`, `applyDiscount`, `applyLoyaltyPoints`, `handleComplaint`, and `askForReceipt` methods all perform different tasks.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 172,\n      \"line_end\": 172,\n      \"evidence\": \"The `refusedBequest` method overrides inherited methods with empty bodies.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Chef_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Chef.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Chef.h",
+      "class_name": "Chef",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 60,
+          "line_end": 63,
+          "evidence": "The `longMethod` function has 45 lines of code and performs multiple conceptual tasks."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 66,
+          "line_end": 70,
+          "evidence": "The `orderWithUnnecessaryDetails` function has 45 lines of code and performs multiple conceptual tasks."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 73,
+          "line_end": 77,
+          "evidence": "The `duplicateMethod` function is identical to `applyDiscount`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 79,
+          "line_end": 83,
+          "evidence": "The `chainOfMethods` function contains a chain of method calls: `handleComplaint().askForReceipt()`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 85,
+          "line_end": 89,
+          "evidence": "The `middleMethod` function delegates to `applyLoyaltyPoints`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middlemanMethod",
+          "line_start": 91,
+          "line_end": 95,
+          "evidence": "The `middlemanMethod` function delegates to `applyDiscount`."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "handleComplaint",
+          "line_start": 97,
+          "line_end": 101,
+          "evidence": "The `handleComplaint` method accesses `firstName`, `lastName`, and `email` from the `Pizza` class."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 53,
+          "line_end": 53,
+          "evidence": "The `extraCheese` field is a boolean primitive representing a concept that could be better modeled with an enum."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 56,
+          "line_end": 61,
+          "evidence": "The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 62,
+          "line_end": 62,
+          "evidence": "The `tempDiscountCode` and `tempOrderNote` fields are only used briefly and then discarded."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Temporary Field"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "handleComplaint",
+        "Feature Envy"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Chef.h",
+        "Chef",
+        "orderWithUnnecessaryDetails",
+        "Long Method"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 10,
+    "input_tokens": 4245,
+    "output_tokens": 902,
+    "total_tokens": 5147,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Chef.h\",\n  \"class_name\": \"Chef\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 60,\n      \"line_end\": 63,\n      \"evidence\": \"The `longMethod` function has 45 lines of code and performs multiple conceptual tasks.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 66,\n      \"line_end\": 70,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` function has 45 lines of code and performs multiple conceptual tasks.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 73,\n      \"line_end\": 77,\n      \"evidence\": \"The `duplicateMethod` function is identical to `applyDiscount`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 79,\n      \"line_end\": 83,\n      \"evidence\": \"The `chainOfMethods` function contains a chain of method calls: `handleComplaint().askForReceipt()`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 85,\n      \"line_end\": 89,\n      \"evidence\": \"The `middleMethod` function delegates to `applyLoyaltyPoints`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middlemanMethod\",\n      \"line_start\": 91,\n      \"line_end\": 95,\n      \"evidence\": \"The `middlemanMethod` function delegates to `applyDiscount`.\"\n    },\n    {\n      \"smell_type\": \"Feature Envy\",\n      \"category\": \"Couplers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 97,\n      \"line_end\": 101,\n      \"evidence\": \"The `handleComplaint` method accesses `firstName`, `lastName`, and `email` from the `Pizza` class.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 53,\n      \"line_end\": 53,\n      \"evidence\": \"The `extraCheese` field is a boolean primitive representing a concept that could be better modeled with an enum.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 56,\n      \"line_end\": 61,\n      \"evidence\": \"The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 62,\n      \"line_end\": 62,\n      \"evidence\": \"The `tempDiscountCode` and `tempOrderNote` fields are only used briefly and then discarded.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Customer_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Customer.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Customer.cpp",
+      "class_name": "Customer",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 64,
+          "line_end": 72,
+          "evidence": "The `longMethod` method contains 19 lines of code and performs multiple conceptual tasks, including ordering pizza, complaining, notifying for promotions, applying discounts, and handling complaints."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 83,
+          "line_end": 86,
+          "evidence": "The `duplicateMethod` method calls `orderPizza` twice, resulting in identical code execution."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 90,
+          "line_end": 91,
+          "evidence": "The `chainOfMethods` method calls `accessInternalDetails`, which in turn calls `hurryUpChef` on the `pizzaShop->getCashier()` object, creating a message chain of length 2."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 94,
+          "line_end": 95,
+          "evidence": "The `middleMethod` method only delegates to `realMethod` without adding any significant behavior, acting as a middle man."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 108,
+          "line_end": 109,
+          "evidence": "The `accessInternalDetails` method directly accesses the private method `hurryUpChef` of the `pizzaShop->getCashier()` object, violating encapsulation."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 76,
+          "line_end": 81,
+          "evidence": "The `orderWithUnnecessaryDetails` method takes 7 parameters, including `extraCheese` and `discountCode`, which could be simplified."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.cpp",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 6,
+    "input_tokens": 5052,
+    "output_tokens": 636,
+    "total_tokens": 5688,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Customer.cpp\",\n  \"class_name\": \"Customer\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 64,\n      \"line_end\": 72,\n      \"evidence\": \"The `longMethod` method contains 19 lines of code and performs multiple conceptual tasks, including ordering pizza, complaining, notifying for promotions, applying discounts, and handling complaints.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 83,\n      \"line_end\": 86,\n      \"evidence\": \"The `duplicateMethod` method calls `orderPizza` twice, resulting in identical code execution.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 90,\n      \"line_end\": 91,\n      \"evidence\": \"The `chainOfMethods` method calls `accessInternalDetails`, which in turn calls `hurryUpChef` on the `pizzaShop->getCashier()` object, creating a message chain of length 2.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 94,\n      \"line_end\": 95,\n      \"evidence\": \"The `middleMethod` method only delegates to `realMethod` without adding any significant behavior, acting as a middle man.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 108,\n      \"line_end\": 109,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses the private method `hurryUpChef` of the `pizzaShop->getCashier()` object, violating encapsulation.\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 76,\n      \"line_end\": 81,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method takes 7 parameters, including `extraCheese` and `discountCode`, which could be simplified.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Customer_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Customer.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Customer.h",
+      "class_name": "Customer",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 35,
+          "line_end": 41,
+          "evidence": "The `longMethod` function has 75 lines of code and performs multiple conceptual tasks, including ordering pizza with unnecessary details, duplicating a method, chaining methods, using a middleman method, calling a real method, accessing internal details, and refusing a bequest."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 33,
+          "line_end": 34,
+          "evidence": "The `duplicateMethod` function is identical to the `longMethod` function."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 37,
+          "line_end": 38,
+          "evidence": "The `chainOfMethods` function calls multiple methods in a chain: `middleMethod` then `realMethod`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 37,
+          "line_end": 38,
+          "evidence": "The `middleMethod` function only delegates to `realMethod`."
+        },
+        {
+          "smell_type": "Feature Envy",
+          "category": "Couplers",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 33,
+          "line_end": 34,
+          "evidence": "The `orderWithUnnecessaryDetails` method accesses the `pizzaShop` object's methods more frequently than its own."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 47,
+          "line_end": 47,
+          "evidence": "The `frequentCustomerDiscount` field uses a primitive boolean type to represent a concept that could be better modeled with an enum or a small class."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 50,
+          "line_end": 54,
+          "evidence": "The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly in the constructor and other methods."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 57,
+          "line_end": 57,
+          "evidence": "The `tempDiscountCode` and `tempOrderNote` fields are only used briefly and then discarded."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 36,
+          "line_end": 36,
+          "evidence": "The `refusedBequest` method overrides inherited methods with empty bodies or raises `NotImplementedError`."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Temporary Field"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "orderWithUnnecessaryDetails",
+        "Feature Envy"
+      ],
+      [
+        "C++/SmellyAnnotated/Customer.h",
+        "Customer",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 9,
+    "input_tokens": 4196,
+    "output_tokens": 882,
+    "total_tokens": 5078,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Customer.h\",\n  \"class_name\": \"Customer\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 35,\n      \"line_end\": 41,\n      \"evidence\": \"The `longMethod` function has 75 lines of code and performs multiple conceptual tasks, including ordering pizza with unnecessary details, duplicating a method, chaining methods, using a middleman method, calling a real method, accessing internal details, and refusing a bequest.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 33,\n      \"line_end\": 34,\n      \"evidence\": \"The `duplicateMethod` function is identical to the `longMethod` function.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 37,\n      \"line_end\": 38,\n      \"evidence\": \"The `chainOfMethods` function calls multiple methods in a chain: `middleMethod` then `realMethod`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 37,\n      \"line_end\": 38,\n      \"evidence\": \"The `middleMethod` function only delegates to `realMethod`.\"\n    },\n    {\n      \"smell_type\": \"Feature Envy\",\n      \"category\": \"Couplers\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 33,\n      \"line_end\": 34,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method accesses the `pizzaShop` object's methods more frequently than its own.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 47,\n      \"line_end\": 47,\n      \"evidence\": \"The `frequentCustomerDiscount` field uses a primitive boolean type to represent a concept that could be better modeled with an enum or a small class.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 50,\n      \"line_end\": 54,\n      \"evidence\": \"The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly in the constructor and other methods.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 57,\n      \"line_end\": 57,\n      \"evidence\": \"The `tempDiscountCode` and `tempOrderNote` fields are only used briefly and then discarded.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 36,\n      \"line_end\": 36,\n      \"evidence\": \"The `refusedBequest` method overrides inherited methods with empty bodies or raises `NotImplementedError`.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Drink_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Drink.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Drink.cpp",
+      "class_name": "Drink",
+      "findings": [
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notifyForPromotion",
+          "line_start": 38,
+          "line_end": 38,
+          "evidence": "Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notifyForDiscount",
+          "line_start": 43,
+          "line_end": 43,
+          "evidence": "Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "notifyForNewArrivals",
+          "line_start": 48,
+          "line_end": 48,
+          "evidence": "Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "applyDiscount",
+          "line_start": 53,
+          "line_end": 53,
+          "evidence": "`applyDiscount` and `applyLoyaltyPoints` are called in parallel, suggesting a parallel inheritance hierarchy."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "applyLoyaltyPoints",
+          "line_start": 57,
+          "line_end": 57,
+          "evidence": "`applyDiscount` and `applyLoyaltyPoints` are called in parallel, suggesting a parallel inheritance hierarchy."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "handleComplaint",
+          "line_start": 63,
+          "line_end": 68,
+          "evidence": "A `switch` statement with three arms (`no ice`, `too much ice`, `wrong drink`) handles complaints."
+        },
+        {
+          "smell_type": "Speculative Generality",
+          "category": "Dispensables",
+          "method": "askForReceipt",
+          "line_start": 76,
+          "line_end": 76,
+          "evidence": "The `askForReceipt` method is called without any apparent use case, suggesting speculative generality."
+        },
+        {
+          "smell_type": "Dead Code",
+          "category": "Dispensables",
+          "method": "anotherUnusedMethod",
+          "line_start": 81,
+          "line_end": 81,
+          "evidence": "The `anotherUnusedMethod` method is never called and has no effect."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 85,
+          "line_end": 97,
+          "evidence": "The `longMethod` method has 38 lines of code and covers multiple conceptual tasks (ordering, preparing, serving, cleaning up, notifying)."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 99,
+          "line_end": 99,
+          "evidence": "The `orderWithUnnecessaryDetails` method takes 6 parameters."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 99,
+          "line_end": 100,
+          "evidence": "The `duplicateMethod` method repeats the `orderDrink` call."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 113,
+          "line_end": 113,
+          "evidence": "The `chainOfMethods` method calls `cleanup()` which then calls `middleMethod()`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 120,
+          "line_end": 120,
+          "evidence": "The `middleMethod` method only delegates to `realMethod()`."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 134,
+          "line_end": 134,
+          "evidence": "The `accessInternalDetails` method accesses private members (`this->size`, `this->drinkType`)."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.cpp",
+        "Drink",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 14,
+    "input_tokens": 5281,
+    "output_tokens": 1299,
+    "total_tokens": 6580,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Drink.cpp\",\n  \"class_name\": \"Drink\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForPromotion\",\n      \"line_start\": 38,\n      \"line_end\": 38,\n      \"evidence\": \"Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForDiscount\",\n      \"line_start\": 43,\n      \"line_end\": 43,\n      \"evidence\": \"Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"notifyForNewArrivals\",\n      \"line_start\": 48,\n      \"line_end\": 48,\n      \"evidence\": \"Three separate methods (`notifyForPromotion`, `notifyForDiscount`, `notifyForNewArrivals`) handle promotion-related notifications.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyDiscount\",\n      \"line_start\": 53,\n      \"line_end\": 53,\n      \"evidence\": \"`applyDiscount` and `applyLoyaltyPoints` are called in parallel, suggesting a parallel inheritance hierarchy.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"applyLoyaltyPoints\",\n      \"line_start\": 57,\n      \"line_end\": 57,\n      \"evidence\": \"`applyDiscount` and `applyLoyaltyPoints` are called in parallel, suggesting a parallel inheritance hierarchy.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"handleComplaint\",\n      \"line_start\": 63,\n      \"line_end\": 68,\n      \"evidence\": \"A `switch` statement with three arms (`no ice`, `too much ice`, `wrong drink`) handles complaints.\"\n    },\n    {\n      \"smell_type\": \"Speculative Generality\",\n      \"category\": \"Dispensables\",\n      \"method\": \"askForReceipt\",\n      \"line_start\": 76,\n      \"line_end\": 76,\n      \"evidence\": \"The `askForReceipt` method is called without any apparent use case, suggesting speculative generality.\"\n    },\n    {\n      \"smell_type\": \"Dead Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"anotherUnusedMethod\",\n      \"line_start\": 81,\n      \"line_end\": 81,\n      \"evidence\": \"The `anotherUnusedMethod` method is never called and has no effect.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 85,\n      \"line_end\": 97,\n      \"evidence\": \"The `longMethod` method has 38 lines of code and covers multiple conceptual tasks (ordering, preparing, serving, cleaning up, notifying).\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 99,\n      \"line_end\": 99,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method takes 6 parameters.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 99,\n      \"line_end\": 100,\n      \"evidence\": \"The `duplicateMethod` method repeats the `orderDrink` call.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 113,\n      \"line_end\": 113,\n      \"evidence\": \"The `chainOfMethods` method calls `cleanup()` which then calls `middleMethod()`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 120,\n      \"line_end\": 120,\n      \"evidence\": \"The `middleMethod` method only delegates to `realMethod()`.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 134,\n      \"line_end\": 134,\n      \"evidence\": \"The `accessInternalDetails` method accesses private members (`this->size`, `this->drinkType`).\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Drink_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Drink.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Drink.h",
+      "class_name": "Drink",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 33,
+          "line_end": 36,
+          "evidence": "The `longMethod` function has 63 lines of code and performs multiple conceptual tasks."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 39,
+          "line_end": 40,
+          "evidence": "The `duplicateMethod` function is identical to `anotherUnusedMethod`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 41,
+          "line_end": 42,
+          "evidence": "The `chainOfMethods` function calls multiple methods in a chain: `applyDiscount()`, `applyLoyaltyPoints()`, `handleComplaint()`, `askForReceipt()`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 43,
+          "line_end": 43,
+          "evidence": "The `middleMethod` function only delegates to `applyDiscount()`."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 47,
+          "line_end": 47,
+          "evidence": "The `ice` and `lemon` fields are primitive boolean types representing drink customization options."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 51,
+          "line_end": 53,
+          "evidence": "The `customerFirstName`, `customerLastName`, `customerAddress`, `customerPhoneNumber`, and `customerEmail` fields appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 57,
+          "line_end": 57,
+          "evidence": "The `tempDiscountCode` and `tempOrderNote` fields are only used temporarily within the class and are reset to null."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 60,
+          "line_end": 60,
+          "evidence": "The `refusedBequest` method overrides inherited methods with empty bodies and raises `NotImplementedError`."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Temporary Field"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Drink.h",
+        "Drink",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 8,
+    "input_tokens": 4181,
+    "output_tokens": 760,
+    "total_tokens": 4941,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Drink.h\",\n  \"class_name\": \"Drink\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 33,\n      \"line_end\": 36,\n      \"evidence\": \"The `longMethod` function has 63 lines of code and performs multiple conceptual tasks.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 39,\n      \"line_end\": 40,\n      \"evidence\": \"The `duplicateMethod` function is identical to `anotherUnusedMethod`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 41,\n      \"line_end\": 42,\n      \"evidence\": \"The `chainOfMethods` function calls multiple methods in a chain: `applyDiscount()`, `applyLoyaltyPoints()`, `handleComplaint()`, `askForReceipt()`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 43,\n      \"line_end\": 43,\n      \"evidence\": \"The `middleMethod` function only delegates to `applyDiscount()`.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 47,\n      \"line_end\": 47,\n      \"evidence\": \"The `ice` and `lemon` fields are primitive boolean types representing drink customization options.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 51,\n      \"line_end\": 53,\n      \"evidence\": \"The `customerFirstName`, `customerLastName`, `customerAddress`, `customerPhoneNumber`, and `customerEmail` fields appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 57,\n      \"line_end\": 57,\n      \"evidence\": \"The `tempDiscountCode` and `tempOrderNote` fields are only used temporarily within the class and are reset to null.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 60,\n      \"line_end\": 60,\n      \"evidence\": \"The `refusedBequest` method overrides inherited methods with empty bodies and raises `NotImplementedError`.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Pizza_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Pizza.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Pizza.cpp",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 70,
+          "line_end": 76,
+          "evidence": "Three separate methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) are called to handle different promotional notifications."
+        },
+        {
+          "smell_type": "Divergent Change",
+          "category": "Change Preventers",
+          "method": "Entire Class",
+          "line_start": 78,
+          "line_end": 82,
+          "evidence": "Three separate methods (applyDiscount, applyLoyaltyPoints, handleComplaint) are called to handle different discount/loyalty/complaint scenarios."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "Entire Class",
+          "line_start": 85,
+          "line_end": 87,
+          "evidence": "applyDiscount and applyLoyaltyPoints are called, suggesting a potential parallel inheritance hierarchy if these methods were implemented in separate classes."
+        },
+        {
+          "smell_type": "Parallel Inheritance Hierarchies",
+          "category": "Object-Orientation Abusers",
+          "method": "Entire Class",
+          "line_start": 89,
+          "line_end": 91,
+          "evidence": "applyDiscount and applyLoyaltyPoints are called, suggesting a potential parallel inheritance hierarchy if these methods were implemented in separate classes."
+        },
+        {
+          "smell_type": "Switch Statements",
+          "category": "Object-Orientation Abusers",
+          "method": "Entire Class",
+          "line_start": 103,
+          "line_end": 108,
+          "evidence": "A switch statement with three arms (cold pizza, late delivery, wrong order) handles different complaint types."
+        },
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 116,
+          "line_end": 128,
+          "evidence": "The `longMethod` method has 36 lines of code and covers multiple conceptual tasks (setting size, dough type, topping, customer info, notifications, discounts, complaint handling)."
+        },
+        {
+          "smell_type": "Long Parameter List",
+          "category": "Bloaters",
+          "method": "orderWithUnnecessaryDetails",
+          "line_start": 132,
+          "line_end": 138,
+          "evidence": "The `orderWithUnnecessaryDetails` method takes 8 parameters, including pizza type, size, crust type, toppings, extra cheese, and discount code."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 141,
+          "line_end": 143,
+          "evidence": "The `duplicateMethod` method repeats the same code (setting the topping to 'Cheese') twice."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 147,
+          "line_end": 148,
+          "evidence": "The `chainOfMethods` method calls `updateCustomerAddress` which is a chain of method calls (a.b().c().d())."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 168,
+          "line_end": 170,
+          "evidence": "The `accessInternalDetails` method directly accesses private members (size, doughType, topping) of the `Pizza` class."
+        },
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 2,
+          "line_end": 5,
+          "evidence": "The code includes comments explaining the copyright information, but the comments are overly verbose and explain what the code does rather than why."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "anotherUnusedMethod",
+        "Dead Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "applyDiscount",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "applyLoyaltyPoints",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "askForReceipt",
+        "Speculative Generality"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "handleComplaint",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "middlemanMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "notifyForDiscount",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "notifyForNewArrivals",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "notifyForPromotion",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "updateCustomerAddress",
+        "Shotgun Surgery"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "updateCustomerEmail",
+        "Shotgun Surgery"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "updateCustomerInfo",
+        "Shotgun Surgery"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "updateCustomerName",
+        "Shotgun Surgery"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "updateCustomerPhoneNumber",
+        "Shotgun Surgery"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "Entire Class",
+        "Comments"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "Entire Class",
+        "Divergent Change"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "Entire Class",
+        "Parallel Inheritance Hierarchies"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "Entire Class",
+        "Switch Statements"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.cpp",
+        "Pizza",
+        "orderWithUnnecessaryDetails",
+        "Long Parameter List"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 11,
+    "input_tokens": 5982,
+    "output_tokens": 1095,
+    "total_tokens": 7077,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Pizza.cpp\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 70,\n      \"line_end\": 76,\n      \"evidence\": \"Three separate methods (notifyForPromotion, notifyForDiscount, notifyForNewArrivals) are called to handle different promotional notifications.\"\n    },\n    {\n      \"smell_type\": \"Divergent Change\",\n      \"category\": \"Change Preventers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 78,\n      \"line_end\": 82,\n      \"evidence\": \"Three separate methods (applyDiscount, applyLoyaltyPoints, handleComplaint) are called to handle different discount/loyalty/complaint scenarios.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 85,\n      \"line_end\": 87,\n      \"evidence\": \"applyDiscount and applyLoyaltyPoints are called, suggesting a potential parallel inheritance hierarchy if these methods were implemented in separate classes.\"\n    },\n    {\n      \"smell_type\": \"Parallel Inheritance Hierarchies\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 89,\n      \"line_end\": 91,\n      \"evidence\": \"applyDiscount and applyLoyaltyPoints are called, suggesting a potential parallel inheritance hierarchy if these methods were implemented in separate classes.\"\n    },\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 103,\n      \"line_end\": 108,\n      \"evidence\": \"A switch statement with three arms (cold pizza, late delivery, wrong order) handles different complaint types.\"\n    },\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 116,\n      \"line_end\": 128,\n      \"evidence\": \"The `longMethod` method has 36 lines of code and covers multiple conceptual tasks (setting size, dough type, topping, customer info, notifications, discounts, complaint handling).\"\n    },\n    {\n      \"smell_type\": \"Long Parameter List\",\n      \"category\": \"Bloaters\",\n      \"method\": \"orderWithUnnecessaryDetails\",\n      \"line_start\": 132,\n      \"line_end\": 138,\n      \"evidence\": \"The `orderWithUnnecessaryDetails` method takes 8 parameters, including pizza type, size, crust type, toppings, extra cheese, and discount code.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 141,\n      \"line_end\": 143,\n      \"evidence\": \"The `duplicateMethod` method repeats the same code (setting the topping to 'Cheese') twice.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 147,\n      \"line_end\": 148,\n      \"evidence\": \"The `chainOfMethods` method calls `updateCustomerAddress` which is a chain of method calls (a.b().c().d()).\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 168,\n      \"line_end\": 170,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses private members (size, doughType, topping) of the `Pizza` class.\"\n    },\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 2,\n      \"line_end\": 5,\n      \"evidence\": \"The code includes comments explaining the copyright information, but the comments are overly verbose and explain what the code does rather than why.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Pizza_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Pizza.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Pizza.h",
+      "class_name": "Pizza",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 41,
+          "line_end": 43,
+          "evidence": "Method `longMethod` has 35 lines of code and performs three unrelated tasks: prints a message, calls another method, and performs a calculation."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 42,
+          "line_end": 43,
+          "evidence": "Method `duplicateMethod` is identical to `longMethod`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 46,
+          "line_end": 47,
+          "evidence": "The method `chainOfMethods` calls `middleMethod` which calls `realMethod`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 47,
+          "line_end": 47,
+          "evidence": "Method `middleMethod` only delegates to `realMethod`."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 57,
+          "line_end": 57,
+          "evidence": "The boolean variable `extraCheese` is used to represent a boolean state without a dedicated boolean type."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 60,
+          "line_end": 64,
+          "evidence": "The fields `customerFirstName`, `customerLastName`, `customerAddress`, `customerPhoneNumber`, and `customerEmail` are grouped together."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 67,
+          "line_end": 67,
+          "evidence": "The variable `tempDiscountCode` is only used once and is then discarded."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 48,
+          "line_end": 48,
+          "evidence": "The method `accessInternalDetails` calls a private member."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Temporary Field"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Pizza.h",
+        "Pizza",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 8,
+    "input_tokens": 4570,
+    "output_tokens": 731,
+    "total_tokens": 5301,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Pizza.h\",\n  \"class_name\": \"Pizza\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 41,\n      \"line_end\": 43,\n      \"evidence\": \"Method `longMethod` has 35 lines of code and performs three unrelated tasks: prints a message, calls another method, and performs a calculation.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 42,\n      \"line_end\": 43,\n      \"evidence\": \"Method `duplicateMethod` is identical to `longMethod`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 46,\n      \"line_end\": 47,\n      \"evidence\": \"The method `chainOfMethods` calls `middleMethod` which calls `realMethod`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 47,\n      \"line_end\": 47,\n      \"evidence\": \"Method `middleMethod` only delegates to `realMethod`.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 57,\n      \"line_end\": 57,\n      \"evidence\": \"The boolean variable `extraCheese` is used to represent a boolean state without a dedicated boolean type.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 60,\n      \"line_end\": 64,\n      \"evidence\": \"The fields `customerFirstName`, `customerLastName`, `customerAddress`, `customerPhoneNumber`, and `customerEmail` are grouped together.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 67,\n      \"line_end\": 67,\n      \"evidence\": \"The variable `tempDiscountCode` is only used once and is then discarded.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 48,\n      \"line_end\": 48,\n      \"evidence\": \"The method `accessInternalDetails` calls a private member.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Shop_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Shop.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Shop.cpp",
+      "class_name": "Shop",
+      "findings": [
+        {
+          "smell_type": "Switch Statements",
+          "category": "Bloaters",
+          "method": "createPizza",
+          "line_start": 23,
+          "line_end": 32,
+          "evidence": "The `createPizza` method uses a long `if-else if` chain to determine the pizza type, which could be replaced with a switch statement or a map."
+        },
+        {
+          "smell_type": "Inappropriate Intimacy",
+          "category": "Couplers",
+          "method": "accessInternalDetails",
+          "line_start": 45,
+          "line_end": 46,
+          "evidence": "The `accessInternalDetails` method directly accesses the `isBusy()` method of the `Chef` object through the `cashier` object, violating encapsulation."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Shop.cpp",
+        "Shop",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Shop.cpp",
+        "Shop",
+        "accessInternalDetails",
+        "Inappropriate Intimacy"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.cpp",
+        "Shop",
+        "createPizza",
+        "Switch Statements"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 2,
+    "input_tokens": 4131,
+    "output_tokens": 252,
+    "total_tokens": 4383,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Shop.cpp\",\n  \"class_name\": \"Shop\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Switch Statements\",\n      \"category\": \"Bloaters\",\n      \"method\": \"createPizza\",\n      \"line_start\": 23,\n      \"line_end\": 32,\n      \"evidence\": \"The `createPizza` method uses a long `if-else if` chain to determine the pizza type, which could be replaced with a switch statement or a map.\"\n    },\n    {\n      \"smell_type\": \"Inappropriate Intimacy\",\n      \"category\": \"Couplers\",\n      \"method\": \"accessInternalDetails\",\n      \"line_start\": 45,\n      \"line_end\": 46,\n      \"evidence\": \"The `accessInternalDetails` method directly accesses the `isBusy()` method of the `Chef` object through the `cashier` object, violating encapsulation.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_Shop_h",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/Shop.h",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/Shop.h",
+      "class_name": "Shop",
+      "findings": [
+        {
+          "smell_type": "Long Method",
+          "category": "Bloaters",
+          "method": "longMethod",
+          "line_start": 37,
+          "line_end": 43,
+          "evidence": "The `longMethod` function has 64 lines of code and performs multiple conceptual tasks, including parameter validation and output."
+        },
+        {
+          "smell_type": "Duplicate Code",
+          "category": "Dispensables",
+          "method": "duplicateMethod",
+          "line_start": 42,
+          "line_end": 43,
+          "evidence": "The `duplicateMethod` function is identical to `anotherUnusedMethod`."
+        },
+        {
+          "smell_type": "Message Chains",
+          "category": "Couplers",
+          "method": "chainOfMethods",
+          "line_start": 47,
+          "line_end": 48,
+          "evidence": "The `chainOfMethods` function calls multiple methods in a chain: `cashier->get...()`."
+        },
+        {
+          "smell_type": "Middle Man",
+          "category": "Couplers",
+          "method": "middleMethod",
+          "line_start": 49,
+          "line_end": 50,
+          "evidence": "The `middleMethod` function delegates to `cashier->getExtraCheese()` without adding any specific logic."
+        },
+        {
+          "smell_type": "Primitive Obsession",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 50,
+          "line_end": 51,
+          "evidence": "The `extraCheese` field is a boolean primitive used to represent a concept that could be better modeled with a small class."
+        },
+        {
+          "smell_type": "Data Clumps",
+          "category": "Bloaters",
+          "method": "Entire Class",
+          "line_start": 53,
+          "line_end": 62,
+          "evidence": "The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly."
+        },
+        {
+          "smell_type": "Temporary Field",
+          "category": "Dispensables",
+          "method": "Entire Class",
+          "line_start": 60,
+          "line_end": 61,
+          "evidence": "The `tempDiscountCode` and `tempOrderNote` fields are only used within a limited scope and are reset to null."
+        },
+        {
+          "smell_type": "Refused Bequest",
+          "category": "Object-Orientation Abusers",
+          "method": "refusedBequest",
+          "line_start": 43,
+          "line_end": 44,
+          "evidence": "The `refusedBequest` method overrides inherited methods with empty bodies."
+        }
+      ]
+    },
+    "gold_keys": [
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Temporary Field"
+      ]
+    ],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Data Clumps"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Primitive Obsession"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "Entire Class",
+        "Temporary Field"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "chainOfMethods",
+        "Message Chains"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "duplicateMethod",
+        "Duplicate Code"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "longMethod",
+        "Long Method"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "middleMethod",
+        "Middle Man"
+      ],
+      [
+        "C++/SmellyAnnotated/Shop.h",
+        "Shop",
+        "refusedBequest",
+        "Refused Bequest"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 8,
+    "input_tokens": 4235,
+    "output_tokens": 754,
+    "total_tokens": 4989,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/Shop.h\",\n  \"class_name\": \"Shop\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Long Method\",\n      \"category\": \"Bloaters\",\n      \"method\": \"longMethod\",\n      \"line_start\": 37,\n      \"line_end\": 43,\n      \"evidence\": \"The `longMethod` function has 64 lines of code and performs multiple conceptual tasks, including parameter validation and output.\"\n    },\n    {\n      \"smell_type\": \"Duplicate Code\",\n      \"category\": \"Dispensables\",\n      \"method\": \"duplicateMethod\",\n      \"line_start\": 42,\n      \"line_end\": 43,\n      \"evidence\": \"The `duplicateMethod` function is identical to `anotherUnusedMethod`.\"\n    },\n    {\n      \"smell_type\": \"Message Chains\",\n      \"category\": \"Couplers\",\n      \"method\": \"chainOfMethods\",\n      \"line_start\": 47,\n      \"line_end\": 48,\n      \"evidence\": \"The `chainOfMethods` function calls multiple methods in a chain: `cashier->get...()`.\"\n    },\n    {\n      \"smell_type\": \"Middle Man\",\n      \"category\": \"Couplers\",\n      \"method\": \"middleMethod\",\n      \"line_start\": 49,\n      \"line_end\": 50,\n      \"evidence\": \"The `middleMethod` function delegates to `cashier->getExtraCheese()` without adding any specific logic.\"\n    },\n    {\n      \"smell_type\": \"Primitive Obsession\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 50,\n      \"line_end\": 51,\n      \"evidence\": \"The `extraCheese` field is a boolean primitive used to represent a concept that could be better modeled with a small class.\"\n    },\n    {\n      \"smell_type\": \"Data Clumps\",\n      \"category\": \"Bloaters\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 53,\n      \"line_end\": 62,\n      \"evidence\": \"The `firstName`, `lastName`, `address`, `phoneNumber`, and `email` fields appear together repeatedly.\"\n    },\n    {\n      \"smell_type\": \"Temporary Field\",\n      \"category\": \"Dispensables\",\n      \"method\": \"Entire Class\",\n      \"line_start\": 60,\n      \"line_end\": 61,\n      \"evidence\": \"The `tempDiscountCode` and `tempOrderNote` fields are only used within a limited scope and are reset to null.\"\n    },\n    {\n      \"smell_type\": \"Refused Bequest\",\n      \"category\": \"Object-Orientation Abusers\",\n      \"method\": \"refusedBequest\",\n      \"line_start\": 43,\n      \"line_end\": 44,\n      \"evidence\": \"The `refusedBequest` method overrides inherited methods with empty bodies.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  },
+  {
+    "sample_id": "cpp_main_cpp",
+    "language": "cpp",
+    "file_path": "C++/SmellyAnnotated/main.cpp",
+    "parsed": {
+      "language": "cpp",
+      "file_path": "C++/SmellyAnnotated/main.cpp",
+      "class_name": "main",
+      "findings": [
+        {
+          "smell_type": "Comments",
+          "category": "Dispensables",
+          "method": "main",
+          "line_start": 2,
+          "line_end": 5,
+          "evidence": "Block comment explaining the copyright notice and dataset purpose, suggesting the code is unclear."
+        }
+      ]
+    },
+    "gold_keys": [],
+    "pred_keys": [
+      [
+        "C++/SmellyAnnotated/main.cpp",
+        "main",
+        "main",
+        "Comments"
+      ]
+    ],
+    "parse_error": false,
+    "truncated": false,
+    "invalid_findings": 0,
+    "total_findings": 1,
+    "input_tokens": 3951,
+    "output_tokens": 132,
+    "total_tokens": 4083,
+    "raw": "```json\n{\n  \"language\": \"cpp\",\n  \"file_path\": \"C++/SmellyAnnotated/main.cpp\",\n  \"class_name\": \"main\",\n  \"findings\": [\n    {\n      \"smell_type\": \"Comments\",\n      \"category\": \"Dispensables\",\n      \"method\": \"main\",\n      \"line_start\": 2,\n      \"line_end\": 5,\n      \"evidence\": \"Block comment explaining the copyright notice and dataset purpose, suggesting the code is unclear.\"\n    }\n  ]\n}\n```",
+    "strip_label_comments": true,
+    "dataset_variant": "annotated_stripped"
+  }
+]

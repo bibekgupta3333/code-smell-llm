@@ -1,0 +1,797 @@
+[
+  {
+    "sample_id": "javascript_Cashier_js",
+    "language": "javascript",
+    "class_name": "Cashier",
+    "file_path": "JavaScript/SmellyUnannotated/Cashier.js",
+    "loc": 159,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Pizza } = require('./Pizza');\n\nclass Cashier {\n    constructor(chef) {\n        this.chef = chef;\n        this.frequentCustomerDiscount = false;\n        this.firstName = null;\n        this.lastName = null;\n        this.address = null;\n        this.phoneNumber = null;\n        this.email = null;\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n    }\n\n    takeOrder(pizzaType) {\n        console.log(`Cashier is taking order for ${pizzaType} pizza.`);\n        this.chef.bakePizza(pizzaType);\n    }\n\n    hurryUpChef() {\n        console.log(\"Cashier is hurrying up the chef.\");\n        this.chef.hurryUp();\n    }\n\n    calmCustomerDown() {\n        console.log(\"Cashier is calming the customer down.\");\n        this.chef.cleanKitchen();\n    }\n\n    deliverPizzaToCustomer() {\n        console.log(\"Cashier is delivering pizza to the customer.\");\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\");\n    }\n\n    anotherUnusedMethod() {\n    }\n\n    yetAnotherUnusedMethod() {\n    }\n\n    longMethod() {\n        console.log(\"Cashier is handling many tasks in a single method\");\n        this.takeOrder(\"Cheese\");\n        this.hurryUpChef();\n        this.calmCustomerDown();\n        this.deliverPizzaToCustomer();\n        this.askForReceipt();\n    }\n\n    orderWithUnnecessaryDetails(pizzaType, size, crustType, toppings, extraCheese, discountCode) {\n        console.log(`Placing a detailed order for ${pizzaType} pizza with ${size}, ${crustType}, ${toppings}, extra cheese: ${extraCheese}, discount code: ${discountCode}`);\n        this.takeOrder(pizzaType);\n        this.applyDiscount(discountCode);\n        this.deliverPizzaToCustomer();\n    }\n\n    duplicateMethod() {\n        console.log(\"Customer is making a duplicate order\");\n        this.takeOrder(\"Cheese\");\n        this.takeOrder(\"Cheese\");\n    }\n\n    chainOfMethods() {\n        console.log(\"Cashier is initiating a message chain\");\n        this.chef.cleanKitchen();\n    }\n\n    middlemanMethod() {\n        console.log(\"Cashier is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        console.log(`Accessing internal details: ${this.chef.busy}`);\n    }\n\n    updateContactInfo(firstName, lastName, address, phoneNumber, email) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.address = address;\n        this.phoneNumber = phoneNumber;\n        this.email = email;\n    }\n\n    updateName(firstName, lastName) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n    }\n\n    updateAddress(address) {\n        this.address = address;\n    }\n\n    updatePhoneNumber(phoneNumber) {\n        this.phoneNumber = phoneNumber;\n    }\n\n    updateEmail(email) {\n        this.email = email;\n    }\n\n    notifyForPromotion() {\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount(discountCode) {\n        console.log(`Applying discount for customer with code ${discountCode}`);\n    }\n\n    applyLoyaltyPoints() {\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"cold pizza\") {\n            this.calmCustomerDown();\n        } else if (complaint === \"late delivery\") {\n            this.calmCustomerDown();\n        } else if (complaint === \"wrong order\") {\n            this.calmCustomerDown();\n        } else {\n            this.calmCustomerDown();\n        }\n    }\n\n    refusedBequest() {\n    }\n}\n\nmodule.exports = { Cashier };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Large Class",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "description": "The class handles multiple responsibilities: order taking, complaints, discounts, customer contact, and deliveries"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Using a primitive (`boolean`) for `frequentCustomerDiscount` instead of a more expressive construct"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Grouped customer details (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) should be encapsulated"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "description": "Overuse of if-else statements to handle different complaints"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "description": "Multiple update methods modifying individual fields instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateName",
+        "description": "Splitting name updates across different methods instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateAddress",
+        "description": "Similar to `updateName`, updates should be encapsulated"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updatePhoneNumber",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateEmail",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "description": "Multiple notification methods each handling separate concerns"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "description": "Related to `notifyForPromotion`, but managed separately"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "description": "Another notification method that should be unified"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyDiscount",
+        "description": "Parallel implementation of discount and loyalty points logic"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyLoyaltyPoints",
+        "description": "Another parallel logic similar to `applyDiscount`"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "description": "Method is present but never used in any flow"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "description": "Unused method that can be removed"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "description": "Accessing internal attributes (`this.chef.busy`)"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "description": "Excessive method chaining (`this.chef.cleanKitchen()`)"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "description": "Delegates work without adding value"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "description": "Performs multiple actions in a single method, reducing readability"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "description": "Repeated functionality with identical operations on the same attribute"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 21,
+      "num_lines": 159
+    }
+  },
+  {
+    "sample_id": "javascript_Chef_js",
+    "language": "javascript",
+    "class_name": "Chef",
+    "file_path": "JavaScript/SmellyUnannotated/Chef.js",
+    "loc": 175,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Pizza } = require('./Pizza');\n\nclass Chef {\n    constructor() {\n        this.pizza = null;\n        this.busy = false;\n        this.completedOrders = 0;\n        this.breaksTaken = 0;\n        this.kitchenClean = true;\n        this.frequentCustomerDiscount = false;\n        this.firstName = null;\n        this.lastName = null;\n        this.address = null;\n        this.phoneNumber = null;\n        this.email = null;\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n    }\n\n    bakePizza(pizzaType) {\n        console.log(`Chef is baking ${pizzaType} pizza.`);\n        this.pizza = new Pizza(\"Unknown\", \"Unknown\", pizzaType);\n        this.cutPizzaAndPutInBox();\n    }\n\n    cutPizzaAndPutInBox() {\n        console.log(`Chef is cutting the ${this.pizza.topping} pizza and putting it in a box.`);\n        this.deliverPizza();\n    }\n\n    deliverPizza() {\n        console.log(\"Chef is delivering the pizza to the cashier.\");\n    }\n\n    hurryUp() {\n        console.log(\"Chef is hurrying up.\");\n    }\n\n    cleanKitchen() {\n        console.log(\"Chef is cleaning the kitchen.\");\n        this.kitchenClean = true;\n    }\n\n    updateContactInfo(firstName, lastName, address, phoneNumber, email) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.address = address;\n        this.phoneNumber = phoneNumber;\n        this.email = email;\n    }\n\n    updateName(firstName, lastName) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n    }\n\n    updateAddress(address) {\n        this.address = address;\n    }\n\n    updatePhoneNumber(phoneNumber) {\n        this.phoneNumber = phoneNumber;\n    }\n\n    updateEmail(email) {\n        this.email = email;\n    }\n\n    notifyForPromotion() {\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount() {\n        console.log(\"Applying discount for customer\");\n    }\n\n    applyLoyaltyPoints() {\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"cold pizza\") {\n            this.cleanKitchen();\n        } else if (complaint === \"late delivery\") {\n            this.cleanKitchen();\n        } else if (complaint === \"wrong order\") {\n            this.cleanKitchen();\n        } else {\n            this.cleanKitchen();\n        }\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\");\n    }\n\n    anotherUnusedMethod() {\n    }\n\n    yetAnotherUnusedMethod() {\n    }\n\n    longMethod() {\n        console.log(\"Chef is handling many tasks in a single method\");\n        this.bakePizza(\"Cheese\");\n        this.cutPizzaAndPutInBox();\n        this.deliverPizza();\n        this.hurryUp();\n        this.cleanKitchen();\n        this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.notifyForPromotion();\n        this.notifyForDiscount();\n        this.notifyForNewArrivals();\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n        this.handleComplaint(\"cold pizza\");\n    }\n\n    orderWithUnnecessaryDetails(pizzaType, size, crustType, toppings, extraCheese, discountCode) {\n        console.log(`Placing a detailed order for ${pizzaType} pizza with ${size}, ${crustType}, ${toppings}, extra cheese: ${extraCheese}, discount code: ${discountCode}`);\n        this.bakePizza(pizzaType);\n        this.applyDiscount(discountCode);\n        this.deliverPizza();\n    }\n\n    duplicateMethod() {\n        console.log(\"Customer is making a duplicate order\");\n        this.bakePizza(\"Cheese\");\n        this.bakePizza(\"Cheese\");\n    }\n\n    chainOfMethods() {\n        console.log(\"Chef is initiating a message chain\");\n        this.cleanKitchen();\n    }\n\n    middlemanMethod() {\n        console.log(\"Chef is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        console.log(`Accessing internal details: ${this.pizza}`);\n    }\n\n    refusedBequest() {\n    }\n}\n\nmodule.exports = { Chef };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Large Class",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "description": "The class handles multiple responsibilities: baking, delivering, cleaning, notifications, complaints, and discounts"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Using a primitive (`boolean`) for `frequentCustomerDiscount` instead of a more expressive construct"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Grouped chef details (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) should be encapsulated"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "description": "Overuse of if-else statements to handle different complaints"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "description": "Multiple update methods modifying individual fields instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateName",
+        "description": "Splitting name updates across different methods instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateAddress",
+        "description": "Similar to `updateName`, updates should be encapsulated"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updatePhoneNumber",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateEmail",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "description": "Multiple notification methods each handling separate concerns"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "description": "Related to `notifyForPromotion`, but managed separately"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "description": "Another notification method that should be unified"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyDiscount",
+        "description": "Parallel implementation of discount and loyalty points logic"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyLoyaltyPoints",
+        "description": "Another parallel logic similar to `applyDiscount`"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "description": "Method is present but never used in any flow"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "description": "Unused method that can be removed"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "description": "Accessing internal attributes (`this.pizza`)"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "description": "Excessive method chaining (`this.cleanKitchen()`)"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "description": "Delegates work without adding value"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "description": "Performs multiple actions in a single method, reducing readability"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "description": "Repeated functionality with identical operations on the same attribute"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 21,
+      "num_lines": 175
+    }
+  },
+  {
+    "sample_id": "javascript_Customer_js",
+    "language": "javascript",
+    "class_name": "Customer",
+    "file_path": "JavaScript/SmellyUnannotated/Customer.js",
+    "loc": 165,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Drink } = require('./Drink');\n\nclass Customer {\n    constructor(Shop) {\n        this.Shop = Shop;\n        this.frequentCustomerDiscount = false;\n        this.firstName = null;\n        this.lastName = null;\n        this.address = null;\n        this.phoneNumber = null;\n        this.email = null;\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n        this.Drink = new Drink();\n    }\n\n    orderPizza(pizzaType) {\n        console.log(`Customer is placing an order for ${pizzaType} pizza.`);\n        this.Shop.receiveOrder(pizzaType);\n    }\n\n    complain(complaint) {\n        console.log(`Customer is complaining: ${complaint}`);\n        this.Shop.casher.calmCustomerDown();\n        this.Shop.casher.chef.cleanKitchen();\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\");\n    }\n\n    anotherUnusedMethod() {\n    }\n\n    yetAnotherUnusedMethod() {\n    }\n\n    longComplaintMethod() {\n        console.log(\"Customer is complaining about many things\");\n        this.complain(\"Pizza is cold\");\n        this.complain(\"Pizza is late\");\n        this.complain(\"Wrong pizza delivered\");\n        this.complain(\"Pizza is burnt\");\n        this.complain(\"Too little cheese\");\n        this.complain(\"Pizza is undercooked\");\n        this.askForReceipt();\n    }\n\n    orderWithUnnecessaryDetails(pizzaType, size, crustType, toppings, extraCheese, discountCode) {\n        console.log(`Customer is placing a detailed order for ${pizzaType} pizza with ${size}, ${crustType}, ${toppings}, extra cheese: ${extraCheese}, discount code: ${discountCode}`);\n        this.orderPizza(pizzaType);\n        this.applyDiscount(discountCode);\n        this.Shop.casher.deliverPizzaToCustomer();\n    }\n\n    duplicateComplaint() {\n        console.log(\"Customer is complaining about duplicate issues\");\n        this.complain(\"Pizza is cold\");\n        this.complain(\"Pizza is cold\");\n        this.complain(\"Pizza is late\");\n        this.complain(\"Pizza is late\");\n    }\n\n    chainOfMethods() {\n        console.log(\"Customer is initiating a message chain\");\n        this.Shop.casher.chef.cleanKitchen();\n    }\n\n    middlemanMethod() {\n        console.log(\"Customer is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        console.log(`Accessing internal details of Shop: ${this.Shop.casher.chef.busy}`);\n    }\n\n    updateContactInfo(firstName, lastName, address, phoneNumber, email) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.address = address;\n        this.phoneNumber = phoneNumber;\n        this.email = email;\n    }\n\n    updateName(firstName, lastName) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n    }\n\n    updateAddress(address) {\n        this.address = address;\n    }\n\n    updatePhoneNumber(phoneNumber) {\n        this.phoneNumber = phoneNumber;\n    }\n\n    updateEmail(email) {\n        this.email = email;\n    }\n\n    notifyForPromotion() {\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount() {\n        console.log(\"Applying discount for customer\");\n    }\n\n    applyLoyaltyPoints() {\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"cold pizza\") {\n            this.complain(\"Pizza is cold\");\n        } else if (complaint === \"late delivery\") {\n            this.complain(\"Pizza is late\");\n        } else if (complaint === \"wrong order\") {\n            this.complain(\"Wrong pizza delivered\");\n        } else {\n            this.complain(\"General complaint\");\n        }\n    }\n\n    refusedBequest() {\n    }\n\n    orderDrink(drinkType) {\n        console.log(`Customer is ordering a ${drinkType} drink.`);\n        this.drinkOrder.createOrder(drinkType);\n        console.log(\"Adding the drink order to the current order.\");\n        this.drinkOrder.addToOrder();\n        console.log(\"Confirming the drink order.\");\n        this.drinkOrder.confirmOrder();\n    }\n}\n\nmodule.exports = { Customer };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Large Class",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "description": "The class handles multiple responsibilities: ordering, complaints, contact updates, notifications, and discounts"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Using a primitive (`boolean`) for `frequentCustomerDiscount` instead of a more expressive construct"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Grouped customer details (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) should be encapsulated"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "description": "Overuse of if-else statements to handle different complaints"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "description": "Multiple update methods modifying individual fields instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateName",
+        "description": "Splitting name updates across different methods instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateAddress",
+        "description": "Similar to `updateName`, updates should be encapsulated"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updatePhoneNumber",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateEmail",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "description": "Multiple notification methods each handling separate concerns"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "description": "Related to `notifyForPromotion`, but managed separately"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "description": "Another notification method that should be unified"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyDiscount",
+        "description": "Parallel implementation of discount and loyalty points logic"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyLoyaltyPoints",
+        "description": "Another parallel logic similar to `applyDiscount`"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "description": "Method is present but never used in any flow"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "description": "Unused method that can be removed"
+      },
+      {
+        "smell_type": "Feature Envy",
+        "category": "Couplers",
+        "method": "orderPizza",
+        "description": "Excessive reliance on another class (`Shop`) for core functionality"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "complain",
+        "description": "Accessing another object's internal details (`Shop.casher.cleanKitchen()`)"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "description": "Excessive method chaining (`Shop.casher.chef.cleanKitchen()`)"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "description": "Delegates work without adding value"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longComplaintMethod",
+        "description": "Performs multiple actions in a single method, reducing readability"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateComplaint",
+        "description": "Repeated functionality with identical operations on the same attribute"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 22,
+      "num_lines": 165
+    }
+  },
+  {
+    "sample_id": "javascript_Drink_js",
+    "language": "javascript",
+    "class_name": "Drink",
+    "file_path": "JavaScript/SmellyUnannotated/Drink.js",
+    "loc": 28,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nclass Drink {\n    constructor() {\n        this.drinkType = null;\n    }\n\n    createOrder(drinkType) {\n        this.drinkType = drinkType;\n        console.log(`Creating order for ${drinkType} drink.`);\n    }\n\n    addToOrder() {\n        console.log(`Adding ${this.drinkType} to the order.`);\n    }\n\n    confirmOrder() {\n        console.log(`Order for ${this.drinkType} confirmed.`);\n    }\n}\n\nmodule.exports = { Drink };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Data Class",
+        "category": "Dispensables",
+        "method": "Entire Class",
+        "description": "Class only stores data (`drinkType`) without meaningful behavior"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "createOrder",
+        "description": "Uses a primitive (`string`) instead of a more expressive object for drink type"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "addToOrder",
+        "description": "Uses a primitive (`string`) instead of an object for order processing"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "confirmOrder",
+        "description": "Uses a primitive (`string`) instead of an object for order confirmation"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 4,
+      "num_lines": 28
+    }
+  },
+  {
+    "sample_id": "javascript_Pizza_js",
+    "language": "javascript",
+    "class_name": "Pizza",
+    "file_path": "JavaScript/SmellyUnannotated/Pizza.js",
+    "loc": 191,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nclass Pizza {\n    constructor(size, doughType, topping) {\n        this.size = size;\n        this.doughType = doughType;\n        this.topping = topping;\n        this.extraCheese = false;\n        this.customerFirstName = null;\n        this.customerLastName = null;\n        this.customerAddress = null;\n        this.customerPhoneNumber = null;\n        this.customerEmail = null;\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n    }\n\n    setSize(size) {\n        this.size = size;\n    }\n\n    setDoughType(doughType) {\n        this.doughType = doughType;\n    }\n\n    setTopping(topping) {\n        this.topping = topping;\n    }\n\n    updateCustomerInfo(firstName, lastName, address, phoneNumber, email) {\n        this.customerFirstName = firstName;\n        this.customerLastName = lastName;\n        this.customerAddress = address;\n        this.customerPhoneNumber = phoneNumber;\n        this.customerEmail = email;\n    }\n\n    updateCustomerName(firstName, lastName) {\n        this.customerFirstName = firstName;\n        this.customerLastName = lastName;\n    }\n\n    updateCustomerAddress(address) {\n        this.customerAddress = address;\n    }\n\n    updateCustomerPhoneNumber(phoneNumber) {\n        this.customerPhoneNumber = phoneNumber;\n    }\n\n    updateCustomerEmail(email) {\n        this.customerEmail = email;\n    }\n\n    notifyForPromotion() {\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount() {\n        console.log(\"Applying discount for customer\");\n    }\n\n    applyLoyaltyPoints() {\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"cold pizza\") {\n            console.log(\"Handling complaint: Pizza is cold\");\n        } else if (complaint === \"late delivery\") {\n            console.log(\"Handling complaint: Pizza is late\");\n        } else if (complaint === \"wrong order\") {\n            console.log(\"Handling complaint: Wrong pizza delivered\");\n        } else {\n            console.log(\"Handling complaint: General complaint\");\n        }\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\");\n    }\n\n    anotherUnusedMethod() {\n    }\n\n    yetAnotherUnusedMethod() {\n    }\n\n    longMethod() {\n        console.log(\"Pizza is handling many tasks in a single method\");\n        this.setSize(\"Large\");\n        this.setDoughType(\"Thin Crust\");\n        this.setTopping(\"Pepperoni\");\n        this.updateCustomerInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.notifyForPromotion();\n        this.notifyForDiscount();\n        this.notifyForNewArrivals();\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n        this.handleComplaint(\"cold pizza\");\n    }\n\n    orderWithUnnecessaryDetails(pizzaType, size, crustType, toppings, extraCheese, discountCode) {\n        console.log(`Placing a detailed order for ${pizzaType} pizza with ${size}, ${crustType}, ${toppings}, extra cheese: ${extraCheese}, discount code: ${discountCode}`);\n        this.setSize(size);\n        this.setDoughType(crustType);\n        this.setTopping(toppings);\n        this.applyDiscount();\n    }\n\n    duplicateMethod() {\n        console.log(\"Customer is making a duplicate order\");\n        this.setTopping(\"Cheese\");\n        this.setTopping(\"Cheese\");\n    }\n\n    chainOfMethods() {\n        console.log(\"Pizza is initiating a message chain\");\n        this.updateCustomerAddress(\"123 Street\");\n    }\n\n    middlemanMethod() {\n        console.log(\"Pizza is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        console.log(`Accessing internal details: ${this.size}, ${this.doughType}, ${this.topping}`);\n    }\n\n    refusedBequest() {\n    }\n}\n\nclass CheesePizza extends Pizza {\n    constructor() {\n        super(\"Medium\", \"Regular\", \"Cheese\");\n        this.cheeseType = \"Mozzarella\";\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"too much cheese\") {\n            console.log(\"Handling complaint: Too much cheese\");\n        } else {\n            super.handleComplaint(complaint);\n        }\n    }\n}\n\nclass VeggiePizza extends Pizza {\n    constructor() {\n        super(\"Medium\", \"Whole Wheat\", \"Veggies\");\n    }\n}\n\nclass TunaPizza extends Pizza {\n    constructor() {\n        super(\"Large\", \"Thin Crust\", \"Tuna\");\n    }\n}\n\nclass PepperoniPizza extends Pizza {\n    constructor() {\n        super(\"Large\", \"Regular\", \"Pepperoni\");\n    }\n}\n\nmodule.exports = { Pizza, CheesePizza, VeggiePizza, TunaPizza, PepperoniPizza };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Large Class",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "description": "The class handles multiple responsibilities: pizza properties, customer info, notifications, and complaints"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Using a primitive (`boolean`) for `extraCheese` instead of a more expressive construct"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Grouped customer details (`customerFirstName`, `customerLastName`, `customerAddress`, etc.) should be encapsulated"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "description": "Method receives multiple unrelated parameters (`pizzaType`, `size`, `crustType`, etc.)"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "description": "Overuse of if-else statements to handle different complaints"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "constructor",
+        "description": "Fields (`tempDiscountCode`, `tempOrderNote`) used only under specific conditions"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerInfo",
+        "description": "Multiple update methods modifying individual fields instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerName",
+        "description": "Splitting name updates across different methods instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerAddress",
+        "description": "Similar to `updateCustomerName`, updates should be encapsulated"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerPhoneNumber",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerEmail",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "description": "Multiple notification methods each handling separate concerns"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "description": "Related to `notifyForPromotion`, but managed separately"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "description": "Another notification method that should be unified"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyDiscount",
+        "description": "Parallel implementation of discount and loyalty points logic"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyLoyaltyPoints",
+        "description": "Another parallel logic similar to `applyDiscount`"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "description": "Method is present but never used in any flow"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "description": "Unused method that can be removed"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "yetAnotherUnusedMethod",
+        "description": "Another unused method"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "description": "Repeated functionality with identical operations on the same attribute"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "description": "Excessive method chaining (`this.updateCustomerAddress(\"123 Street\")`)"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "description": "Delegates work without adding value"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "description": "Accessing internal attributes (`this.size`, `this.doughType`, `this.topping`)"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "description": "Performs multiple actions in a single method, reducing readability"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 24,
+      "num_lines": 191
+    }
+  },
+  {
+    "sample_id": "javascript_Shop_js",
+    "language": "javascript",
+    "class_name": "Shop",
+    "file_path": "JavaScript/SmellyUnannotated/Shop.js",
+    "loc": 166,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Cashier } = require('./Cashier');\nconst { Chef } = require('./Chef');\nconst { Pizza, CheesePizza, VeggiePizza, TunaPizza, PepperoniPizza } = require('./Pizza');\n\nclass Shop {\n    constructor() {\n        this.chef = new Chef();\n        this.casher = new Cashier(this.chef);\n        this.pizza = null;\n        this.frequentCustomerDiscount = false;\n        this.firstName = null;\n        this.lastName = null;\n        this.address = null;\n        this.phoneNumber = null;\n        this.email = null;\n        this.tempDiscountCode = null;\n        this.tempOrderNote = null;\n    }\n\n    createPizza(pizzaType) {\n        if (pizzaType === \"Cheese\") {\n            return new CheesePizza();\n        } else if (pizzaType === \"Veggie\") {\n            return new VeggiePizza();\n        } else if (pizzaType === \"Tuna\") {\n            return new TunaPizza();\n        } else if (pizzaType === \"Pepperoni\") {\n            return new PepperoniPizza();\n        } else {\n            throw new Error(\"Unknown pizza type\");\n        }\n    }\n\n    receiveOrder(pizzaType) {\n        console.log(`Pizza Shop received order for ${pizzaType} pizza.`);\n        this.pizza = this.createPizza(pizzaType);\n        this.casher.takeOrder(pizzaType);\n    }\n\n    updateContactInfo(firstName, lastName, address, phoneNumber, email) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.address = address;\n        this.phoneNumber = phoneNumber;\n        this.email = email;\n    }\n\n    updateName(firstName, lastName) {\n        this.firstName = firstName;\n        this.lastName = lastName;\n    }\n\n    updateAddress(address) {\n        this.address = address;\n    }\n\n    updatePhoneNumber(phoneNumber) {\n        this.phoneNumber = phoneNumber;\n    }\n\n    updateEmail(email) {\n        this.email = email;\n    }\n\n    notifyForPromotion() {\n        console.log(\"Notifying customer for promotion\");\n    }\n\n    notifyForDiscount() {\n        console.log(\"Notifying customer for discount\");\n    }\n\n    notifyForNewArrivals() {\n        console.log(\"Notifying customer for new arrivals\");\n    }\n\n    applyDiscount() {\n        console.log(\"Applying discount for customer\");\n    }\n\n    applyLoyaltyPoints() {\n        console.log(\"Applying loyalty points for customer\");\n    }\n\n    handleComplaint(complaint) {\n        if (complaint === \"cold pizza\") {\n            this.casher.calmCustomerDown();\n        } else if (complaint === \"late delivery\") {\n            this.casher.calmCustomerDown();\n        } else if (complaint === \"wrong order\") {\n            this.casher.calmCustomerDown();\n        } else {\n            this.casher.calmCustomerDown();\n        }\n    }\n\n    askForReceipt() {\n        console.log(\"Customer is asking for a receipt.\");\n    }\n\n    anotherUnusedMethod() {\n    }\n\n    yetAnotherUnusedMethod() {\n    }\n\n    chainOfMethods() {\n        console.log(\"Shop is initiating a message chain\");\n        this.casher.chef.cleanKitchen();\n    }\n\n    middlemanMethod() {\n        console.log(\"Shop is calling a middleman method\");\n        this.middleMethod();\n    }\n\n    middleMethod() {\n        console.log(\"Middleman method delegating to another method\");\n        this.realMethod();\n    }\n\n    realMethod() {\n        console.log(\"Real method doing the actual work\");\n    }\n\n    accessInternalDetails() {\n        console.log(`Accessing internal details: ${this.casher.chef.busy}`);\n    }\n\n    longMethod() {\n        console.log(\"Shop is handling many tasks in a single method\");\n        this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.updateName(\"John\", \"Doe\");\n        this.updateAddress(\"123 Street\");\n        this.updatePhoneNumber(\"555-5555\");\n        this.updateEmail(\"john.doe@example.com\");\n        this.notifyForPromotion();\n        this.notifyForDiscount();\n        this.notifyForNewArrivals();\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n        this.handleComplaint(\"cold pizza\");\n        this.askForReceipt();\n        this.chainOfMethods();\n        this.middlemanMethod();\n        this.accessInternalDetails();\n    }\n\n    orderWithUnnecessaryDetails() {\n        console.log(\"Shop is placing a detailed order\");\n        this.receiveOrder(\"Veggie\");\n        this.updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n        this.applyDiscount();\n        this.applyLoyaltyPoints();\n    }\n}\n\nmodule.exports = { Shop };\n",
+    "annotations": [],
+    "ground_truth": [
+      {
+        "smell_type": "Large Class",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "description": "The class handles multiple responsibilities: order processing, customer contact updates, notifications, and discounts"
+      },
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Using a primitive (`boolean`) for `frequentCustomerDiscount` instead of a more expressive construct"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "constructor",
+        "description": "Grouped customer details (`firstName`, `lastName`, `address`, `phoneNumber`, `email`) should be encapsulated"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "description": "Overuse of if-else statements to handle different complaints"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "description": "Multiple update methods modifying individual fields instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateName",
+        "description": "Splitting name updates across different methods instead of a single encapsulated update"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateAddress",
+        "description": "Similar to `updateName`, updates should be encapsulated"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updatePhoneNumber",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateEmail",
+        "description": "Separate field update that contributes to shotgun surgery"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "description": "Multiple notification methods each handling separate concerns"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "description": "Related to `notifyForPromotion`, but managed separately"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "description": "Another notification method that should be unified"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyDiscount",
+        "description": "Parallel implementation of discount and loyalty points logic"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Change Preventers",
+        "method": "applyLoyaltyPoints",
+        "description": "Another parallel logic similar to `applyDiscount`"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "description": "Method is present but never used in any flow"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "description": "Unused method that can be removed"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "yetAnotherUnusedMethod",
+        "description": "Another unused method"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "description": "Excessive method chaining (`this.casher.chef.cleanKitchen()`)"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "description": "Delegates work without adding value"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "description": "Accessing internal attributes (`this.casher.chef.busy`)"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "description": "Performs multiple actions in a single method, reducing readability"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "description": "Method receives multiple unrelated parameters"
+      }
+    ],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 22,
+      "num_lines": 166
+    }
+  },
+  {
+    "sample_id": "javascript_main_js",
+    "language": "javascript",
+    "class_name": "main",
+    "file_path": "JavaScript/SmellyUnannotated/main.js",
+    "loc": 32,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\nconst { Shop } = require('./Shop');\nconst { Customer } = require('./Customer');\n\nfunction measureExecutionTime(runs = 10) {\n    let totalTime = 0;\n    for (let i = 0; i < runs; i++) {\n        const startTime = Date.now();\n\n        const shop = new Shop();\n        const customer = new Customer(shop);\n        customer.orderPizza(\"Cheese\");\n        customer.complain(\"The pizza is too cold.\");\n\n        const endTime = Date.now();\n        const executionTime = endTime - startTime;\n        totalTime += executionTime;\n    }\n\n    const averageTime = totalTime / runs;\n    return averageTime;\n}\n\nconst avgTime = measureExecutionTime();\nconsole.log(`Average execution time over multiple runs: ${avgTime} milliseconds`);\n",
+    "annotations": [],
+    "ground_truth": [],
+    "metadata": {
+      "variant": "unannotated",
+      "num_ground_truth": 0,
+      "num_lines": 32
+    }
+  }
+]

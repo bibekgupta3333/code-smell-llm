@@ -1,0 +1,825 @@
+[
+  {
+    "sample_id": "cpp_Cashier_cpp",
+    "language": "cpp",
+    "class_name": "Cashier",
+    "file_path": "C++/SmellyAnnotated/Cashier.cpp",
+    "loc": 122,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Cashier.h\"\n\nCashier::Cashier(Chef* chef) : chef(chef), frequentCustomerDiscount(false) {}\n\nvoid Cashier::takeOrder(const std::string& pizzaType) {\n    std::cout << \"Cashier is taking order for \" << pizzaType << \" pizza.\" << std::endl;\n    chef->bakePizza(pizzaType);\n}\n\nvoid Cashier::hurryUpChef() {\n    std::cout << \"Cashier is hurrying up the chef.\" << std::endl;\n    chef->hurryUp();\n}\n\nvoid Cashier::calmCustomerDown() {\n    std::cout << \"Cashier is calming the customer down.\" << std::endl;\n}\n\nvoid Cashier::deliverPizzaToCustomer() {\n    std::cout << \"Cashier is delivering pizza to the customer.\" << std::endl;\n}\n\nChef* Cashier::getChef() {  // Implementation of getChef method\n    return chef;\n}\n\n// Methods with code smells\nvoid Cashier::notifyForPromotion() {\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Cashier::notifyForDiscount() {\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Cashier::notifyForNewArrivals() {\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Cashier::applyDiscount() {\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Cashier::applyLoyaltyPoints() {\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Cashier::handleComplaint(const std::string& complaint) {\n    if (complaint == \"cold pizza\") {\n        std::cout << \"Handling complaint: Pizza is cold\" << std::endl;\n    } else if (complaint == \"late delivery\") {\n        std::cout << \"Handling complaint: Pizza is late\" << std::endl;\n    } else if (complaint == \"wrong order\") {\n        std::cout << \"Handling complaint: Wrong pizza delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Cashier::askForReceipt() {\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Cashier::anotherUnusedMethod() {}\n\nvoid Cashier::longMethod() {\n    std::cout << \"Cashier is handling many tasks in a single method\" << std::endl;\n    this->takeOrder(\"Cheese\");\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"cold pizza\");\n}\n\nvoid Cashier::orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode) {\n    std::cout << \"Placing a detailed order for \" << pizzaType << \" pizza with \" << size << \", \" << crustType << \", \" << toppings << \", extra cheese: \" << extraCheese << \", discount code: \" << discountCode << std::endl;\n    this->takeOrder(pizzaType);\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n}\n\nvoid Cashier::duplicateMethod() {\n    std::cout << \"Cashier is making a duplicate order\" << std::endl;\n    this->takeOrder(\"Cheese\");\n    this->takeOrder(\"Cheese\");\n}\n\nvoid Cashier::chainOfMethods() {\n    std::cout << \"Cashier is initiating a message chain\" << std::endl;\n    this->accessInternalDetails();\n}\n\nvoid Cashier::middlemanMethod() {\n    std::cout << \"Cashier is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Cashier::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Cashier::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Cashier::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Chef: \" << chef->isBusy() << std::endl;\n}\n\nvoid Cashier::refusedBequest() {}\n",
+    "annotations": [
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 118,
+        "line_end": 120,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 1,
+      "num_lines": 122
+    }
+  },
+  {
+    "sample_id": "cpp_Cashier_h",
+    "language": "cpp",
+    "class_name": "Cashier",
+    "file_path": "C++/SmellyAnnotated/Cashier.h",
+    "loc": 56,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef CASHIER_H\n#define CASHIER_H\n\n#include \"Chef.h\"\n#include <string>\n#include <iostream>\n\nclass Cashier {\npublic:\n    Cashier(Chef* chef);\n    void takeOrder(const std::string& pizzaType);\n    void hurryUpChef();\n    void calmCustomerDown();\n    void deliverPizzaToCustomer();\n    Chef* getChef();  // Add this method\n\n    // Methods with code smells\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode);\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void accessInternalDetails();\n    void refusedBequest();\n\nprivate:\n    Chef* chef;\n    bool frequentCustomerDiscount;\n    std::string firstName;\n    std::string lastName;\n    std::string address;\n    std::string phoneNumber;\n    std::string email;\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\n#endif // CASHIER_H\n",
+    "annotations": [],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 0,
+      "num_lines": 56
+    }
+  },
+  {
+    "sample_id": "cpp_Chef_cpp",
+    "language": "cpp",
+    "class_name": "Chef",
+    "file_path": "C++/SmellyAnnotated/Chef.cpp",
+    "loc": 173,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Chef.h\"\n#include \"Pizza.h\"\n#include <iostream>\n\nChef::Chef() {\n    busy = false;\n    completedOrders = 0;\n    breaksTaken = 0;\n    kitchenClean = true;\n    pizza = nullptr;  // Initialize to nullptr\n    extraCheese = false; // Primitive Obsession\n}\n\nvoid Chef::bakePizza(const std::string& pizzaType) {\n    std::cout << \"Chef is baking \" << pizzaType << \" pizza.\" << std::endl;\n    pizza = new Pizza(\"Unknown\", \"Unknown\", pizzaType); // Creating a Pizza instance using new\n    cutPizzaAndPutInBox();\n}\n\nvoid Chef::cutPizzaAndPutInBox() {\n    if (pizza) {\n        std::cout << \"Chef is cutting the \" << pizza->getTopping() << \" pizza and putting it in a box.\" << std::endl;\n        deliverPizza();\n    }\n}\n\nvoid Chef::deliverPizza() {\n    std::cout << \"Chef is delivering the pizza to the cashier.\" << std::endl;\n}\n\nvoid Chef::hurryUp() {\n    std::cout << \"Chef is hurrying up.\" << std::endl;\n}\n\nvoid Chef::cleanKitchen() {\n    std::cout << \"Chef is cleaning the kitchen.\" << std::endl;\n    kitchenClean = true;\n}\n\nbool Chef::isBusy() const {\n    return busy;\n}\n\n// Code smells methods\nvoid Chef::updateContactInfo(const std::string& firstName, const std::string& lastName, const std::string& address, const std::string& phoneNumber, const std::string& email) {\n    // Shotgun Surgery\n    this->firstName = firstName;\n    this->lastName = lastName;\n    this->address = address;\n    this->phoneNumber = phoneNumber;\n    this->email = email;\n}\n\nvoid Chef::notifyForPromotion() {\n    // Divergent Change\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Chef::notifyForDiscount() {\n    // Divergent Change\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Chef::notifyForNewArrivals() {\n    // Divergent Change\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Chef::applyDiscount() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Chef::applyLoyaltyPoints() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Chef::handleComplaint(const std::string& complaint) {\n    // Switch Statements\n    if (complaint == \"cold pizza\") {\n        std::cout << \"Handling complaint: Pizza is cold\" << std::endl;\n    } else if (complaint == \"late delivery\") {\n        std::cout << \"Handling complaint: Pizza is late\" << std::endl;\n    } else if (complaint == \"wrong order\") {\n        std::cout << \"Handling complaint: Wrong pizza delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Chef::askForReceipt() {\n    // Speculative Generality\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Chef::anotherUnusedMethod() {\n    // Dead Code\n}\n\nvoid Chef::longMethod() {\n    // Long Method\n    std::cout << \"Chef is handling many tasks in a single method\" << std::endl;\n    this->bakePizza(\"Cheese\");\n    this->cutPizzaAndPutInBox();\n    this->deliverPizza();\n    this->hurryUp();\n    this->cleanKitchen();\n    this->updateContactInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"cold pizza\");\n    this->askForReceipt();\n    this->chainOfMethods();\n    this->middlemanMethod();\n    this->accessInternalDetails();\n}\n\nvoid Chef::orderWithUnnecessaryDetails() {\n    // Long Parameter List\n    std::cout << \"Placing a detailed order for pizza with extra cheese and discount code\" << std::endl;\n    this->bakePizza(\"Veggie\");\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n}\n\nvoid Chef::duplicateMethod() {\n    // Duplicate Code\n    std::cout << \"Chef is making a duplicate order\" << std::endl;\n    this->bakePizza(\"Cheese\");\n    this->bakePizza(\"Cheese\");\n}\n\nvoid Chef::chainOfMethods() {\n    // Message Chain\n    std::cout << \"Chef is initiating a message chain\" << std::endl;\n    this->cleanKitchen();\n}\n\nvoid Chef::middlemanMethod() {\n    // Middle Man\n    std::cout << \"Chef is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Chef::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Chef::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Chef::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Pizza: \" << this->pizza->getTopping() << std::endl;\n}\n\nvoid Chef::refusedBequest() {\n    // Refused Bequest\n}\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 19,
+        "line_end": 19,
+        "evidence": "    extraCheese = false; // Primitive Obsession",
+        "annotation_kind": "inline"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateContactInfo",
+        "line_start": 54,
+        "line_end": 60,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "line_start": 63,
+        "line_end": 65,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "line_start": 68,
+        "line_end": 70,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "line_start": 73,
+        "line_end": 75,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyDiscount",
+        "line_start": 78,
+        "line_end": 80,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyLoyaltyPoints",
+        "line_start": 83,
+        "line_end": 85,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "line_start": 88,
+        "line_end": 91,
+        "evidence": "    // Switch Statements",
+        "annotation_kind": "method-scope"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "line_start": 101,
+        "line_end": 103,
+        "evidence": "    // Speculative Generality",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "line_start": 106,
+        "line_end": 107,
+        "evidence": "    // Dead Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "line_start": 110,
+        "line_end": 128,
+        "evidence": "    // Long Method",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "line_start": 131,
+        "line_end": 136,
+        "evidence": "    // Long Parameter List",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "line_start": 139,
+        "line_end": 143,
+        "evidence": "    // Duplicate Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "line_start": 146,
+        "line_end": 149,
+        "evidence": "    // Message Chain",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "line_start": 152,
+        "line_end": 155,
+        "evidence": "    // Middle Man",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 167,
+        "line_end": 169,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Refused Bequest",
+        "category": "Object-Orientation Abusers",
+        "method": "refusedBequest",
+        "line_start": 172,
+        "line_end": 173,
+        "evidence": "    // Refused Bequest",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 17,
+      "num_lines": 173
+    }
+  },
+  {
+    "sample_id": "cpp_Chef_h",
+    "language": "cpp",
+    "class_name": "Chef",
+    "file_path": "C++/SmellyAnnotated/Chef.h",
+    "loc": 67,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef CHEF_H\n#define CHEF_H\n\n#include \"Pizza.h\"\n#include <string>\n\nclass Chef {\npublic:\n    Chef();\n    void bakePizza(const std::string& pizzaType);\n    void cutPizzaAndPutInBox();\n    void deliverPizza();\n    void hurryUp();\n    void cleanKitchen();\n    bool isBusy() const;\n\n    // Methods with code smells\n    void updateContactInfo(const std::string& firstName, const std::string& lastName, const std::string& address, const std::string& phoneNumber, const std::string& email);\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails();\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void accessInternalDetails();\n    void refusedBequest();\n\nprivate:\n    Pizza* pizza;  // Change to pointer\n    bool busy;\n    int completedOrders;\n    int breaksTaken;\n    bool kitchenClean;\n\n    // Primitive Obsession\n    bool extraCheese;\n\n    // Data Clumps\n    std::string firstName;\n    std::string lastName;\n    std::string address;\n    std::string phoneNumber;\n    std::string email;\n\n    // Temporary Fields\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\n#endif // CHEF_H\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 52,
+        "line_end": 53,
+        "evidence": "    // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 55,
+        "line_end": 60,
+        "evidence": "    // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "Entire Class",
+        "line_start": 62,
+        "line_end": 65,
+        "evidence": "    // Temporary Fields",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 3,
+      "num_lines": 67
+    }
+  },
+  {
+    "sample_id": "cpp_Customer_cpp",
+    "language": "cpp",
+    "class_name": "Customer",
+    "file_path": "C++/SmellyAnnotated/Customer.cpp",
+    "loc": 113,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Customer.h\"\n\nCustomer::Customer(Shop* pizzaShop)\n    : pizzaShop(pizzaShop), drinkOrder(new Drink()), frequentCustomerDiscount(false) {}\n\nvoid Customer::orderPizza(const std::string& pizzaType) {\n    std::cout << \"Customer is placing an order for \" << pizzaType << \" pizza.\" << std::endl;\n    pizzaShop->receiveOrder(pizzaType);\n}\n\nvoid Customer::complain(const std::string& complaint) {\n    std::cout << \"Customer is complaining: \" << complaint << std::endl;\n    pizzaShop->getCashier()->calmCustomerDown();\n}\n\n// Code smells methods\nvoid Customer::notifyForPromotion() {\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Customer::notifyForDiscount() {\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Customer::notifyForNewArrivals() {\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Customer::applyDiscount() {\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Customer::applyLoyaltyPoints() {\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Customer::handleComplaint(const std::string& complaint) {\n    if (complaint == \"cold pizza\") {\n        std::cout << \"Handling complaint: Pizza is cold\" << std::endl;\n    } else if (complaint == \"late delivery\") {\n        std::cout << \"Handling complaint: Pizza is late\" << std::endl;\n    } else if (complaint == \"wrong order\") {\n        std::cout << \"Handling complaint: Wrong pizza delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Customer::askForReceipt() {\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Customer::anotherUnusedMethod() {}\n\nvoid Customer::longMethod() {\n    std::cout << \"Customer is handling many tasks in a single method\" << std::endl;\n    this->orderPizza(\"Cheese\");\n    this->complain(\"Pizza is cold\");\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"cold pizza\");\n}\n\nvoid Customer::orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode) {\n    std::cout << \"Placing a detailed order for \" << pizzaType << \" pizza with \" << size << \", \" << crustType << \", \" << toppings << \", extra cheese: \" << extraCheese << \", discount code: \" << discountCode << std::endl;\n    this->orderPizza(pizzaType);\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n}\n\nvoid Customer::duplicateMethod() {\n    std::cout << \"Customer is making a duplicate order\" << std::endl;\n    this->orderPizza(\"Cheese\");\n    this->orderPizza(\"Cheese\");\n}\n\nvoid Customer::chainOfMethods() {\n    std::cout << \"Customer is initiating a message chain\" << std::endl;\n    this->accessInternalDetails();\n}\n\nvoid Customer::middlemanMethod() {\n    std::cout << \"Customer is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Customer::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Customer::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Customer::accessInternalDetails() {\n    // Inappropriate Intimacy\n    pizzaShop->getCashier()->hurryUpChef();\n    std::cout << \"Accessing internal details of PizzaShop\" << std::endl;\n}\n\nvoid Customer::refusedBequest() {}\n",
+    "annotations": [
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 108,
+        "line_end": 111,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 1,
+      "num_lines": 113
+    }
+  },
+  {
+    "sample_id": "cpp_Customer_h",
+    "language": "cpp",
+    "class_name": "Customer",
+    "file_path": "C++/SmellyAnnotated/Customer.h",
+    "loc": 61,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef CUSTOMER_H\n#define CUSTOMER_H\n\n#include \"Shop.h\"\n#include \"Drink.h\"\n#include <string>\n#include <iostream>\n\nclass Customer {\npublic:\n    Customer(Shop* pizzaShop);\n    void orderPizza(const std::string& pizzaType);\n    void complain(const std::string& complaint);\n\n    // Code smells methods\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode);\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void accessInternalDetails();\n    void refusedBequest();\n\nprivate:\n    Shop* pizzaShop;\n    Drink* drinkOrder;\n\n    // Primitive Obsession\n    bool frequentCustomerDiscount;\n\n    // Data Clumps\n    std::string firstName;\n    std::string lastName;\n    std::string address;\n    std::string phoneNumber;\n    std::string email;\n\n    // Temporary Fields\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\n#endif // CUSTOMER_H\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 46,
+        "line_end": 47,
+        "evidence": "    // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 49,
+        "line_end": 54,
+        "evidence": "    // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "Entire Class",
+        "line_start": 56,
+        "line_end": 59,
+        "evidence": "    // Temporary Fields",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 3,
+      "num_lines": 61
+    }
+  },
+  {
+    "sample_id": "cpp_Drink_cpp",
+    "language": "cpp",
+    "class_name": "Drink",
+    "file_path": "C++/SmellyAnnotated/Drink.cpp",
+    "loc": 140,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Drink.h\"\n\nDrink::Drink() {\n    drinkType = \"Water\";\n    size = \"Medium\";\n    ice = false;\n    lemon = false;\n}\n\nvoid Drink::orderDrink(const std::string& drinkType) {\n    std::cout << \"Ordering a \" << drinkType << std::endl;\n    this->drinkType = drinkType;\n    prepareDrink();\n}\n\nvoid Drink::prepareDrink() {\n    std::cout << \"Preparing \" << drinkType << std::endl;\n}\n\nvoid Drink::serveDrink() {\n    std::cout << \"Serving \" << drinkType << std::endl;\n}\n\nvoid Drink::cleanup() {\n    std::cout << \"Cleaning up after preparing \" << drinkType << std::endl;\n}\n\n// Code smells methods\nvoid Drink::notifyForPromotion() {\n    // Divergent Change\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Drink::notifyForDiscount() {\n    // Divergent Change\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Drink::notifyForNewArrivals() {\n    // Divergent Change\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Drink::applyDiscount() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Drink::applyLoyaltyPoints() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Drink::handleComplaint(const std::string& complaint) {\n    // Switch Statements\n    if (complaint == \"no ice\") {\n        std::cout << \"Handling complaint: No ice\" << std::endl;\n    } else if (complaint == \"too much ice\") {\n        std::cout << \"Handling complaint: Too much ice\" << std::endl;\n    } else if (complaint == \"wrong drink\") {\n        std::cout << \"Handling complaint: Wrong drink delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Drink::askForReceipt() {\n    // Speculative Generality\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Drink::anotherUnusedMethod() {\n    // Dead Code\n}\n\nvoid Drink::longMethod() {\n    // Long Method\n    std::cout << \"Drink is handling many tasks in a single method\" << std::endl;\n    this->orderDrink(\"Lemonade\");\n    this->prepareDrink();\n    this->serveDrink();\n    this->cleanup();\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"no ice\");\n}\n\nvoid Drink::orderWithUnnecessaryDetails(const std::string& drinkType, const std::string& size, bool ice, bool lemon, const std::string& discountCode) {\n    // Long Parameter List\n    std::cout << \"Placing a detailed order for \" << drinkType << \" with \" << size << \", ice: \" << ice << \", lemon: \" << lemon << \", discount code: \" << discountCode << std::endl;\n    this->orderDrink(drinkType);\n}\n\nvoid Drink::duplicateMethod() {\n    // Duplicate Code\n    std::cout << \"Customer is making a duplicate order\" << std::endl;\n    this->orderDrink(\"Water\");\n    this->orderDrink(\"Water\");\n}\n\nvoid Drink::chainOfMethods() {\n    // Message Chain\n    std::cout << \"Drink is initiating a message chain\" << std::endl;\n    this->cleanup();\n}\n\nvoid Drink::middlemanMethod() {\n    // Middle Man\n    std::cout << \"Drink is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Drink::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Drink::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Drink::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Drink: \" << this->size << \", \" << this->drinkType << std::endl;\n}\n\nvoid Drink::refusedBequest() {\n    // Refused Bequest\n}\n",
+    "annotations": [
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "line_start": 38,
+        "line_end": 40,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "line_start": 43,
+        "line_end": 45,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "line_start": 48,
+        "line_end": 50,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyDiscount",
+        "line_start": 53,
+        "line_end": 55,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyLoyaltyPoints",
+        "line_start": 58,
+        "line_end": 60,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "line_start": 63,
+        "line_end": 66,
+        "evidence": "    // Switch Statements",
+        "annotation_kind": "method-scope"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "line_start": 76,
+        "line_end": 78,
+        "evidence": "    // Speculative Generality",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "line_start": 81,
+        "line_end": 82,
+        "evidence": "    // Dead Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "line_start": 85,
+        "line_end": 97,
+        "evidence": "    // Long Method",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "line_start": 100,
+        "line_end": 103,
+        "evidence": "    // Long Parameter List",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "line_start": 106,
+        "line_end": 110,
+        "evidence": "    // Duplicate Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "line_start": 113,
+        "line_end": 116,
+        "evidence": "    // Message Chain",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "line_start": 119,
+        "line_end": 122,
+        "evidence": "    // Middle Man",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 134,
+        "line_end": 136,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Refused Bequest",
+        "category": "Object-Orientation Abusers",
+        "method": "refusedBequest",
+        "line_start": 139,
+        "line_end": 140,
+        "evidence": "    // Refused Bequest",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 15,
+      "num_lines": 140
+    }
+  },
+  {
+    "sample_id": "cpp_Drink_h",
+    "language": "cpp",
+    "class_name": "Drink",
+    "file_path": "C++/SmellyAnnotated/Drink.h",
+    "loc": 62,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef DRINK_H\n#define DRINK_H\n\n#include <string>\n#include <iostream>\n\nclass Drink {\npublic:\n    Drink();\n    void orderDrink(const std::string& drinkType);\n    void prepareDrink();\n    void serveDrink();\n    void cleanup();\n\n    // Methods with code smells\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails(const std::string& drinkType, const std::string& size, bool ice, bool lemon, const std::string& discountCode);\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void accessInternalDetails();\n    void refusedBequest();\n\nprivate:\n    std::string drinkType;\n    std::string size;\n\n    // Primitive Obsession\n    bool ice;\n    bool lemon;\n\n    // Data Clumps\n    std::string customerFirstName;\n    std::string customerLastName;\n    std::string customerAddress;\n    std::string customerPhoneNumber;\n    std::string customerEmail;\n\n    // Temporary Fields\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\n#endif // DRINK_H\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 46,
+        "line_end": 48,
+        "evidence": "    // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 50,
+        "line_end": 55,
+        "evidence": "    // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "Entire Class",
+        "line_start": 57,
+        "line_end": 60,
+        "evidence": "    // Temporary Fields",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 3,
+      "num_lines": 62
+    }
+  },
+  {
+    "sample_id": "cpp_Pizza_cpp",
+    "language": "cpp",
+    "class_name": "Pizza",
+    "file_path": "C++/SmellyAnnotated/Pizza.cpp",
+    "loc": 186,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Pizza.h\"\n\nPizza::Pizza(const std::string& size, const std::string& doughType, const std::string& topping)\n    : size(size), doughType(doughType), topping(topping), extraCheese(false) {}\n\nstd::string Pizza::getSize() const {\n    return size;\n}\n\nstd::string Pizza::getDoughType() const {\n    return doughType;\n}\n\nstd::string Pizza::getTopping() const {\n    return topping;\n}\n\nvoid Pizza::setSize(const std::string& size) {\n    this->size = size;\n}\n\nvoid Pizza::setDoughType(const std::string& doughType) {\n    this->doughType = doughType;\n}\n\nvoid Pizza::setTopping(const std::string& topping) {\n    this->topping = topping;\n}\n\nvoid Pizza::updateCustomerInfo(const std::string& firstName, const std::string& lastName, const std::string& address, const std::string& phoneNumber, const std::string& email) {\n    // Shotgun Surgery\n    this->customerFirstName = firstName;\n    this->customerLastName = lastName;\n    this->customerAddress = address;\n    this->customerPhoneNumber = phoneNumber;\n    this->customerEmail = email;\n}\n\nvoid Pizza::updateCustomerName(const std::string& firstName, const std::string& lastName) {\n    // Shotgun Surgery\n    this->customerFirstName = firstName;\n    this->customerLastName = lastName;\n}\n\nvoid Pizza::updateCustomerAddress(const std::string& address) {\n    // Shotgun Surgery\n    this->customerAddress = address;\n}\n\nvoid Pizza::updateCustomerPhoneNumber(const std::string& phoneNumber) {\n    // Shotgun Surgery\n    this->customerPhoneNumber = phoneNumber;\n}\n\nvoid Pizza::updateCustomerEmail(const std::string& email) {\n    // Shotgun Surgery\n    this->customerEmail = email;\n}\n\nvoid Pizza::notifyForPromotion() {\n    // Divergent Change\n    std::cout << \"Notifying customer for promotion\" << std::endl;\n}\n\nvoid Pizza::notifyForDiscount() {\n    // Divergent Change\n    std::cout << \"Notifying customer for discount\" << std::endl;\n}\n\nvoid Pizza::notifyForNewArrivals() {\n    // Divergent Change\n    std::cout << \"Notifying customer for new arrivals\" << std::endl;\n}\n\nvoid Pizza::applyDiscount() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying discount for customer\" << std::endl;\n}\n\nvoid Pizza::applyLoyaltyPoints() {\n    // Parallel Inheritance Hierarchies\n    std::cout << \"Applying loyalty points for customer\" << std::endl;\n}\n\nvoid Pizza::handleComplaint(const std::string& complaint) {\n    // Switch Statements\n    if (complaint == \"cold pizza\") {\n        std::cout << \"Handling complaint: Pizza is cold\" << std::endl;\n    } else if (complaint == \"late delivery\") {\n        std::cout << \"Handling complaint: Pizza is late\" << std::endl;\n    } else if (complaint == \"wrong order\") {\n        std::cout << \"Handling complaint: Wrong pizza delivered\" << std::endl;\n    } else {\n        std::cout << \"Handling complaint: General complaint\" << std::endl;\n    }\n}\n\nvoid Pizza::askForReceipt() {\n    // Speculative Generality\n    std::cout << \"Customer is asking for a receipt.\" << std::endl;\n}\n\nvoid Pizza::anotherUnusedMethod() {\n    // Dead Code\n}\n\nvoid Pizza::longMethod() {\n    // Long Method\n    std::cout << \"Pizza is handling many tasks in a single method\" << std::endl;\n    this->setSize(\"Large\");\n    this->setDoughType(\"Thin Crust\");\n    this->setTopping(\"Pepperoni\");\n    this->updateCustomerInfo(\"John\", \"Doe\", \"123 Street\", \"555-5555\", \"john.doe@example.com\");\n    this->notifyForPromotion();\n    this->notifyForDiscount();\n    this->notifyForNewArrivals();\n    this->applyDiscount();\n    this->applyLoyaltyPoints();\n    this->handleComplaint(\"cold pizza\");\n}\n\nvoid Pizza::orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode) {\n    // Long Parameter List\n    std::cout << \"Placing a detailed order for \" << pizzaType << \" pizza with \" << size << \", \" << crustType << \", \" << toppings << \", extra cheese: \" << extraCheese << \", discount code: \" << discountCode << std::endl;\n    this->setSize(size);\n    this->setDoughType(crustType);\n    this->setTopping(toppings);\n    this->applyDiscount();\n}\n\nvoid Pizza::duplicateMethod() {\n    // Duplicate Code\n    std::cout << \"Customer is making a duplicate order\" << std::endl;\n    this->setTopping(\"Cheese\");\n    this->setTopping(\"Cheese\");\n}\n\nvoid Pizza::chainOfMethods() {\n    // Message Chain\n    std::cout << \"Pizza is initiating a message chain\" << std::endl;\n    this->updateCustomerAddress(\"123 Street\");\n}\n\nvoid Pizza::middlemanMethod() {\n    // Middle Man\n    std::cout << \"Pizza is calling a middleman method\" << std::endl;\n    this->middleMethod();\n}\n\nvoid Pizza::middleMethod() {\n    std::cout << \"Middleman method delegating to another method\" << std::endl;\n    this->realMethod();\n}\n\nvoid Pizza::realMethod() {\n    std::cout << \"Real method doing the actual work\" << std::endl;\n}\n\nvoid Pizza::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details: \" << this->size << \", \" << this->doughType << \", \" << this->topping << std::endl;\n}\n\nvoid Pizza::refusedBequest() {\n    // Refused Bequest\n}\n\nCheesePizza::CheesePizza()\n    : Pizza(\"Medium\", \"Regular\", \"Cheese\") {}\n\nVeggiePizza::VeggiePizza()\n    : Pizza(\"Medium\", \"Whole Wheat\", \"Veggies\") {}\n\nTunaPizza::TunaPizza()\n    : Pizza(\"Large\", \"Thin Crust\", \"Tuna\") {}\n\nPepperoniPizza::PepperoniPizza()\n    : Pizza(\"Large\", \"Regular\", \"Pepperoni\") {}\n",
+    "annotations": [
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerInfo",
+        "line_start": 39,
+        "line_end": 45,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerName",
+        "line_start": 48,
+        "line_end": 51,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerAddress",
+        "line_start": 54,
+        "line_end": 56,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerPhoneNumber",
+        "line_start": 59,
+        "line_end": 61,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Shotgun Surgery",
+        "category": "Change Preventers",
+        "method": "updateCustomerEmail",
+        "line_start": 64,
+        "line_end": 66,
+        "evidence": "    // Shotgun Surgery",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForPromotion",
+        "line_start": 69,
+        "line_end": 71,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForDiscount",
+        "line_start": 74,
+        "line_end": 76,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Divergent Change",
+        "category": "Change Preventers",
+        "method": "notifyForNewArrivals",
+        "line_start": 79,
+        "line_end": 81,
+        "evidence": "    // Divergent Change",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyDiscount",
+        "line_start": 84,
+        "line_end": 86,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Parallel Inheritance Hierarchies",
+        "category": "Object-Orientation Abusers",
+        "method": "applyLoyaltyPoints",
+        "line_start": 89,
+        "line_end": 91,
+        "evidence": "    // Parallel Inheritance Hierarchies",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Switch Statements",
+        "category": "Object-Orientation Abusers",
+        "method": "handleComplaint",
+        "line_start": 94,
+        "line_end": 97,
+        "evidence": "    // Switch Statements",
+        "annotation_kind": "method-scope"
+      },
+      {
+        "smell_type": "Speculative Generality",
+        "category": "Dispensables",
+        "method": "askForReceipt",
+        "line_start": 107,
+        "line_end": 109,
+        "evidence": "    // Speculative Generality",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Dead Code",
+        "category": "Dispensables",
+        "method": "anotherUnusedMethod",
+        "line_start": 112,
+        "line_end": 113,
+        "evidence": "    // Dead Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Method",
+        "category": "Bloaters",
+        "method": "longMethod",
+        "line_start": 116,
+        "line_end": 128,
+        "evidence": "    // Long Method",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Long Parameter List",
+        "category": "Bloaters",
+        "method": "orderWithUnnecessaryDetails",
+        "line_start": 131,
+        "line_end": 137,
+        "evidence": "    // Long Parameter List",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Duplicate Code",
+        "category": "Dispensables",
+        "method": "duplicateMethod",
+        "line_start": 140,
+        "line_end": 144,
+        "evidence": "    // Duplicate Code",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Message Chains",
+        "category": "Couplers",
+        "method": "chainOfMethods",
+        "line_start": 147,
+        "line_end": 150,
+        "evidence": "    // Message Chain",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Middle Man",
+        "category": "Couplers",
+        "method": "middlemanMethod",
+        "line_start": 153,
+        "line_end": 156,
+        "evidence": "    // Middle Man",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 168,
+        "line_end": 170,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Refused Bequest",
+        "category": "Object-Orientation Abusers",
+        "method": "refusedBequest",
+        "line_start": 173,
+        "line_end": 174,
+        "evidence": "    // Refused Bequest",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 20,
+      "num_lines": 186
+    }
+  },
+  {
+    "sample_id": "cpp_Pizza_h",
+    "language": "cpp",
+    "class_name": "Pizza",
+    "file_path": "C++/SmellyAnnotated/Pizza.h",
+    "loc": 91,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef PIZZA_H\n#define PIZZA_H\n\n#include <string>\n#include <iostream>\n\nclass Pizza {\npublic:\n    Pizza(const std::string& size, const std::string& doughType, const std::string& topping);\n\n    std::string getSize() const;\n    std::string getDoughType() const;\n    std::string getTopping() const;\n\n    void setSize(const std::string& size);\n    void setDoughType(const std::string& doughType);\n    void setTopping(const std::string& topping);\n\n    void updateCustomerInfo(const std::string& firstName, const std::string& lastName, const std::string& address, const std::string& phoneNumber, const std::string& email);\n    void updateCustomerName(const std::string& firstName, const std::string& lastName);\n    void updateCustomerAddress(const std::string& address);\n    void updateCustomerPhoneNumber(const std::string& phoneNumber);\n    void updateCustomerEmail(const std::string& email);\n\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode);\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void accessInternalDetails();\n    void refusedBequest();\n\nprivate:\n    std::string size;\n    std::string doughType;\n    std::string topping;\n\n    // Primitive Obsession\n    bool extraCheese;\n\n    // Data Clumps\n    std::string customerFirstName;\n    std::string customerLastName;\n    std::string customerAddress;\n    std::string customerPhoneNumber;\n    std::string customerEmail;\n\n    // Temporary Fields\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\nclass CheesePizza : public Pizza {\npublic:\n    CheesePizza();\n};\n\nclass VeggiePizza : public Pizza {\npublic:\n    VeggiePizza();\n};\n\nclass TunaPizza : public Pizza {\npublic:\n    TunaPizza();\n};\n\nclass PepperoniPizza : public Pizza {\npublic:\n    PepperoniPizza();\n};\n\n#endif // PIZZA_H\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 56,
+        "line_end": 57,
+        "evidence": "    // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 59,
+        "line_end": 64,
+        "evidence": "    // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "Entire Class",
+        "line_start": 66,
+        "line_end": 69,
+        "evidence": "    // Temporary Fields",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 3,
+      "num_lines": 91
+    }
+  },
+  {
+    "sample_id": "cpp_Shop_cpp",
+    "language": "cpp",
+    "class_name": "Shop",
+    "file_path": "C++/SmellyAnnotated/Shop.cpp",
+    "loc": 49,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Shop.h\"\n\nShop::Shop() {\n    cashier = new Cashier(new Chef());\n    chef = cashier->getChef();\n}\n\nvoid Shop::receiveOrder(const std::string& pizzaType) {\n    std::cout << \"Shop received order for \" << pizzaType << \" pizza.\" << std::endl;\n    pizza = createPizza(pizzaType);\n    cashier->takeOrder(pizzaType);\n}\n\nPizza* Shop::createPizza(const std::string& pizzaType) {\n    if (pizzaType == \"Cheese\") {\n        return new Pizza(\"Medium\", \"Regular\", \"Cheese\");\n    } else if (pizzaType == \"Veggie\") {\n        return new Pizza(\"Medium\", \"Whole Wheat\", \"Veggies\");\n    } else if (pizzaType == \"Tuna\") {\n        return new Pizza(\"Large\", \"Thin Crust\", \"Tuna\");\n    } else if (pizzaType == \"Pepperoni\") {\n        return new Pizza(\"Large\", \"Regular\", \"Pepperoni\");\n    } else {\n        throw std::invalid_argument(\"Unknown pizza type\");\n    }\n}\n\nCashier* Shop::getCashier() {\n    return cashier;\n}\n\nChef* Shop::getChef() {\n    return chef;\n}\n\nvoid Shop::accessInternalDetails() {\n    // Inappropriate Intimacy\n    std::cout << \"Accessing internal details of Shop: \" << cashier->getChef()->isBusy() << std::endl;\n}\n\n// Implementations of other methods with code smells here...\n",
+    "annotations": [
+      {
+        "smell_type": "Inappropriate Intimacy",
+        "category": "Couplers",
+        "method": "accessInternalDetails",
+        "line_start": 45,
+        "line_end": 47,
+        "evidence": "    // Inappropriate Intimacy",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 1,
+      "num_lines": 49
+    }
+  },
+  {
+    "sample_id": "cpp_Shop_h",
+    "language": "cpp",
+    "class_name": "Shop",
+    "file_path": "C++/SmellyAnnotated/Shop.h",
+    "loc": 64,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#ifndef SHOP_H\n#define SHOP_H\n\n#include \"Cashier.h\"\n#include \"Chef.h\"\n#include \"Pizza.h\"\n#include <string>\n\nclass Shop {\npublic:\n    Shop();\n    void receiveOrder(const std::string& pizzaType);\n    Pizza* createPizza(const std::string& pizzaType);\n    Cashier* getCashier();\n    Chef* getChef();\n    void accessInternalDetails(); // only one declaration for accessInternalDetails\n\n    // Methods with code smells\n    void notifyForPromotion();\n    void notifyForDiscount();\n    void notifyForNewArrivals();\n    void applyDiscount();\n    void applyLoyaltyPoints();\n    void handleComplaint(const std::string& complaint);\n    void askForReceipt();\n    void anotherUnusedMethod();\n    void longMethod();\n    void orderWithUnnecessaryDetails(const std::string& pizzaType, const std::string& size, const std::string& crustType, const std::string& toppings, bool extraCheese, const std::string& discountCode);\n    void duplicateMethod();\n    void chainOfMethods();\n    void middlemanMethod();\n    void middleMethod();\n    void realMethod();\n    void refusedBequest();\n\nprivate:\n    Cashier* cashier;\n    Chef* chef;\n    Pizza* pizza;\n\n    // Primitive Obsession\n    bool extraCheese;\n\n    // Data Clumps\n    std::string firstName;\n    std::string lastName;\n    std::string address;\n    std::string phoneNumber;\n    std::string email;\n\n    // Temporary Fields\n    std::string tempDiscountCode;\n    std::string tempOrderNote;\n};\n\n#endif // SHOP_H\n",
+    "annotations": [
+      {
+        "smell_type": "Primitive Obsession",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 49,
+        "line_end": 50,
+        "evidence": "    // Primitive Obsession",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Data Clumps",
+        "category": "Bloaters",
+        "method": "Entire Class",
+        "line_start": 52,
+        "line_end": 57,
+        "evidence": "    // Data Clumps",
+        "annotation_kind": "block"
+      },
+      {
+        "smell_type": "Temporary Field",
+        "category": "Object-Orientation Abusers",
+        "method": "Entire Class",
+        "line_start": 59,
+        "line_end": 62,
+        "evidence": "    // Temporary Fields",
+        "annotation_kind": "block"
+      }
+    ],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 3,
+      "num_lines": 64
+    }
+  },
+  {
+    "sample_id": "cpp_main_cpp",
+    "language": "cpp",
+    "class_name": "main",
+    "file_path": "C++/SmellyAnnotated/main.cpp",
+    "loc": 36,
+    "source_code": "/*\nCopyright (c) 2025 Ahmed R. Sadik, Honda Research Institute Europe GmbH \n\nThis source code is licensed under the MIT License found in the\nLICENSE file in the root directory of this source tree. This dataset contains smelly code for research and refactoring purposes.\n*/\n\n\n#include \"Shop.h\"\n#include \"Customer.h\"\n#include <iostream>\n#include <chrono>\n\nvoid measureExecutionTime(int runs = 10) {\n    double totalTime = 0;\n    for (int i = 0; i < runs; ++i) {\n        auto start = std::chrono::high_resolution_clock::now();\n\n        Shop shop;\n        Customer customer(&shop);\n        customer.orderPizza(\"Cheese\");\n        customer.complain(\"The pizza is too cold.\");\n\n        auto end = std::chrono::high_resolution_clock::now();\n        std::chrono::duration<double> duration = end - start;\n        totalTime += duration.count();\n    }\n\n    double averageTime = totalTime / runs;\n    std::cout << \"Average execution time over multiple runs: \" << averageTime << \" seconds\" << std::endl;\n}\n\nint main() {\n    measureExecutionTime();\n    return 0;\n}\n",
+    "annotations": [],
+    "metadata": {
+      "variant": "annotated",
+      "num_annotations": 0,
+      "num_lines": 36
+    }
+  }
+]
